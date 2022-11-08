@@ -1,0 +1,76 @@
+$header-height: 55px;
+
+.Header{
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    height: $header-height;
+    padding: 0 0 0 120px;
+}
+
+.Side{
+    width: 100vw;
+    height: calc(100vh - $header-height);
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    position: fixed;
+    top: $header-height;
+    left: 0;
+
+    .SideCover{
+        width: 260px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        border-right: 1px solid #000;
+        background-color: #fff;
+
+        .Link{
+            margin: 16vh 0px 15vh 80px;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.SideButton{
+    position: fixed;
+    line-height: $header-height;
+    top: 0;
+    left: $header-height;
+    color: #fff;
+
+    &:hover{
+        cursor: pointer;
+    }
+
+    .humberger {
+        position: relative;
+        height: 20px;
+        width: 28px;
+        display: inline-block;
+        box-sizing: border-box;
+
+        div {
+            position: absolute;
+            left: 0;
+            height: 2px;
+            width: 28px;
+            background-color: #fff;
+            border-radius: 2px;
+            display: inline-block;
+            box-sizing: border-box;
+
+            &:nth-of-type(1) {
+                bottom: 13px;
+            }
+
+            &:nth-of-type(2) {
+                bottom: 3px;
+            }
+
+            &:nth-of-type(3) {
+                bottom: -6px;
+            }
+        }
+    }
+}
+
