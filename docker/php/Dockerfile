@@ -11,6 +11,11 @@ RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 
+#npm install
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1655A0AB68576280 && \
+    apt-get install -y nodejs
+
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 ENV COMPOSER_HOME /composer
