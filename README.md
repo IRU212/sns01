@@ -6,3 +6,5 @@
 ###### php artisan ui react --auth
 ###### npm install && npm run dev
 ###### php artisan migrate
+###### npm install react-router-dom
+###### npm install node-sass
