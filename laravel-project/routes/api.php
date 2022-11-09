@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LoginuserController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
@@ -19,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// ユーザログイン機能
+Route::get('auth/register/store',[RegisterController::class,'store'])->name('auth.register.store');
+Route::post('auth/register/store',[RegisterController::class,'store'])->name('auth.register.store');
 
 // ログイン中のユーザ情報を取得
 Route::get('login/user',[LoginuserController::class,'index']);
