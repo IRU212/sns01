@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginuserController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // ログイン中のユーザ情報を取得
 Route::get('login/user',[LoginuserController::class,'index']);
+
+// 商品を出品
+Route::get('/product/store',[ProductController::class,'store'])->name('product.store');
+Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
