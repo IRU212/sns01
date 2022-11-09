@@ -6,6 +6,7 @@ import Home from './Home';
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Create from './Create';
 import Register from './auth/Register';
+import Login from './auth/Login';
 
 function Example() {
     return (
@@ -18,6 +19,7 @@ function Example() {
                         <Route path='/' element={<Home />} />
                         <Route path="/create" element={<Create />} />
                         <Route path='/register' element={<Register />} />
+                        <Route path='/login' element={<Login />} />
                     </Routes>
                 </BrowserRouter>
             </div>

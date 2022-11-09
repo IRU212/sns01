@@ -8,11 +8,31 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginuserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $id = Auth::id();
-        $data = User::find(1);
+        $login_id = session('login_id');
+        $data = User::find($login_id);
 
         return response()->json($data);
+    }
+
+    public function store(Request $request)
+    {
+        // ユーザ情報を取得
+        $user_info = User::all();
+
+        // HTTPリクエストを受け取り
+        $login_name = $request->name;
+        $login_password = $request->password;
+
+        foreach ($user_info as $index => $item) {
+
+            // ユーザ名とパスワードが一致しているものを検索
+            if ($login_name == $item['name'] && password_verify($login_password, $item['password'])) {
+                // 一致しているusers.idをsessionに保存
+                $login_id = $item['id'];
+                session(['login_id' => $login_id]);
+            }
+        }
     }
 }

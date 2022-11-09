@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    // public function index(Request $request)
+    // {
+    //     $data = $request->session()->put('login_status','true');
+    //     return response()->json($data);
+    // }
+
     public function store(Request $request)
     {
         $user = new User();
@@ -21,9 +27,12 @@ class RegisterController extends Controller
 
         $user->save();
 
+        // 最新のusera.idを取得
+        $login_id = $user->latest()->pluck('id')->first();
+
         if ($user->save() == true) {
             // ログイン中のsessionを作成
-            $request->session()->put('login_status');
+            session(['login_id' => $login_id]);
         }
     }
 }

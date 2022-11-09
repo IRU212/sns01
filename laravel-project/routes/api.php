@@ -21,9 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// ユーザログイン機能
+// ユーザログイン新規登録機能
 Route::get('auth/register/store',[RegisterController::class,'store'])->name('auth.register.store');
 Route::post('auth/register/store',[RegisterController::class,'store'])->name('auth.register.store');
+
+// ユーザログイン機能
+Route::get('/login/user/store',[LoginuserController::class,'store']);
+Route::post('/login/user/store',[LoginuserController::class,'store']);
 
 // ログイン中のユーザ情報を取得
 Route::get('login/user',[LoginuserController::class,'index']);
