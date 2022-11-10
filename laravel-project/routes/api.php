@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LoginuserController;
 use App\Http\Controllers\ProductController;
@@ -28,6 +29,10 @@ Route::post('auth/register/store',[RegisterController::class,'store'])->name('au
 // ユーザログイン機能
 Route::get('/login/user/store',[LoginuserController::class,'store']);
 Route::post('/login/user/store',[LoginuserController::class,'store']);
+
+// ユーザログアウト機能
+Route::get('/logout/user/store',[LogoutController::class,'store']);
+Route::post('/logout/user/store',[LogoutController::class,'store']);
 
 // ログイン中のユーザ情報を取得
 Route::get('login/user',[LoginuserController::class,'index']);

@@ -11,18 +11,18 @@ import Login from './auth/Login';
 function Example() {
     return (
         <div>
-            <Header />
-            <div style={{display:"flex"}}>
-                <BrowserRouter>
-                    <Side />
-                    <Routes>
-                        <Route path='/' element={<Home />} />
-                        <Route path="/create" element={<Create />} />
-                        <Route path='/register' element={<Register />} />
-                        <Route path='/login' element={<Login />} />
-                    </Routes>
-                </BrowserRouter>
-            </div>
+            <BrowserRouter>
+                <Header />
+                <div style={{display:"flex"}}>
+                        <Side />
+                        <Routes>
+                            <Route path='/' element={<Home />} />
+                            <Route path="/create" element={<Create />} />
+                            <Route path='/register' element={<Register />} />
+                            <Route path='/login' element={<Login />} />
+                        </Routes>
+                </div>
+            </BrowserRouter>
         </div>
     );
 }

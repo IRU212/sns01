@@ -11,7 +11,12 @@ class LoginuserController extends Controller
     public function index(Request $request)
     {
         $login_id = session('login_id');
-        $data = User::find($login_id);
+
+        if ($request->session()->has('login_id')) {
+            $data = User::find($login_id);
+        } else {
+            $data = 1;
+        }
 
         return response()->json($data);
     }

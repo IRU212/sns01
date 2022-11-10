@@ -31,7 +31,7 @@ function Side() {
                  }}
                 >
                     <div className={styles.SideCover}>
-                        <Link to="home" style={{textDecoration:"none",color:"#000"}}>
+                        <Link to="/" style={{textDecoration:"none",color:"#000"}}>
                             <div className={styles.Link} onClick={displayToggleClick}>
                                 ホーム
                             </div>

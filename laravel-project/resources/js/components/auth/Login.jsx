@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import styles from '../../../../public/css/auth.module.scss'
 
 function Login() {
 
@@ -24,7 +25,7 @@ function Login() {
         axios
             .post('http://localhost:8000/api/login/user/store',data)
             .then(() => {
-                // location.href
+                location.reload()
             })
             .catch((err) => {
                 console.log(err)
