@@ -3,6 +3,7 @@
 ###### php artisan key:generate
 ###### composer require laravel/ui:*
 ###### php artisan ui react --auth
+###### php artisan storage:link
 ###### npm install && npm run dev
 ###### php artisan migrate
 ###### npm install react-router-dom
