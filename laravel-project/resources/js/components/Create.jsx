@@ -83,7 +83,16 @@ function Create() {
             <div>
                 <div>ジャンル</div>
                 <div>
-                    <input type="text" onChange={GenreChnage} />
+                    <select required>
+                        <option value="">選択してください</option>
+                        <option value="1">本</option>
+                        <option value="2">音楽</option>
+                        <option value="3">パソコン</option>
+                        <option value="4">服</option>
+                        <option value="5">おもちゃ</option>
+                        <option value="6">家具</option>
+                        <option value="7">その他</option>
+                    </select>
                 </div>
             </div>
             <div onClick={ProductClick}>

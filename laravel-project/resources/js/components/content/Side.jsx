@@ -51,6 +51,11 @@ function Side() {
                                 取引状況
                             </div>
                         </Link>
+                        <Link to="setting" style={{textDecoration:"none",color:"#000"}}>
+                            <div className={styles.Link} onClick={displayToggleClick}>
+                                設定
+                            </div>
+                        </Link>
                     </div>
                 </div>
                 :
