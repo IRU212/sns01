@@ -8,6 +8,7 @@ import Create from './Create';
 import Register from './auth/Register';
 import Login from './auth/Login';
 import NotFound404 from './NotFound404';
+import Setting from './Setting';
 
 function Example() {
     return (
@@ -21,6 +22,7 @@ function Example() {
                             <Route path="/create" element={<Create />} />
                             <Route path='/register' element={<Register />} />
                             <Route path='/login' element={<Login />} />
+                            <Route path='/setting' element={<Setting />} />
                             <Route path='*' element={<NotFound404 />} />
                         </Routes>
                 </div>
