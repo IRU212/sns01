@@ -1,9 +1,12 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import Item from './Home/Item'
 
 function Home() {
+
     return (
         <div>
-            <img src="http://localhost:8000/storage/image/bed78e7813f855a29c0af62ef600a37b.jpg" alt="" />
+            <Item />
         </div>
     )
 }

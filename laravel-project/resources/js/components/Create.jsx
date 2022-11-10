@@ -46,8 +46,8 @@ function Create() {
                     "content-type": "multipart/form-data"
                 }
             })
-            .then((res) => {
-                console.log(res.data)
+            .then(() => {
+                location.reload()
             })
             .catch((err) => {
                 console.log(err)

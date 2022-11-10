@@ -37,6 +37,9 @@ Route::post('/logout/user/store',[LogoutController::class,'store']);
 // ログイン中のユーザ情報を取得
 Route::get('login/user',[LoginuserController::class,'index']);
 
+// 商品一覧
+Route::get('/product',[ProductController::class,'index'])->name('product.index');
+
 // 商品を出品
 Route::get('/product/store',[ProductController::class,'store'])->name('product.store');
 Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
