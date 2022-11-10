@@ -41,7 +41,7 @@ $header-height: 55px;
 }
 
 .SideButton{
-    position: fixed;
+    position: absolute;
     line-height: $header-height;
     top: 0;
     left: $header-height;
@@ -112,6 +112,46 @@ $header-icon-size: 44px;
 
         &:hover{
             cursor: pointer;
+        }
+    }
+}
+
+.Create{
+    width: 100vw;
+    text-align: center;
+
+    .CreateDiv{
+        width: 400px;
+        position: relative;
+        margin: 80px auto 0 auto;
+        text-align: left;
+
+        .CreateItem{
+            width: 100%;
+            margin: 0px 0 30px 0;
+
+            .title{
+                font-size: 0.8rem;
+                color: rgb(62, 62, 62);
+                margin: 0 0 10px 0;
+            }
+
+            .inputText{
+                width: 400px;
+                height: 2.4rem;
+            }
+
+            .PreviewImg{
+                width: 400px;
+                height: 300px;
+                object-fit: scale-down;
+                background-color: rgb(242, 238, 238);
+                border: none;
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
         }
     }
 }

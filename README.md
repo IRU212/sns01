@@ -11,3 +11,5 @@
 ###### chmod 777 -R storage/
 ###### chmod 777 -R storage bootstrap/cache/
 ###### npm install axios
+###### npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
+###### npm install @mui/material @mui/styled-engine-sc styled-components
