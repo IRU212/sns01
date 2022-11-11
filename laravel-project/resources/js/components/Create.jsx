@@ -4,11 +4,16 @@ import styles from '../../../public/css/content.module.scss'
 
 function Create() {
 
-    const [name,setName] = useState()
-    const [introduce,setIntroduce] = useState()
-    const [image,setImage] = useState()
-    const [money,setMoney] = useState()
-    const [genre,setGenre] = useState()
+    const [name,setName] = useState('')
+    const [introduce,setIntroduce] = useState('')
+    const [image,setImage] = useState('')
+    const [money,setMoney] = useState('')
+    const [genre,setGenre] = useState('')
+
+
+
+    // 未入力がある際はボタン不可能
+    const buttonBlock = 5
 
     // 画像プレビュー
     const userImg = useRef()
@@ -25,6 +30,13 @@ function Create() {
         const imageTarget = e.target.files[0]
 
         setImage(imageTarget)
+
+        // ファイルサイズが1MBより大きい
+        if (imageTarget.size / (1024 * 1024) > 1) {
+            setImage(null)
+            const imageSizeMessage = "画像サイズが1MBより小さい画像を選択してください"
+            window.alert(imageSizeMessage)
+        }
 
         // プレビュー機能
         userImg.current.title = imageTarget.name
@@ -73,13 +85,13 @@ function Create() {
                 <div className={styles.CreateItem}>
                     <div className={styles.title}>商品名</div>
                     <div>
-                        <input type="text" className={styles.inputText} onChange={NameChnage} />
+                        <input type="text" value={name} className={styles.inputText} onChange={NameChnage} />
                     </div>
                 </div>
                 <div className={styles.CreateItem}>
                     <div className={styles.title}>商品紹介</div>
                     <div>
-                        <input type="text" className={styles.inputText} onChange={IntroduceChnage} />
+                        <input type="text" value={introduce} className={styles.inputText} onChange={IntroduceChnage} />
                     </div>
                 </div>
                 <div className={styles.CreateItem}>
@@ -109,7 +121,7 @@ function Create() {
                 <div className={styles.CreateItem}>
                     <div className={styles.title}>ジャンル</div>
                     <div>
-                        <select required onChange={GenreChnage}>
+                        <select required value={genre} onChange={GenreChnage}>
                             <option value="">選択してください</option>
                             <option value="1">本</option>
                             <option value="2">音楽</option>
@@ -121,9 +133,15 @@ function Create() {
                         </select>
                     </div>
                 </div>
-                <div onClick={ProductClick}>
-                    出品
-                </div>
+                { !name == '' && !introduce == '' && !image == ''  && !money == '' && !genre == ''  ?
+                    <div onClick={ProductClick} className={styles.Button}>
+                        出品
+                    </div>
+                    :
+                    <div className={styles.ButtonNone}>
+                        出品
+                    </div>
+                }
             </div>
         </div>
     )

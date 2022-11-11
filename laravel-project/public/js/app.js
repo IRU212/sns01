@@ -5495,26 +5495,29 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Create() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
     name = _useState2[0],
     setName = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState4 = _slicedToArray(_useState3, 2),
     introduce = _useState4[0],
     setIntroduce = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState6 = _slicedToArray(_useState5, 2),
     image = _useState6[0],
     setImage = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState8 = _slicedToArray(_useState7, 2),
     money = _useState8[0],
     setMoney = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState10 = _slicedToArray(_useState9, 2),
     genre = _useState10[0],
     setGenre = _useState10[1];
+
+  // 未入力がある際はボタン不可能
+  var buttonBlock = 5;
 
   // 画像プレビュー
   var userImg = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
@@ -5527,6 +5530,13 @@ function Create() {
   var ImageChange = function ImageChange(e) {
     var imageTarget = e.target.files[0];
     setImage(imageTarget);
+
+    // ファイルサイズが1MBより大きい
+    if (imageTarget.size / (1024 * 1024) > 1) {
+      setImage(null);
+      var imageSizeMessage = "画像サイズが1MBより小さい画像を選択してください";
+      window.alert(imageSizeMessage);
+    }
 
     // プレビュー機能
     userImg.current.title = imageTarget.name;
@@ -5571,6 +5581,7 @@ function Create() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
             type: "text",
+            value: name,
             className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].inputText,
             onChange: NameChnage
           })
@@ -5583,6 +5594,7 @@ function Create() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
             type: "text",
+            value: introduce,
             className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].inputText,
             onChange: IntroduceChnage
           })
@@ -5638,6 +5650,7 @@ function Create() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
             required: true,
+            value: genre,
             onChange: GenreChnage,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               value: "",
@@ -5666,8 +5679,12 @@ function Create() {
             })]
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      }), !name == '' && !introduce == '' && !image == '' && !money == '' && !genre == '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         onClick: ProductClick,
+        className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Button,
+        children: "\u51FA\u54C1"
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ButtonNone,
         children: "\u51FA\u54C1"
       })]
     })
@@ -6494,7 +6511,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._8EwW-JSgiMH8uawjVf7JRQ\\=\\= {\n  background-color: #000;\n  color: #fff;\n  width: 100%;\n  height: 55px;\n  padding: 0 0 0 120px;\n  position: relative;\n}\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= .Za1mkcrC9VcJaKGRakl\\+EA\\=\\= {\n  position: absolute;\n  right: 8vw;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.Rx1Z8SKqCvaKQgvvTJhPRw\\=\\= {\n  width: 100vw;\n  height: calc(100vh - 55px);\n  background-color: rgba(0, 0, 0, 0.6);\n  position: fixed;\n  top: 55px;\n  left: 0;\n  z-index: 999;\n}\n.Rx1Z8SKqCvaKQgvvTJhPRw\\=\\= ._5z6uKEb1PSP5REqnzB78Qw\\=\\= {\n  width: 260px;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  border-right: 1px solid #000;\n  background-color: #fff;\n}\n.Rx1Z8SKqCvaKQgvvTJhPRw\\=\\= ._5z6uKEb1PSP5REqnzB78Qw\\=\\= .q\\+VVFnqyrA7kcvTIgMX6-g\\=\\= {\n  margin: 12vh 0px 12vh 75px;\n  font-size: 1.2rem;\n}\n\n._3y85EVa60TUVgSB9ddjweg\\=\\= {\n  position: absolute;\n  line-height: 55px;\n  top: 0;\n  left: 55px;\n  color: #fff;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\=:hover {\n  cursor: pointer;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= {\n  position: relative;\n  height: 20px;\n  width: 28px;\n  display: inline-block;\n  box-sizing: border-box;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div {\n  position: absolute;\n  left: 0;\n  height: 2px;\n  width: 28px;\n  background-color: #fff;\n  border-radius: 2px;\n  display: inline-block;\n  box-sizing: border-box;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div:nth-of-type(1) {\n  bottom: 13px;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div:nth-of-type(2) {\n  bottom: 3px;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div:nth-of-type(3) {\n  bottom: -6px;\n}\n\n.CaKvSj17n7MItFaHXh0e4g\\=\\= {\n  display: flex;\n}\n.CaKvSj17n7MItFaHXh0e4g\\=\\= div {\n  margin-left: 1.3vw;\n}\n.CaKvSj17n7MItFaHXh0e4g\\=\\= div .wF-QbjYybw-2BD5Kc5t8sA\\=\\= {\n  position: absolute;\n  top: 55px;\n  right: 10vw;\n}\n\n._3e7ti-tpKKPe78DohvO-Yw\\=\\= {\n  width: 44px;\n  height: 44px;\n  background-color: #fff;\n  border-radius: 50%;\n}\n._3e7ti-tpKKPe78DohvO-Yw\\=\\= img {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n._3e7ti-tpKKPe78DohvO-Yw\\=\\= img:hover {\n  cursor: pointer;\n}\n\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= {\n  width: 100vw;\n  text-align: center;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= {\n  width: 400px;\n  position: relative;\n  margin: 80px auto 0 auto;\n  text-align: left;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= {\n  width: 100%;\n  margin: 0px 0 30px 0;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .Rj9cmPgY\\+N1lkeXrmj\\+k-w\\=\\= {\n  font-size: 0.8rem;\n  color: rgb(62, 62, 62);\n  margin: 0 0 10px 0;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .cFImURAa7wEIGOU1dL9Iwg\\=\\= {\n  width: 400px;\n  height: 2.4rem;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .vPefyPWZt7rfwep9msiWLg\\=\\= {\n  width: 400px;\n  height: 300px;\n  -o-object-fit: scale-down;\n     object-fit: scale-down;\n  background-color: rgb(242, 238, 238);\n  border: none;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .vPefyPWZt7rfwep9msiWLg\\=\\=:hover {\n  cursor: pointer;\n}\n\n.EnjYje4ASp5p8gSDpg6HAA\\=\\= {\n  width: 100vw;\n  height: calc(100vh - 55px);\n  position: relative;\n}\n.EnjYje4ASp5p8gSDpg6HAA\\=\\= div {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-size: 1.6rem;\n  color: rgb(66, 66, 66);\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "._8EwW-JSgiMH8uawjVf7JRQ\\=\\= {\n  background-color: #000;\n  color: #fff;\n  width: 100%;\n  height: 55px;\n  padding: 0 0 0 120px;\n  position: relative;\n}\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= .Za1mkcrC9VcJaKGRakl\\+EA\\=\\= {\n  position: absolute;\n  right: 8vw;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.Rx1Z8SKqCvaKQgvvTJhPRw\\=\\= {\n  width: 100vw;\n  height: calc(100vh - 55px);\n  background-color: rgba(0, 0, 0, 0.6);\n  position: fixed;\n  top: 55px;\n  left: 0;\n  z-index: 999;\n}\n.Rx1Z8SKqCvaKQgvvTJhPRw\\=\\= ._5z6uKEb1PSP5REqnzB78Qw\\=\\= {\n  width: 260px;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  border-right: 1px solid #000;\n  background-color: #fff;\n}\n.Rx1Z8SKqCvaKQgvvTJhPRw\\=\\= ._5z6uKEb1PSP5REqnzB78Qw\\=\\= .q\\+VVFnqyrA7kcvTIgMX6-g\\=\\= {\n  margin: 12vh 0px 12vh 75px;\n  font-size: 1.2rem;\n}\n\n._3y85EVa60TUVgSB9ddjweg\\=\\= {\n  position: absolute;\n  line-height: 55px;\n  top: 0;\n  left: 55px;\n  color: #fff;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\=:hover {\n  cursor: pointer;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= {\n  position: relative;\n  height: 20px;\n  width: 28px;\n  display: inline-block;\n  box-sizing: border-box;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div {\n  position: absolute;\n  left: 0;\n  height: 2px;\n  width: 28px;\n  background-color: #fff;\n  border-radius: 2px;\n  display: inline-block;\n  box-sizing: border-box;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div:nth-of-type(1) {\n  bottom: 13px;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div:nth-of-type(2) {\n  bottom: 3px;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div:nth-of-type(3) {\n  bottom: -6px;\n}\n\n.CaKvSj17n7MItFaHXh0e4g\\=\\= {\n  display: flex;\n}\n.CaKvSj17n7MItFaHXh0e4g\\=\\= div {\n  margin-left: 1.3vw;\n}\n.CaKvSj17n7MItFaHXh0e4g\\=\\= div .wF-QbjYybw-2BD5Kc5t8sA\\=\\= {\n  position: absolute;\n  top: 55px;\n  right: 10vw;\n}\n\n._3e7ti-tpKKPe78DohvO-Yw\\=\\= {\n  width: 44px;\n  height: 44px;\n  background-color: #fff;\n  border-radius: 50%;\n}\n._3e7ti-tpKKPe78DohvO-Yw\\=\\= img {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n._3e7ti-tpKKPe78DohvO-Yw\\=\\= img:hover {\n  cursor: pointer;\n}\n\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= {\n  width: 100vw;\n  text-align: center;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= {\n  width: 400px;\n  position: relative;\n  margin: 80px auto 0 auto;\n  padding: 0 0 0 0;\n  text-align: left;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= {\n  width: 100%;\n  margin: 0px 0 30px 0;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .Rj9cmPgY\\+N1lkeXrmj\\+k-w\\=\\= {\n  font-size: 0.8rem;\n  color: rgb(62, 62, 62);\n  margin: 0 0 10px 0;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .cFImURAa7wEIGOU1dL9Iwg\\=\\= {\n  width: 400px;\n  height: 2.4rem;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .vPefyPWZt7rfwep9msiWLg\\=\\= {\n  width: 400px;\n  height: 300px;\n  -o-object-fit: scale-down;\n     object-fit: scale-down;\n  background-color: rgb(242, 238, 238);\n  border: none;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .vPefyPWZt7rfwep9msiWLg\\=\\=:hover {\n  cursor: pointer;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .QmM4s4X2G7h-KLQE2E-xgA\\=\\= {\n  background-color: #000;\n  color: #fff;\n  padding: 8px 20px;\n  border-radius: 10px;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: 0 0 80px 0;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .QmM4s4X2G7h-KLQE2E-xgA\\=\\=:hover {\n  cursor: pointer;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .cDi6eM8lv68GyvFnKrDTyg\\=\\= {\n  background-color: #000;\n  color: #fff;\n  padding: 8px 20px;\n  border-radius: 10px;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: 0 0 80px 0;\n  opacity: 0.7;\n}\n\n.EnjYje4ASp5p8gSDpg6HAA\\=\\= {\n  width: 100vw;\n  height: calc(100vh - 55px);\n  position: relative;\n}\n.EnjYje4ASp5p8gSDpg6HAA\\=\\= div {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-size: 1.6rem;\n  color: rgb(66, 66, 66);\n}", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"Header": "_8EwW-JSgiMH8uawjVf7JRQ==",
@@ -6513,6 +6530,8 @@ ___CSS_LOADER_EXPORT___.locals = {
 	"title": "Rj9cmPgY+N1lkeXrmj+k-w==",
 	"inputText": "cFImURAa7wEIGOU1dL9Iwg==",
 	"PreviewImg": "vPefyPWZt7rfwep9msiWLg==",
+	"Button": "QmM4s4X2G7h-KLQE2E-xgA==",
+	"ButtonNone": "cDi6eM8lv68GyvFnKrDTyg==",
 	"NotFound404": "EnjYje4ASp5p8gSDpg6HAA=="
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
@@ -6537,7 +6556,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".iRvEdJcnWqXq88VYlQs10g\\=\\= {\n  width: auto;\n  padding: 0 12vw;\n  flex-wrap: wrap;\n  display: flex;\n}\n.iRvEdJcnWqXq88VYlQs10g\\=\\= .KM2n1s5q0KNYPv9FK0\\+2CQ\\=\\= {\n  width: 230px;\n  height: 230px;\n  background-color: #ccc;\n  border-radius: 20px;\n  margin: 50px 30px 0 30px;\n}\n.iRvEdJcnWqXq88VYlQs10g\\=\\= .KM2n1s5q0KNYPv9FK0\\+2CQ\\=\\=:hover {\n  cursor: pointer;\n}\n.iRvEdJcnWqXq88VYlQs10g\\=\\= .KM2n1s5q0KNYPv9FK0\\+2CQ\\=\\= .joqP50okqR0J8XH30QXD2w\\=\\= {\n  width: 100%;\n  height: 100%;\n}\n.iRvEdJcnWqXq88VYlQs10g\\=\\= .KM2n1s5q0KNYPv9FK0\\+2CQ\\=\\= .joqP50okqR0J8XH30QXD2w\\=\\= img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: scale-down;\n     object-fit: scale-down;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".iRvEdJcnWqXq88VYlQs10g\\=\\= {\n  width: auto;\n  padding: 0 11vw;\n  flex-wrap: wrap;\n  display: flex;\n}\n.iRvEdJcnWqXq88VYlQs10g\\=\\= .KM2n1s5q0KNYPv9FK0\\+2CQ\\=\\= {\n  width: 230px;\n  height: 230px;\n  background-color: #ccc;\n  border-radius: 20px;\n  margin: 50px 30px 0 30px;\n}\n.iRvEdJcnWqXq88VYlQs10g\\=\\= .KM2n1s5q0KNYPv9FK0\\+2CQ\\=\\=:hover {\n  cursor: pointer;\n}\n.iRvEdJcnWqXq88VYlQs10g\\=\\= .KM2n1s5q0KNYPv9FK0\\+2CQ\\=\\= .joqP50okqR0J8XH30QXD2w\\=\\= {\n  width: 100%;\n  height: 100%;\n}\n.iRvEdJcnWqXq88VYlQs10g\\=\\= .KM2n1s5q0KNYPv9FK0\\+2CQ\\=\\= .joqP50okqR0J8XH30QXD2w\\=\\= img {\n  width: 100%;\n  height: 100%;\n  border-radius: 20px;\n  -o-object-fit: scale-down;\n     object-fit: scale-down;\n}", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"HomeItem": "iRvEdJcnWqXq88VYlQs10g==",

@@ -124,6 +124,7 @@ $header-icon-size: 44px;
         width: 400px;
         position: relative;
         margin: 80px auto 0 auto;
+        padding: 0 0 0 0;
         text-align: left;
 
         .CreateItem{
@@ -152,6 +153,29 @@ $header-icon-size: 44px;
                     cursor: pointer;
                 }
             }
+        }
+
+        .Button{
+            background-color: #000;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 10px;
+            width: fit-content;
+            margin: 0 0 80px 0 ;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+        .ButtonNone{
+            background-color: #000;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 10px;
+            width: fit-content;
+            margin: 0 0 80px 0 ;
+            opacity: 0.7;
         }
     }
 }
