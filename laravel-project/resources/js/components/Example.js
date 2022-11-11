@@ -10,6 +10,7 @@ import Login from './auth/Login';
 import NotFound404 from './NotFound404';
 import Setting from './Setting';
 import Show from './Show';
+import Profile from './Profile';
 
 function Example() {
     return (
@@ -20,8 +21,9 @@ function Example() {
                         <Side />
                         <Routes>
                             <Route path='/' element={<Home />} />
-                            <Route path='/:productId' element={<Show />} />
+                            <Route path='/product/:productId' element={<Show />} />
                             <Route path="/create" element={<Create />} />
+                            <Route path='/profile' element={<Profile />} />
                             <Route path='/register' element={<Register />} />
                             <Route path='/login' element={<Login />} />
                             <Route path='/setting' element={<Setting />} />

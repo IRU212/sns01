@@ -22,7 +22,7 @@ function Item() {
         <div className={styles.HomeItem}>
             { data?.map((item,index) =>
                 <div key={index} className={styles.List}>
-                    <Link to={`${item.id}`}>
+                    <Link to={`/product/${item.id}`}>
                         <div className={styles.ItemImg}>
                             <img src={`http://localhost:8000/${item.image_path}`} alt="" />
                         </div>

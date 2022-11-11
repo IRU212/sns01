@@ -1,0 +1,47 @@
+.Profile{
+    width: 100%;
+
+    .BackImg{
+        width: 100%;
+        height: 80vh;
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .ProfileDiv{
+        width: 100%;
+        position: relative;
+
+        .Icon{
+            width: 84px;
+            height: 84px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: -40px;
+            left: 10vw;
+
+            img{
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+        }
+
+        .ProfileText{
+            width: 100%;
+            padding: 35px 0 0 24vw;
+            display: flex;
+            font-weight: 600;
+            position: relative;
+
+            .Name{
+                margin: 0 4vw 0 0;
+            }
+        }
+    }
+}
