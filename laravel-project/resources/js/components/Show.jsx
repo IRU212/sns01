@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
+import styles from '../../../public/css/show.module.scss'
 
 function Show() {
 
@@ -26,8 +27,21 @@ function Show() {
     },[])
 
     return (
-        <div>
-            Show
+        <div className={styles.Show}>
+            <div className={styles.productImg}>
+                <img src={`http://localhost:8000/${data?.image_path}`} alt="" />
+            </div>
+            <div className={styles.ProductIntroduce}>
+                <div className={styles.Title}>
+                    { data?.name }
+                </div>
+                {/* <div className={styles.Introduce}>
+                    { data?.introduce }
+                </div> */}
+                <div className={styles.money}>
+                    ￥{ data?.money }
+                </div>
+            </div>
         </div>
     )
 }
