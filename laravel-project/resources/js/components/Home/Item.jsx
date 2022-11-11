@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from '../../../../public/css/home.module.scss'
 
 function Item() {
@@ -21,9 +22,11 @@ function Item() {
         <div className={styles.HomeItem}>
             { data?.map((item,index) =>
                 <div key={index} className={styles.List}>
-                    <div className={styles.ItemImg}>
-                        <img src={`http://localhost:8000/${item.image_path}`} alt="" />
-                    </div>
+                    <Link to={`${item.id}`}>
+                        <div className={styles.ItemImg}>
+                            <img src={`http://localhost:8000/${item.image_path}`} alt="" />
+                        </div>
+                    </Link>
                 </div>
             ) }
             { data?.map((item,index) =>

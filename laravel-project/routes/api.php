@@ -43,3 +43,6 @@ Route::get('/product',[ProductController::class,'index'])->name('product.index')
 // 商品を出品
 Route::get('/product/store',[ProductController::class,'store'])->name('product.store');
 Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
+
+// 商品詳細
+Route::get('/product/{id}',[ProductController::class,'show'])->name('product.show');

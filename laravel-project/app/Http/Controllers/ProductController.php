@@ -44,4 +44,12 @@ class ProductController extends Controller
 
         $product->save();
     }
+
+    public function show($id)
+    {
+        $product = new Product();
+        $data = $product->find($id);
+
+        return response()->json($data);
+    }
 }
