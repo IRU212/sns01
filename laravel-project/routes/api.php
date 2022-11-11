@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LoginuserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -50,3 +51,11 @@ Route::get('/product/{id}',[ProductController::class,'show'])->name('product.sho
 
 // ユーザプロフィール
 Route::get('/profile/{id}',[ProfileController::class,'index'])->name('profile.index');
+
+// 購入手続き部屋作成
+Route::get('/transaction_room/{id}/store',[TransactionController::class,'store'])->name('transaction.store');
+Route::post('/transaction_room/{id}/store',[TransactionController::class,'store'])->name('transaction.store');
+
+//
+Route::get('/transaction_user/{id}/store',[ProductController::class,'store_room'])->name('transaction.store');
+Route::post('/transaction_user/{id}/store',[ProductController::class,'store_room'])->name('transaction.store');

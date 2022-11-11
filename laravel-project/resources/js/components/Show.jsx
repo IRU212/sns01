@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import styles from '../../../public/css/show.module.scss'
+import PurchaseTransactionButton from './Show/PurchaseTransactionButton'
 
 function Show() {
 
@@ -38,11 +39,9 @@ function Show() {
                 <div className={styles.money}>
                     ￥{ data?.money }
                 </div>
-                <div className={styles.PurchaseButton}>
-                    <div>
-                        購入手続き
-                    </div>
-                </div>
+                <PurchaseTransactionButton
+                    productId={productId}
+                />
             </div>
         </div>
     )
