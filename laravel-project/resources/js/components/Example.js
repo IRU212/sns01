@@ -23,7 +23,7 @@ function Example() {
                             <Route path='/' element={<Home />} />
                             <Route path='/product/:productId' element={<Show />} />
                             <Route path="/create" element={<Create />} />
-                            <Route path='/profile' element={<Profile />} />
+                            <Route path='/profile/:profileId' element={<Profile />} />
                             <Route path='/register' element={<Register />} />
                             <Route path='/login' element={<Login />} />
                             <Route path='/setting' element={<Setting />} />

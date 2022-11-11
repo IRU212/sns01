@@ -35,11 +35,13 @@ function Show() {
                 <div className={styles.Title}>
                     { data?.name }
                 </div>
-                {/* <div className={styles.Introduce}>
-                    { data?.introduce }
-                </div> */}
                 <div className={styles.money}>
                     ￥{ data?.money }
+                </div>
+                <div className={styles.PurchaseButton}>
+                    <div>
+                        購入手続き
+                    </div>
                 </div>
             </div>
         </div>

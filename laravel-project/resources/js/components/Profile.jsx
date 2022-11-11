@@ -1,7 +1,29 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import styles from '../../../public/css/profile.module.scss'
 
 function Profile() {
+
+    const [data,setData] = useState()
+
+    // 現在のURL取得
+    const locationUrl = location.href
+
+    // 商品idを取得
+    const productId = locationUrl.split("/").slice(-1)[0]
+
+    useEffect(() => {
+        axios
+            .get(`http://localhost:8000/api/profile/${productId}`)
+            .then((res) => {
+                setData(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+    },[])
+
     return (
         <div className={styles.Profile}>
             <div className={styles.BackImg}>
@@ -13,7 +35,7 @@ function Profile() {
                 </div>
                 <div className={styles.ProfileText}>
                     <div className={styles.Name}>
-                        名前
+                        { data?.name }
                     </div>
                     <div>
                         いろいろ

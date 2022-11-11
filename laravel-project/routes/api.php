@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LoginuserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +47,6 @@ Route::post('/product/store',[ProductController::class,'store'])->name('product.
 
 // 商品詳細
 Route::get('/product/{id}',[ProductController::class,'show'])->name('product.show');
+
+// ユーザプロフィール
+Route::get('/profile/{id}',[ProfileController::class,'index'])->name('profile.index');

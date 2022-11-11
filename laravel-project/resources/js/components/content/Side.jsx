@@ -1,8 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../../../../public/css/content.module.scss'
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 function Side() {
+
+    const [data,setData] = useState()
+
+    useEffect(() =>{
+        axios
+            .get("http://localhost:8000/api/login/user")
+            .then((res) => {
+                setData(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    },[])
 
     const [display,setDisplay] = useState(false)
 
@@ -36,7 +50,7 @@ function Side() {
                                 ホーム
                             </div>
                         </Link>
-                        <Link to="profile" style={{textDecoration:"none",color:"#000"}}>
+                        <Link to={`profile/${data?.id}`} style={{textDecoration:"none",color:"#000"}}>
                             <div className={styles.Link} onClick={displayToggleClick}>
                                 プロフィール
                             </div>
