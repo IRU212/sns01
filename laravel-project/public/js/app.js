@@ -6116,14 +6116,34 @@ function Show() {
     data = _useState2[0],
     setData = _useState2[1];
 
+  // 購入済み情報取得
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+    _useState4 = _slicedToArray(_useState3, 2),
+    doneButton = _useState4[0],
+    setDoneButton = _useState4[1];
+
+  // 購入済みボタン判定
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState6 = _slicedToArray(_useState5, 2),
+    buttonToggle = _useState6[0],
+    setButtonToggle = _useState6[1];
+
   // 現在のURL取得
   var locationUrl = location.href;
 
   // 商品idを取得
   var productId = locationUrl.split("/").slice(-1)[0];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    // 商品情報取得
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://localhost:8000/api/product/".concat(productId)).then(function (res) {
       setData(res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+
+    // 購入済み判定
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://localhost:8000/api/product/transaction/".concat(productId)).then(function (res) {
+      setButtonToggle(res.data);
     })["catch"](function (err) {
       console.log(err);
     });
@@ -6144,9 +6164,11 @@ function Show() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: _public_css_show_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].money,
         children: ["\uFFE5", data === null || data === void 0 ? void 0 : data.money]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Show_PurchaseTransactionButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), buttonToggle == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Show_PurchaseTransactionButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
         productId: productId,
         productUserId: data === null || data === void 0 ? void 0 : data.user_id
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: "\u5B8C\u58F2"
       })]
     })]
   });
@@ -6189,11 +6211,10 @@ function PurchaseTransactionButton(props) {
     var userData = new FormData();
     userData.append("user_id", productUserId);
     axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/transaction_user/store", userData).then(function (res) {
-      console.log(res.data);
+      location.reload();
     })["catch"](function (err) {
       console.log(err);
     });
-    location.href = "/product/room/".concat(productUserId);
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     onClick: PurchaseClick,

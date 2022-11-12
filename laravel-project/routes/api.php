@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransactionJudjemntController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,9 @@ Route::post('/product/store',[ProductController::class,'store'])->name('product.
 
 // 商品詳細
 Route::get('/product/{id}',[ProductController::class,'show'])->name('product.show');
+
+// 商品取引中判定
+Route::get('/product/transaction/{id}',[TransactionJudjemntController::class,'index'])->name('product.transaction.index');
 
 // ユーザプロフィール
 Route::get('/profile/{id}',[ProfileController::class,'index'])->name('profile.index');

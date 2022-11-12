@@ -20,7 +20,7 @@ class PurchaseController extends Controller
         $product = new Product();
         $product->where('id',$id)
                 ->update([
-                    "situation_id" => 3
+                    "situation_id" => 2
                 ]);
     }
 }

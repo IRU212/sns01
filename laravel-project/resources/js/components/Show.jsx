@@ -9,6 +9,12 @@ function Show() {
 
     const [data,setData] = useState()
 
+    // 購入済み情報取得
+    const [doneButton,setDoneButton] = useState()
+
+    // 購入済みボタン判定
+    const [buttonToggle,setButtonToggle] = useState(true)
+
     // 現在のURL取得
     const locationUrl = location.href
 
@@ -16,6 +22,8 @@ function Show() {
     const productId = locationUrl.split("/").slice(-1)[0]
 
     useEffect(() => {
+
+        // 商品情報取得
         axios
             .get(`http://localhost:8000/api/product/${productId}`)
             .then((res) => {
@@ -24,6 +32,18 @@ function Show() {
             .catch((err) => {
                 console.log(err)
             })
+
+        // 購入済み判定
+        axios
+            .get(`http://localhost:8000/api/product/transaction/${productId}`)
+            .then((res) => {
+                setButtonToggle(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+
 
     },[])
 
@@ -39,10 +59,16 @@ function Show() {
                 <div className={styles.money}>
                     ￥{ data?.money }
                 </div>
-                <PurchaseTransactionButton
-                    productId={productId}
-                    productUserId={data?.user_id}
-                />
+                { buttonToggle == true ?
+                    <PurchaseTransactionButton
+                        productId={productId}
+                        productUserId={data?.user_id}
+                    />
+                    :
+                    <div>
+                        完売
+                    </div>
+                }
             </div>
         </div>
     )

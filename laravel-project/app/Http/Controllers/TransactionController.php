@@ -38,16 +38,30 @@ class TransactionController extends Controller
         $transaction_room = new Transactionroom();
         $transaction_room_id = $transaction_room->latest()->pluck('id')->first();
 
+
+
         // ログインユーザ用
         $transaction_user = new Transactionuser();
         $transaction_user->user_id = session('login_id');
-        $transaction_user->transaction_room_id =  $transaction_room_id + 1;
+
+        if ($transaction_room_id == null) {
+            $transaction_user->transaction_room_id =  $transaction_room_id + 1;
+        } else {
+            $transaction_user->transaction_room_id =  $transaction_room_id;
+        }
+
         $transaction_user->save();
 
         // 出品者用
         $transaction_user = new Transactionuser();
         $transaction_user->user_id = $request->user_id;
-        $transaction_user->transaction_room_id =  $transaction_room_id + 1;
+
+        if ($transaction_room_id == null) {
+            $transaction_user->transaction_room_id =  $transaction_room_id + 1;
+        } else {
+            $transaction_user->transaction_room_id =  $transaction_room_id;
+        }
+
         $transaction_user->save();
     }
 }

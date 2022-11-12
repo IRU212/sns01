@@ -27,13 +27,11 @@ function PurchaseTransactionButton(props) {
         axios
             .post("http://localhost:8000/api/transaction_user/store",userData)
             .then((res) => {
-                console.log(res.data)
+                location.reload()
             })
             .catch((err) => {
                 console.log(err)
             })
-
-        location.href = `/product/room/${productUserId}`
     }
 
     return (
