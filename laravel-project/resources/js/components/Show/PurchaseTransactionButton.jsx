@@ -22,12 +22,14 @@ function PurchaseTransactionButton(props) {
             })
 
         const userData = new FormData()
+        userData.append("product_id",productId)
         userData.append("user_id",productUserId)
 
         axios
             .post("http://localhost:8000/api/transaction_user/store",userData)
             .then((res) => {
-                location.reload()
+                // location.reload()
+                console.log(res.data)
             })
             .catch((err) => {
                 console.log(err)

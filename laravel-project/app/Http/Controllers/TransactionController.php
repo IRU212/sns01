@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\Transactionroom;
 use App\Models\Transactionuser;
+use DB;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -21,8 +22,14 @@ class TransactionController extends Controller
     {
         // 取引部屋を作成
         $transaction_room = new Transactionroom();
-        $transaction_room->product_id = $id;
-        $transaction_room->save();
+
+        // 部屋が作成されていなければ実行
+        $is_room = $transaction_room->where('product_id',$id)->exists();
+        if ($is_room == false) {
+            // 取引部屋を作成
+            $transaction_room->product_id = $id;
+            $transaction_room->save();
+        }
 
         // 商品を取引中に変更
         $product = new Product();
@@ -38,30 +45,28 @@ class TransactionController extends Controller
         $transaction_room = new Transactionroom();
         $transaction_room_id = $transaction_room->latest()->pluck('id')->first();
 
-
-
         // ログインユーザ用
         $transaction_user = new Transactionuser();
-        $transaction_user->user_id = session('login_id');
 
-        if ($transaction_room_id == null) {
-            $transaction_user->transaction_room_id =  $transaction_room_id + 1;
-        } else {
-            $transaction_user->transaction_room_id =  $transaction_room_id;
+        // 商品ID
+        $product_id = $request->product_id;
+        $transaction_room_id_search = $transaction_room->where('product_id',$product_id)->pluck('id')->first();
+        $transaction_user_count = $transaction_user->where('transaction_room_id',$transaction_room_id_search)->count();
+
+        if ($transaction_user_count < 2) {
+            if ($transaction_room_id == null) {
+                DB::table('transaction_user')
+                ->insert([
+                    ["user_id" => session('login_id'),"transaction_room_id" => $transaction_room_id + 1],
+                    ["user_id" => $request->user_id,"transaction_room_id" => $transaction_room_id + 1]
+                ]);
+            } else {
+                DB::table('transaction_user')
+                ->insert([
+                    ["user_id" => session('login_id'),"transaction_room_id" => $transaction_room_id],
+                    ["user_id" => $request->user_id,"transaction_room_id" => $transaction_room_id]
+                ]);
+            }
         }
-
-        $transaction_user->save();
-
-        // 出品者用
-        $transaction_user = new Transactionuser();
-        $transaction_user->user_id = $request->user_id;
-
-        if ($transaction_room_id == null) {
-            $transaction_user->transaction_room_id =  $transaction_room_id + 1;
-        } else {
-            $transaction_user->transaction_room_id =  $transaction_room_id;
-        }
-
-        $transaction_user->save();
     }
 }

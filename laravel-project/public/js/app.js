@@ -6209,9 +6209,11 @@ function PurchaseTransactionButton(props) {
       console.log(err);
     });
     var userData = new FormData();
+    userData.append("product_id", productId);
     userData.append("user_id", productUserId);
     axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/transaction_user/store", userData).then(function (res) {
-      location.reload();
+      // location.reload()
+      console.log(res.data);
     })["catch"](function (err) {
       console.log(err);
     });
