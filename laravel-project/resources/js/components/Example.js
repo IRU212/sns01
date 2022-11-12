@@ -11,6 +11,7 @@ import NotFound404 from './NotFound404';
 import Setting from './Setting';
 import Show from './Show';
 import Profile from './Profile';
+import Transaction from './Transaction';
 
 function Example() {
     return (
@@ -22,6 +23,7 @@ function Example() {
                         <Routes>
                             <Route path='/' element={<Home />} />
                             <Route path='/product/:productId' element={<Show />} />
+                            <Route path='/product/room/:productId' element={<Transaction />} />
                             <Route path="/create" element={<Create />} />
                             <Route path='/profile/:profileId' element={<Profile />} />
                             <Route path='/register' element={<Register />} />

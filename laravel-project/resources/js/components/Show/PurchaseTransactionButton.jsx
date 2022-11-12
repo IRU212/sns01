@@ -32,6 +32,8 @@ function PurchaseTransactionButton(props) {
             .catch((err) => {
                 console.log(err)
             })
+
+        location.href = `/product/room/${productUserId}`
     }
 
     return (

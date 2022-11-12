@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LoginuserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -59,3 +60,7 @@ Route::post('/transaction_room/{id}/store',[TransactionController::class,'room_s
 // 購入手続き部屋ユーザ作成
 Route::get('/transaction_user/store',[TransactionController::class,'user_store']);
 Route::post('/transaction_user/store',[TransactionController::class,'user_store']);
+
+// 購入
+Route::get('/purchase/{id}/store',[PurchaseController::class,'store']);
+Route::post('/purchase/{id}/store',[PurchaseController::class,'store']);

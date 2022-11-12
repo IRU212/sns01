@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\Transactionroom;
 use App\Models\Transactionuser;
@@ -18,9 +19,17 @@ class TransactionController extends Controller
      */
     public function room_store(Request $request,$id)
     {
+        // 取引部屋を作成
         $transaction_room = new Transactionroom();
         $transaction_room->product_id = $id;
         $transaction_room->save();
+
+        // 商品を取引中に変更
+        $product = new Product();
+        $product->where('id',$id)
+                ->update([
+                    "situation_id" => 3
+                ]);
     }
 
     public function user_store(Request $request)

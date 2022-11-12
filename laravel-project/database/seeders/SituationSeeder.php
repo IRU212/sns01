@@ -30,5 +30,9 @@ class SituationSeeder extends Seeder
         Situation::create([
             "name" => "出品中"
         ]);
+
+        Situation::create([
+            "name" => "発送済み"
+        ]);
     }
 }
