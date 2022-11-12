@@ -6140,7 +6140,8 @@ function Show() {
         className: _public_css_show_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].money,
         children: ["\uFFE5", data === null || data === void 0 ? void 0 : data.money]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Show_PurchaseTransactionButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        productId: productId
+        productId: productId,
+        productUserId: data === null || data === void 0 ? void 0 : data.user_id
       })]
     })]
   });
@@ -6171,10 +6172,18 @@ __webpack_require__.r(__webpack_exports__);
 
 function PurchaseTransactionButton(props) {
   var productId = props.productId;
+  var productUserId = props.productUserId;
   var PurchaseClick = function PurchaseClick() {
-    var data = new FormData();
-    data.append("product_id", productId);
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/transaction_room/".concat(productId, "/store"), data).then(function (res) {
+    var roomData = new FormData();
+    roomData.append("product_id", productId);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/transaction_room/".concat(productId, "/store"), roomData).then(function (res) {
+      console.log(res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+    var userData = new FormData();
+    userData.append("user_id", productUserId);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/transaction_user/store", userData).then(function (res) {
       console.log(res.data);
     })["catch"](function (err) {
       console.log(err);

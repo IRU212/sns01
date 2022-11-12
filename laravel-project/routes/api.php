@@ -53,9 +53,9 @@ Route::get('/product/{id}',[ProductController::class,'show'])->name('product.sho
 Route::get('/profile/{id}',[ProfileController::class,'index'])->name('profile.index');
 
 // 購入手続き部屋作成
-Route::get('/transaction_room/{id}/store',[TransactionController::class,'store'])->name('transaction.store');
-Route::post('/transaction_room/{id}/store',[TransactionController::class,'store'])->name('transaction.store');
+Route::get('/transaction_room/{id}/store',[TransactionController::class,'room_store']);
+Route::post('/transaction_room/{id}/store',[TransactionController::class,'room_store']);
 
-//
-Route::get('/transaction_user/{id}/store',[ProductController::class,'store_room'])->name('transaction.store');
-Route::post('/transaction_user/{id}/store',[ProductController::class,'store_room'])->name('transaction.store');
+// 購入手続き部屋ユーザ作成
+Route::get('/transaction_user/store',[TransactionController::class,'user_store']);
+Route::post('/transaction_user/store',[TransactionController::class,'user_store']);

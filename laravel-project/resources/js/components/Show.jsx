@@ -41,6 +41,7 @@ function Show() {
                 </div>
                 <PurchaseTransactionButton
                     productId={productId}
+                    productUserId={data?.user_id}
                 />
             </div>
         </div>
