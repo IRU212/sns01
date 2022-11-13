@@ -27,9 +27,8 @@ function PurchaseTransactionButton(props) {
 
         axios
             .post("http://localhost:8000/api/transaction_user/store",userData)
-            .then((res) => {
-                // location.reload()
-                console.log(res.data)
+            .then(() => {
+                location.href = `http://localhost:8000/product/room/${productId}`
             })
             .catch((err) => {
                 console.log(err)
