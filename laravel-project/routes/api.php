@@ -78,3 +78,4 @@ Route::get('/purchase/{id}/index',[PurchaseController::class,'index']);
 Route::get('/purchase/{id}/store',[PurchaseController::class,'store']);
 Route::post('/purchase/{id}/store',[PurchaseController::class,'store']);
 
+// 未ログイン時にログインページ

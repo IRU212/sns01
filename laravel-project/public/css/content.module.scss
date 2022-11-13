@@ -198,4 +198,19 @@ $header-icon-size: 44px;
 
 .NotUserPage{
     width: 100%;
+    text-align: center;
+
+    .LoginTitle{
+        font-size: 1.6rem;
+        margin: 60px 0 0 0;
+    }
+
+    .Button{
+        width: 63%;
+        background-color: #000;
+        color: #fff;
+        padding: 15px 0;
+        margin: 50px auto;
+        border-radius: 10px;
+    }
 }

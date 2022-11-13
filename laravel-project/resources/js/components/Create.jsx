@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import styles from '../../../public/css/content.module.scss'
+import NotUserPage from './NotUserPage'
 
 function Create() {
 
@@ -10,7 +11,19 @@ function Create() {
     const [money,setMoney] = useState('')
     const [genre,setGenre] = useState('')
 
+    // 未ログイン判定
+    const [loginUser,setLoginUser] = useState(1)
 
+    useLayoutEffect(() => {
+        axios
+            .get("http://localhost:8000/api/login/user")
+            .then((res) => {
+                setLoginUser(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    },[])
 
     // 未入力がある際はボタン不可能
     const buttonBlock = 5
@@ -80,69 +93,75 @@ function Create() {
     }
 
     return (
-        <div className={styles.Create}>
-            <div className={styles.CreateDiv}>
-                <div className={styles.CreateItem}>
-                    <div className={styles.title}>商品名</div>
-                    <div>
-                        <input type="text" value={name} className={styles.inputText} onChange={NameChnage} />
-                    </div>
-                </div>
-                <div className={styles.CreateItem}>
-                    <div className={styles.title}>商品紹介</div>
-                    <div>
-                        <input type="text" value={introduce} className={styles.inputText} onChange={IntroduceChnage} />
-                    </div>
-                </div>
-                <div className={styles.CreateItem}>
-                    <div>
-                        <input type="file" id='uploadFile' accept="image/*" onChange={ImageChange} style={{display:"none"}} />
-                    </div>
-                    <label htmlFor="uploadFile">
-                        {/* エラー防止読み込み用 */}
-                        <img ref={userImg} className={styles.PreviewImg} style={{display:"none"}} alt="" />
+        <div>
+            { loginUser == 1 ?
+                <NotUserPage />
+                :
+                <div className={styles.Create}>
+                    <div className={styles.CreateDiv}>
+                        <div className={styles.CreateItem}>
+                            <div className={styles.title}>商品名</div>
+                            <div>
+                                <input type="text" value={name} className={styles.inputText} onChange={NameChnage} />
+                            </div>
+                        </div>
+                        <div className={styles.CreateItem}>
+                            <div className={styles.title}>商品紹介</div>
+                            <div>
+                                <input type="text" value={introduce} className={styles.inputText} onChange={IntroduceChnage} />
+                            </div>
+                        </div>
+                        <div className={styles.CreateItem}>
+                            <div>
+                                <input type="file" id='uploadFile' accept="image/*" onChange={ImageChange} style={{display:"none"}} />
+                            </div>
+                            <label htmlFor="uploadFile">
+                                {/* エラー防止読み込み用 */}
+                                <img ref={userImg} className={styles.PreviewImg} style={{display:"none"}} alt="" />
 
-                        { image == null ?
-                            <img src="https://icon-pit.com/wp-content/uploads/2018/10/camera_icon_677-300x300.png"
-                                className={styles.PreviewImg}
-                                alt=""
-                            />
+                                { image == null ?
+                                    <img src="https://icon-pit.com/wp-content/uploads/2018/10/camera_icon_677-300x300.png"
+                                        className={styles.PreviewImg}
+                                        alt=""
+                                    />
+                                    :
+                                    <img ref={userImg} className={styles.PreviewImg} alt="" />
+                                }
+                            </label>
+                        </div>
+                        <div className={styles.CreateItem}>
+                            <div className={styles.title}>値段</div>
+                            <div>
+                                <input type="text" className={styles.inputText} onChange={MoneyChnage} />
+                            </div>
+                        </div>
+                        <div className={styles.CreateItem}>
+                            <div className={styles.title}>ジャンル</div>
+                            <div>
+                                <select required value={genre} onChange={GenreChnage}>
+                                    <option value="">選択してください</option>
+                                    <option value="1">本</option>
+                                    <option value="2">音楽</option>
+                                    <option value="3">パソコン</option>
+                                    <option value="4">服</option>
+                                    <option value="5">おもちゃ</option>
+                                    <option value="6">家具</option>
+                                    <option value="7">その他</option>
+                                </select>
+                            </div>
+                        </div>
+                        { !name == '' && !introduce == '' && !image == ''  && !money == '' && !genre == ''  ?
+                            <div onClick={ProductClick} className={styles.Button}>
+                                出品
+                            </div>
                             :
-                            <img ref={userImg} className={styles.PreviewImg} alt="" />
+                            <div className={styles.ButtonNone}>
+                                出品
+                            </div>
                         }
-                    </label>
-                </div>
-                <div className={styles.CreateItem}>
-                    <div className={styles.title}>値段</div>
-                    <div>
-                        <input type="text" className={styles.inputText} onChange={MoneyChnage} />
                     </div>
                 </div>
-                <div className={styles.CreateItem}>
-                    <div className={styles.title}>ジャンル</div>
-                    <div>
-                        <select required value={genre} onChange={GenreChnage}>
-                            <option value="">選択してください</option>
-                            <option value="1">本</option>
-                            <option value="2">音楽</option>
-                            <option value="3">パソコン</option>
-                            <option value="4">服</option>
-                            <option value="5">おもちゃ</option>
-                            <option value="6">家具</option>
-                            <option value="7">その他</option>
-                        </select>
-                    </div>
-                </div>
-                { !name == '' && !introduce == '' && !image == ''  && !money == '' && !genre == ''  ?
-                    <div onClick={ProductClick} className={styles.Button}>
-                        出品
-                    </div>
-                    :
-                    <div className={styles.ButtonNone}>
-                        出品
-                    </div>
-                }
-            </div>
+            }
         </div>
     )
 }
