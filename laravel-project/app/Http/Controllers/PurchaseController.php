@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
 {
+    public function index($id)
+    {
+        // 購入済み商品
+        $purchase = new Purchase();
+        $data = $purchase->where('product_id',$id)->exists();
+
+        return response()->json($data);
+    }
+
     public function store($id)
     {
         // 購入済みテーブルに追加

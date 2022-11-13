@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import styles from '../../../public/css/transaction.module.scss'
 
 function Transaction() {
 
-    const [purchase,setPurchase] = useState(true)
+    const [buttonJudgement,setButtonJudgement] = useState()
 
     // 現在のURL取得
     const locationUrl = location.href
@@ -13,11 +14,23 @@ function Transaction() {
     // 商品idを取得
     const productId = locationUrl.split("/").slice(-1)[0]
 
+    useEffect(() => {
+        axios
+            .get(`http://localhost:8000/api/purchase/${productId}/index`)
+            .then((res) => {
+                setButtonJudgement(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    },[])
+
     const PurchaseClick = () => {
+
         axios
             .post(`http://localhost:8000/api/purchase/${productId}/store`)
-            .then((res) => {
-                console.log(res.data)
+            .then(() => {
+                location.reload()
             })
             .catch((err) => {
                 console.log(err)
@@ -40,12 +53,12 @@ function Transaction() {
                     <input type="text" />
                 </div>
             </div>
-            { purchase == true ?
+            { buttonJudgement == false ?
                 <div onClick={PurchaseClick} className={styles.ConfirmButton}>
                     注文を確定する
                 </div>
                 :
-                <div>
+                <div className={styles.SendNow}>
                     発送中
                 </div>
             }

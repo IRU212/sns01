@@ -6257,20 +6257,28 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function Transaction() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
     _useState2 = _slicedToArray(_useState, 2),
-    purchase = _useState2[0],
-    setPurchase = _useState2[1];
+    buttonJudgement = _useState2[0],
+    setButtonJudgement = _useState2[1];
 
   // 現在のURL取得
   var locationUrl = location.href;
 
   // 商品idを取得
   var productId = locationUrl.split("/").slice(-1)[0];
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/purchase/".concat(productId, "/index")).then(function (res) {
+      setButtonJudgement(res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }, []);
   var PurchaseClick = function PurchaseClick() {
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/purchase/".concat(productId, "/store")).then(function (res) {
-      console.log(res.data);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/purchase/".concat(productId, "/store")).then(function () {
+      location.reload();
     })["catch"](function (err) {
       console.log(err);
     });
@@ -6300,11 +6308,12 @@ function Transaction() {
           type: "text"
         })
       })]
-    }), purchase == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    }), buttonJudgement == false ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       onClick: PurchaseClick,
       className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ConfirmButton,
       children: "\u6CE8\u6587\u3092\u78BA\u5B9A\u3059\u308B"
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].SendNow,
       children: "\u767A\u9001\u4E2D"
     })]
   });
@@ -6995,7 +7004,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".a3gucwRLkKlMKSdiqrLhiQ\\=\\= {\n  width: 100%;\n  text-align: center;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= ._0C819tKXzsLwfHHnPTsUcg\\=\\= {\n  font-size: 1.6rem;\n  font-weight: 600;\n  letter-spacing: 5px;\n  margin: 60px 0 50px 0;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= {\n  width: 90%;\n  border: 1px solid rgb(122, 122, 122);\n  margin: 0 auto;\n  height: 70vh;\n  overflow-y: scroll;\n  position: relative;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= {\n  width: 100%;\n  text-align: left;\n  position: relative;\n  padding-top: 20px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= ._5sORW2XsnM8UrcwK40lJQw\\=\\= {\n  width: 100%;\n  text-align: right;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= ._5sORW2XsnM8UrcwK40lJQw\\=\\= ._7RQn6xhZ1cdQJS9Ca1IEYg\\=\\= {\n  background-color: rgb(115, 243, 120);\n  width: -moz-fit-content;\n  width: fit-content;\n  display: inline-block;\n  padding: 8px 16px;\n  margin: 20px 50px 0 0;\n  border-radius: 13px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= ._4ycNbm1BUitjRpmj8D5Q-Q\\=\\= {\n  background-color: rgb(115, 243, 120);\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 8px 16px;\n  border-radius: 13px;\n  margin: 20px 0 0 50px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .fD8tguAUp9YLlzYm-PBchA\\=\\= {\n  position: absolute;\n  bottom: 0px;\n  width: 100%;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .fD8tguAUp9YLlzYm-PBchA\\=\\= input {\n  width: 100%;\n  outline: none;\n  border: none;\n  height: 2.5rem;\n  border-top: 1px solid #ccc;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .xNFG4ye\\+LXRqZ5KSfjO6ZQ\\=\\= {\n  margin: 30px auto 30px auto;\n  background-color: rgb(40, 40, 40);\n  color: #fff;\n  padding: 16px 0;\n  width: 90%;\n  border-radius: 14px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .xNFG4ye\\+LXRqZ5KSfjO6ZQ\\=\\=:hover {\n  cursor: pointer;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".a3gucwRLkKlMKSdiqrLhiQ\\=\\= {\n  width: 100%;\n  text-align: center;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= ._0C819tKXzsLwfHHnPTsUcg\\=\\= {\n  font-size: 1.6rem;\n  font-weight: 600;\n  letter-spacing: 5px;\n  margin: 60px 0 50px 0;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= {\n  width: 90%;\n  border: 1px solid rgb(122, 122, 122);\n  margin: 0 auto;\n  height: 70vh;\n  overflow-y: scroll;\n  position: relative;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= {\n  width: 100%;\n  text-align: left;\n  position: relative;\n  padding-top: 20px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= ._5sORW2XsnM8UrcwK40lJQw\\=\\= {\n  width: 100%;\n  text-align: right;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= ._5sORW2XsnM8UrcwK40lJQw\\=\\= ._7RQn6xhZ1cdQJS9Ca1IEYg\\=\\= {\n  background-color: rgb(115, 243, 120);\n  width: -moz-fit-content;\n  width: fit-content;\n  display: inline-block;\n  padding: 8px 16px;\n  margin: 20px 50px 0 0;\n  border-radius: 13px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= ._4ycNbm1BUitjRpmj8D5Q-Q\\=\\= {\n  background-color: rgb(115, 243, 120);\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 8px 16px;\n  border-radius: 13px;\n  margin: 20px 0 0 50px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .fD8tguAUp9YLlzYm-PBchA\\=\\= {\n  position: absolute;\n  bottom: 0px;\n  width: 100%;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .fD8tguAUp9YLlzYm-PBchA\\=\\= input {\n  width: 100%;\n  outline: none;\n  border: none;\n  height: 2.5rem;\n  border-top: 1px solid #ccc;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .xNFG4ye\\+LXRqZ5KSfjO6ZQ\\=\\= {\n  margin: 30px auto 30px auto;\n  background-color: rgb(40, 40, 40);\n  color: #fff;\n  padding: 16px 0;\n  width: 90%;\n  border-radius: 14px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .xNFG4ye\\+LXRqZ5KSfjO6ZQ\\=\\=:hover {\n  cursor: pointer;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .wCm3Odt8EB50sORQVvxNBg\\=\\= {\n  margin: 30px auto 30px auto;\n  background-color: rgb(40, 40, 40);\n  color: #fff;\n  padding: 16px 0;\n  width: 90%;\n  border-radius: 14px;\n}", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"Transaction": "a3gucwRLkKlMKSdiqrLhiQ==",
@@ -7006,7 +7015,8 @@ ___CSS_LOADER_EXPORT___.locals = {
 	"ChatMessgaeRight": "_7RQn6xhZ1cdQJS9Ca1IEYg==",
 	"ChatMessgaeLeft": "_4ycNbm1BUitjRpmj8D5Q-Q==",
 	"ChatINput": "fD8tguAUp9YLlzYm-PBchA==",
-	"ConfirmButton": "xNFG4ye+LXRqZ5KSfjO6ZQ=="
+	"ConfirmButton": "xNFG4ye+LXRqZ5KSfjO6ZQ==",
+	"SendNow": "wCm3Odt8EB50sORQVvxNBg=="
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

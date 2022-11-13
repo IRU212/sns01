@@ -65,6 +65,10 @@ Route::post('/transaction_room/{id}/store',[TransactionController::class,'room_s
 Route::get('/transaction_user/store',[TransactionController::class,'user_store']);
 Route::post('/transaction_user/store',[TransactionController::class,'user_store']);
 
+// 購入商品情報
+Route::get('/purchase/{id}/index',[PurchaseController::class,'index']);
+
 // 購入
 Route::get('/purchase/{id}/store',[PurchaseController::class,'store']);
 Route::post('/purchase/{id}/store',[PurchaseController::class,'store']);
+
