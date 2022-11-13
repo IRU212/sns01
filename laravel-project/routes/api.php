@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginuserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\TransactionchatController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransactionJudjemntController;
 use Illuminate\Http\Request;
@@ -64,6 +65,11 @@ Route::post('/transaction_room/{id}/store',[TransactionController::class,'room_s
 // 購入手続き部屋ユーザ作成
 Route::get('/transaction_user/store',[TransactionController::class,'user_store']);
 Route::post('/transaction_user/store',[TransactionController::class,'user_store']);
+
+// 購入手続き部屋チャット機能
+Route::get('/transaction/chat/{id}/index',[TransactionchatController::class,'index']);
+Route::get('/transaction/chat/{id}/store',[TransactionchatController::class,'store']);
+Route::post('/transaction/chat/{id}/store',[TransactionchatController::class,'store']);
 
 // 購入商品情報
 Route::get('/purchase/{id}/index',[PurchaseController::class,'index']);

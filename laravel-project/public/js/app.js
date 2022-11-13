@@ -6244,7 +6244,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../public/css/transaction.module.scss */ "./public/css/transaction.module.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Transaction_TransactionChat__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Transaction/TransactionChat */ "./resources/js/components/Transaction/TransactionChat.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -6258,11 +6259,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function Transaction() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
     _useState2 = _slicedToArray(_useState, 2),
-    buttonJudgement = _useState2[0],
-    setButtonJudgement = _useState2[1];
+    chatData = _useState2[0],
+    setChatData = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+    _useState4 = _slicedToArray(_useState3, 2),
+    buttonJudgement = _useState4[0],
+    setButtonJudgement = _useState4[1];
 
   // 現在のURL取得
   var locationUrl = location.href;
@@ -6275,6 +6281,12 @@ function Transaction() {
     })["catch"](function (err) {
       console.log(err);
     });
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/transaction/chat/".concat(productId, "/index")).then(function (res) {
+      setChatData(res.data);
+      console.log(res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
   }, []);
   var PurchaseClick = function PurchaseClick() {
     axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/purchase/".concat(productId, "/store")).then(function () {
@@ -6283,42 +6295,106 @@ function Transaction() {
       console.log(err);
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Transaction,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Title,
       children: "\u53D6\u5F15\u753B\u9762"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ChatBox,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ChatList,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ChatMessgaeLeft,
-          children: "sample01"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ChatMessgaeRightCover,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ChatMessgaeRight,
-            children: "sample02"
+      children: [chatData === null || chatData === void 0 ? void 0 : chatData.chat.map(function (item, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ChatList,
+          children: item.user_id == chatData.user_id ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ChatMessgaeLeft,
+            children: item.chat
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ChatMessgaeRightCover,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ChatMessgaeRight,
+              children: [item.chat, "2"]
+            })
           })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ChatINput,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-          type: "text"
-        })
+        }, index);
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Transaction_TransactionChat__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        productId: productId
       })]
-    }), buttonJudgement == false ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    }), buttonJudgement == false ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       onClick: PurchaseClick,
       className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ConfirmButton,
       children: "\u6CE8\u6587\u3092\u78BA\u5B9A\u3059\u308B"
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].SendNow,
       children: "\u767A\u9001\u4E2D"
     })]
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Transaction);
+
+/***/ }),
+
+/***/ "./resources/js/components/Transaction/TransactionChat.jsx":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/Transaction/TransactionChat.jsx ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../public/css/transaction.module.scss */ "./public/css/transaction.module.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function TransactionChat(props) {
+  // 商品ID
+  var productId = props.productId;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+    _useState2 = _slicedToArray(_useState, 2),
+    chat = _useState2[0],
+    setChat = _useState2[1];
+  var PostClick = function PostClick() {
+    var data = new FormData();
+    data.append("chat", chat);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/transaction/chat/".concat(productId, "/store"), data).then(function () {
+      location.reload();
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+  var ChatChange = function ChatChange(e) {
+    setChat(e.target.value);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ChatINput,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+        type: "text",
+        onChange: ChatChange
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ChatButton,
+      onClick: PostClick,
+      children: "\u9001\u4FE1"
+    })]
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TransactionChat);
 
 /***/ }),
 
@@ -7004,7 +7080,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".a3gucwRLkKlMKSdiqrLhiQ\\=\\= {\n  width: 100%;\n  text-align: center;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= ._0C819tKXzsLwfHHnPTsUcg\\=\\= {\n  font-size: 1.6rem;\n  font-weight: 600;\n  letter-spacing: 5px;\n  margin: 60px 0 50px 0;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= {\n  width: 90%;\n  border: 1px solid rgb(122, 122, 122);\n  margin: 0 auto;\n  height: 70vh;\n  overflow-y: scroll;\n  position: relative;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= {\n  width: 100%;\n  text-align: left;\n  position: relative;\n  padding-top: 20px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= ._5sORW2XsnM8UrcwK40lJQw\\=\\= {\n  width: 100%;\n  text-align: right;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= ._5sORW2XsnM8UrcwK40lJQw\\=\\= ._7RQn6xhZ1cdQJS9Ca1IEYg\\=\\= {\n  background-color: rgb(115, 243, 120);\n  width: -moz-fit-content;\n  width: fit-content;\n  display: inline-block;\n  padding: 8px 16px;\n  margin: 20px 50px 0 0;\n  border-radius: 13px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= ._4ycNbm1BUitjRpmj8D5Q-Q\\=\\= {\n  background-color: rgb(115, 243, 120);\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 8px 16px;\n  border-radius: 13px;\n  margin: 20px 0 0 50px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .fD8tguAUp9YLlzYm-PBchA\\=\\= {\n  position: absolute;\n  bottom: 0px;\n  width: 100%;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .fD8tguAUp9YLlzYm-PBchA\\=\\= input {\n  width: 100%;\n  outline: none;\n  border: none;\n  height: 2.5rem;\n  border-top: 1px solid #ccc;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .xNFG4ye\\+LXRqZ5KSfjO6ZQ\\=\\= {\n  margin: 30px auto 30px auto;\n  background-color: rgb(40, 40, 40);\n  color: #fff;\n  padding: 16px 0;\n  width: 90%;\n  border-radius: 14px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .xNFG4ye\\+LXRqZ5KSfjO6ZQ\\=\\=:hover {\n  cursor: pointer;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .wCm3Odt8EB50sORQVvxNBg\\=\\= {\n  margin: 30px auto 30px auto;\n  background-color: rgb(40, 40, 40);\n  color: #fff;\n  padding: 16px 0;\n  width: 90%;\n  border-radius: 14px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".a3gucwRLkKlMKSdiqrLhiQ\\=\\= {\n  width: 100%;\n  text-align: center;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= ._0C819tKXzsLwfHHnPTsUcg\\=\\= {\n  font-size: 1.6rem;\n  font-weight: 600;\n  letter-spacing: 5px;\n  margin: 60px 0 50px 0;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= {\n  width: 90%;\n  border: 1px solid rgb(122, 122, 122);\n  margin: 0 auto;\n  height: 70vh;\n  overflow-y: scroll;\n  position: relative;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= {\n  width: 100%;\n  text-align: left;\n  position: relative;\n  padding-top: 20px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= ._5sORW2XsnM8UrcwK40lJQw\\=\\= {\n  width: 100%;\n  text-align: right;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= ._5sORW2XsnM8UrcwK40lJQw\\=\\= ._7RQn6xhZ1cdQJS9Ca1IEYg\\=\\= {\n  background-color: rgb(115, 243, 120);\n  width: -moz-fit-content;\n  width: fit-content;\n  display: inline-block;\n  padding: 8px 16px;\n  margin: 20px 50px 0 0;\n  border-radius: 13px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .m\\+N-tlYt19pOQnuKvXgNOg\\=\\= ._4ycNbm1BUitjRpmj8D5Q-Q\\=\\= {\n  background-color: rgb(115, 243, 120);\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 8px 16px;\n  border-radius: 13px;\n  margin: 20px 0 0 50px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .fD8tguAUp9YLlzYm-PBchA\\=\\= {\n  position: absolute;\n  bottom: 0px;\n  width: 100%;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= .fD8tguAUp9YLlzYm-PBchA\\=\\= input {\n  width: 100%;\n  outline: none;\n  border: none;\n  height: 2.5rem;\n  border-top: 1px solid #ccc;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .TXv7PanZWkRuEwIbtBl8IA\\=\\= ._9OUFheMmEPzhfMy8ho7Nag\\=\\= {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  background-color: #000;\n  color: #fff;\n  height: 2.5rem;\n  width: 2.5rem;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .xNFG4ye\\+LXRqZ5KSfjO6ZQ\\=\\= {\n  margin: 30px auto 30px auto;\n  background-color: rgb(40, 40, 40);\n  color: #fff;\n  padding: 16px 0;\n  width: 90%;\n  border-radius: 14px;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .xNFG4ye\\+LXRqZ5KSfjO6ZQ\\=\\=:hover {\n  cursor: pointer;\n}\n.a3gucwRLkKlMKSdiqrLhiQ\\=\\= .wCm3Odt8EB50sORQVvxNBg\\=\\= {\n  margin: 30px auto 30px auto;\n  background-color: rgb(40, 40, 40);\n  color: #fff;\n  padding: 16px 0;\n  width: 90%;\n  border-radius: 14px;\n}", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"Transaction": "a3gucwRLkKlMKSdiqrLhiQ==",
@@ -7015,6 +7091,7 @@ ___CSS_LOADER_EXPORT___.locals = {
 	"ChatMessgaeRight": "_7RQn6xhZ1cdQJS9Ca1IEYg==",
 	"ChatMessgaeLeft": "_4ycNbm1BUitjRpmj8D5Q-Q==",
 	"ChatINput": "fD8tguAUp9YLlzYm-PBchA==",
+	"ChatButton": "_9OUFheMmEPzhfMy8ho7Nag==",
 	"ConfirmButton": "xNFG4ye+LXRqZ5KSfjO6ZQ==",
 	"SendNow": "wCm3Odt8EB50sORQVvxNBg=="
 };

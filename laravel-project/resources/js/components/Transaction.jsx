@@ -3,9 +3,11 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import styles from '../../../public/css/transaction.module.scss'
+import TransactionChat from './Transaction/TransactionChat'
 
 function Transaction() {
 
+    const [chatData,setChatData] = useState()
     const [buttonJudgement,setButtonJudgement] = useState()
 
     // 現在のURL取得
@@ -19,6 +21,16 @@ function Transaction() {
             .get(`http://localhost:8000/api/purchase/${productId}/index`)
             .then((res) => {
                 setButtonJudgement(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+        axios
+            .get(`http://localhost:8000/api/transaction/chat/${productId}/index`)
+            .then((res) => {
+                setChatData(res.data)
+                console.log(res.data)
             })
             .catch((err) => {
                 console.log(err)
@@ -43,15 +55,20 @@ function Transaction() {
                 取引画面
             </div>
             <div className={styles.ChatBox}>
-                <div className={styles.ChatList}>
-                    <div className={styles.ChatMessgaeLeft}>sample01</div>
-                    <div className={styles.ChatMessgaeRightCover}>
-                        <div className={styles.ChatMessgaeRight}>sample02</div>
+                { chatData?.chat.map((item,index) =>
+                    <div key={index} className={styles.ChatList}>
+                        { item.user_id == chatData.user_id ?
+                            <div className={styles.ChatMessgaeLeft}>{ item.chat }</div>
+                            :
+                            <div className={styles.ChatMessgaeRightCover}>
+                                <div className={styles.ChatMessgaeRight}>{ item.chat }2</div>
+                            </div>
+                        }
                     </div>
-                </div>
-                <div className={styles.ChatINput}>
-                    <input type="text" />
-                </div>
+                ) }
+                <TransactionChat
+                    productId={productId}
+                />
             </div>
             { buttonJudgement == false ?
                 <div onClick={PurchaseClick} className={styles.ConfirmButton}>
