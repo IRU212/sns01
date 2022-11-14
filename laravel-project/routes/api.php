@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\LoginuserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -78,4 +80,12 @@ Route::get('/purchase/{id}/index',[PurchaseController::class,'index']);
 Route::get('/purchase/{id}/store',[PurchaseController::class,'store']);
 Route::post('/purchase/{id}/store',[PurchaseController::class,'store']);
 
+// 商品到着
+Route::get('/confirm/{id}/store',[ConfirmController::class,'store']);
+Route::post('/confirm/{id}/store',[ConfirmController::class,'store']);
+
 // 未ログイン時にログインページ
+
+
+// 管理者権限ログイン
+Route::get('/admin',[LoginController::class,'index']);

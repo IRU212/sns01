@@ -25,7 +25,7 @@ function Login() {
 
         axios
             .post('http://localhost:8000/api/login/user/store',data)
-            .then(() => {
+            .then((res) => {
                 location.reload()
             })
             .catch((err) => {

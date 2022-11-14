@@ -26,10 +26,31 @@ class LoginuserController extends Controller
         // ユーザ情報を取得
         $user_info = User::all();
 
+        // 管理者ログイン
+        $admin_user = \App\Models\Admin\User::all();
+
         // HTTPリクエストを受け取り
         $login_name = $request->name;
         $login_password = $request->password;
 
+        // 管理者ログイン
+        foreach ($admin_user as $index => $item) {
+
+            // 管理者ユーザ名とパスワードが一致しているものを検索
+            if ($login_name == $item['name'] && password_verify($login_password, $item['password'])) {
+                // 一致しているusers.idをsessionに保存
+                $admin_id = $item['id'];
+                session([
+                    'admin_id' => $admin_id,
+                    'admin_login' => 1 // 1をログイン成功
+                ]);
+
+                // // 管理者ログイン成功したら処理を終了
+                // exit();
+            }
+        }
+
+        // 一般ユーザログイン
         foreach ($user_info as $index => $item) {
 
             // ユーザ名とパスワードが一致しているものを検索

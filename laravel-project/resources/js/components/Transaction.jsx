@@ -21,6 +21,7 @@ function Transaction() {
             .get(`http://localhost:8000/api/purchase/${productId}/index`)
             .then((res) => {
                 setButtonJudgement(res.data)
+                console.log(res.data)
             })
             .catch((err) => {
                 console.log(err)
@@ -41,6 +42,17 @@ function Transaction() {
 
         axios
             .post(`http://localhost:8000/api/purchase/${productId}/store`)
+            .then(() => {
+                location.reload()
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+    const ConfirmClick = () => {
+        axios
+            .post(`http://localhost:8000/api/confirm/${productId}/store`)
             .then(() => {
                 location.reload()
             })
@@ -75,8 +87,24 @@ function Transaction() {
                     注文を確定する
                 </div>
                 :
-                <div className={styles.SendNow}>
-                    発送中
+                <div>
+                    { buttonJudgement?.product_user_id.user_id == chatData?.user_id ?
+                        <div className={styles.ConfirmButton}>
+                            発送中
+                        </div>
+                        :
+                        <div>
+                            { buttonJudgement?.product_user_id.situation_id == 1 ?
+                                <div className={styles.ConfirmButton}>
+                                    商品が到着済み
+                                </div>
+                                :
+                                <div className={styles.ConfirmButton} onClick={ConfirmClick}>
+                                    商品が到着
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
             }
         </div>

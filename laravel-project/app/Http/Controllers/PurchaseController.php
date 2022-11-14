@@ -14,7 +14,10 @@ class PurchaseController extends Controller
         $purchase = new Purchase();
         $data = $purchase->where('product_id',$id)->exists();
 
-        return response()->json($data);
+        return response()->json([
+            'is_product' => $data,
+            'product_user_id' => Product::find($id)
+        ]);
     }
 
     public function store($id)

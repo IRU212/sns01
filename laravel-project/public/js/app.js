@@ -6399,6 +6399,7 @@ function Transaction() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/purchase/".concat(productId, "/index")).then(function (res) {
       setButtonJudgement(res.data);
+      console.log(res.data);
     })["catch"](function (err) {
       console.log(err);
     });
@@ -6411,6 +6412,13 @@ function Transaction() {
   }, []);
   var PurchaseClick = function PurchaseClick() {
     axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/purchase/".concat(productId, "/store")).then(function () {
+      location.reload();
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+  var ConfirmClick = function ConfirmClick() {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/confirm/".concat(productId, "/store")).then(function () {
       location.reload();
     })["catch"](function (err) {
       console.log(err);
@@ -6445,8 +6453,19 @@ function Transaction() {
       className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ConfirmButton,
       children: "\u6CE8\u6587\u3092\u78BA\u5B9A\u3059\u308B"
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].SendNow,
-      children: "\u767A\u9001\u4E2D"
+      children: (buttonJudgement === null || buttonJudgement === void 0 ? void 0 : buttonJudgement.product_user_id.user_id) == (chatData === null || chatData === void 0 ? void 0 : chatData.user_id) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ConfirmButton,
+        children: "\u767A\u9001\u4E2D"
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: (buttonJudgement === null || buttonJudgement === void 0 ? void 0 : buttonJudgement.product_user_id.situation_id) == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ConfirmButton,
+          children: "\u5546\u54C1\u304C\u5230\u7740\u6E08\u307F"
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: _public_css_transaction_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ConfirmButton,
+          onClick: ConfirmClick,
+          children: "\u5546\u54C1\u304C\u5230\u7740"
+        })
+      })
     })]
   });
 }
@@ -6565,7 +6584,7 @@ function Login() {
     var data = new FormData();
     data.append("name", name);
     data.append("password", password);
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/login/user/store', data).then(function () {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/login/user/store', data).then(function (res) {
       location.reload();
     })["catch"](function (err) {
       console.log(err);
