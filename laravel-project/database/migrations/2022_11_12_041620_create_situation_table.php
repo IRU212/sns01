@@ -15,7 +15,7 @@ class CreateSituationTable extends Migration
     {
         Schema::create('situation', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
+            $table->string("situation_name");
             $table->timestamps();
         });
     }

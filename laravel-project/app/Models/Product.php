@@ -17,4 +17,9 @@ class Product extends Model
         'genre_id',
         'user_id'
     ];
+
+    public function situation()
+    {
+        return $this->belongsTo(Situation::class);
+    }
 }

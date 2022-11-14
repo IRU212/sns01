@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginuserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\SituationCOntroller;
 use App\Http\Controllers\TransactionchatController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransactionJudjemntController;
@@ -83,6 +84,9 @@ Route::post('/purchase/{id}/store',[PurchaseController::class,'store']);
 // 商品到着
 Route::get('/confirm/{id}/store',[ConfirmController::class,'store']);
 Route::post('/confirm/{id}/store',[ConfirmController::class,'store']);
+
+// 商品取引状況
+Route::get('/situation/index',[SituationCOntroller::class,'index']);
 
 // 未ログイン時にログインページ
 

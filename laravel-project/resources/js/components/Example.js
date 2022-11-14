@@ -12,6 +12,7 @@ import Setting from './Setting';
 import Show from './Show';
 import Profile from './Profile';
 import Transaction from './Transaction';
+import Situation from './Situation';
 
 function Example() {
     return (
@@ -28,6 +29,7 @@ function Example() {
                             <Route path='/profile/:profileId' element={<Profile />} />
                             <Route path='/register' element={<Register />} />
                             <Route path='/login' element={<Login />} />
+                            <Route path='/situation' element={<Situation />} />
                             <Route path='/setting' element={<Setting />} />
                             <Route path='*' element={<NotFound404 />} />
                         </Routes>
