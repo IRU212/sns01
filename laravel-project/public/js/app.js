@@ -5585,7 +5585,12 @@ function Create() {
     });
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    children: loginUser == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_NotUserPage__WEBPACK_IMPORTED_MODULE_3__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    style: {
+      width: "100%"
+    },
+    children: loginUser == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_NotUserPage__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      transitionUrl: location.href
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Create,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].CreateDiv,
@@ -6565,6 +6570,9 @@ function Login() {
     })["catch"](function (err) {
       console.log(err);
     });
+
+    // ひとつ前のURLに遷移
+    history.back();
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -6683,10 +6691,13 @@ function Register() {
     data.append("email", email);
     data.append("password", password);
     axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/auth/register/store', data).then(function () {
-      location.href = "http://localhost:8000";
+      location.reload();
     })["catch"](function (err) {
       console.log(err);
     });
+
+    // ひとつ前のURLに遷移
+    history.back();
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {

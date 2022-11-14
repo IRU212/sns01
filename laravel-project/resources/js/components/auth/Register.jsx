@@ -30,11 +30,14 @@ function Register() {
         axios
             .post('http://localhost:8000/api/auth/register/store',data)
             .then(() => {
-                location.href = "http://localhost:8000"
+                location.reload()
             })
             .catch((err) => {
                 console.log(err)
         })
+
+        // ひとつ前のURLに遷移
+        history.back()
     }
 
     return (

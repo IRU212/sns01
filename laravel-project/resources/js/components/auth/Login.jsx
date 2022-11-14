@@ -5,6 +5,7 @@ import styles from '../../../../public/css/auth.module.scss'
 function Login() {
 
     const [name,setName] = useState()
+
     const [password,setPassword] = useState()
 
     const NameChange = (e) => {
@@ -30,6 +31,9 @@ function Login() {
             .catch((err) => {
                 console.log(err)
             })
+
+        // ひとつ前のURLに遷移
+        history.back()
     }
 
     return (

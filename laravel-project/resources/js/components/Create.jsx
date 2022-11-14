@@ -93,9 +93,11 @@ function Create() {
     }
 
     return (
-        <div>
+        <div style={{width: "100%"}}>
             { loginUser == 1 ?
-                <NotUserPage />
+                <NotUserPage
+                    transitionUrl={location.href}
+                />
                 :
                 <div className={styles.Create}>
                     <div className={styles.CreateDiv}>
