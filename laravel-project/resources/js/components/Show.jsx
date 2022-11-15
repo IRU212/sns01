@@ -4,10 +4,13 @@ import axios from 'axios'
 import { useState } from 'react'
 import styles from '../../../public/css/show.module.scss'
 import PurchaseTransactionButton from './Show/PurchaseTransactionButton'
+import Like from './Content/Like'
+import UnLike from './Content/UnLike'
 
 function Show() {
 
     const [data,setData] = useState()
+    const [like,setLike] = useState()
 
     // 購入済み情報取得
     const [doneButton,setDoneButton] = useState()
@@ -43,6 +46,15 @@ function Show() {
                 console.log(err)
             })
 
+        // いいね情報取得
+        axios
+            .get(`http://localhost:8000/api/like/${productId}/index`)
+            .then((res) => {
+                setLike(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
 
 
     },[])
@@ -58,6 +70,17 @@ function Show() {
                 </div>
                 <div className={styles.money}>
                     ￥{ data?.money }
+                </div>
+                <div>
+                    { like == false ?
+                        <Like
+                            productId={productId}
+                        />
+                        :
+                        <UnLike
+                            productId={productId}
+                        />
+                    }
                 </div>
                 { buttonToggle == true ?
                     <PurchaseTransactionButton

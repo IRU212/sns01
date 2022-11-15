@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ConfirmController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginuserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -87,6 +88,13 @@ Route::post('/confirm/{id}/store',[ConfirmController::class,'store']);
 
 // 商品取引状況
 Route::get('/situation/index',[SituationCOntroller::class,'index']);
+
+// 商品いいね機能
+Route::get('/like/{id}/index',[LikeController::class,'index']);
+Route::get('/like/{id}/store',[LikeController::class,'store']);
+Route::post('/like/{id}/store',[LikeController::class,'store']);
+Route::get('/unlike/{id}/store',[LikeController::class,'destroy']);
+Route::post('/unlike/{id}/store',[LikeController::class,'destroy']);
 
 // 未ログイン時にログインページ
 

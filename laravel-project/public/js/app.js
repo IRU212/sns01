@@ -5467,6 +5467,80 @@ if (document.getElementById('app')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Content/Like.jsx":
+/*!**************************************************!*\
+  !*** ./resources/js/components/Content/Like.jsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function Like(props) {
+  // 商品ID
+  var productId = props.productId;
+  var LikeClick = function LikeClick() {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/like/".concat(productId, "/store")).then(function () {
+      location.reload();
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    onClick: LikeClick,
+    children: "Like"
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Like);
+
+/***/ }),
+
+/***/ "./resources/js/components/Content/UnLike.jsx":
+/*!****************************************************!*\
+  !*** ./resources/js/components/Content/UnLike.jsx ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function UnLike(props) {
+  // 商品ID
+  var productId = props.productId;
+  var UnLickClick = function UnLickClick() {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/unlike/".concat(productId, "/store")).then(function () {
+      location.reload();
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    onClick: UnLickClick,
+    children: "UnLike"
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UnLike);
+
+/***/ }),
+
 /***/ "./resources/js/components/Create.jsx":
 /*!********************************************!*\
   !*** ./resources/js/components/Create.jsx ***!
@@ -6273,7 +6347,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _public_css_show_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../public/css/show.module.scss */ "./public/css/show.module.scss");
 /* harmony import */ var _Show_PurchaseTransactionButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Show/PurchaseTransactionButton */ "./resources/js/components/Show/PurchaseTransactionButton.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Content_Like__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Content/Like */ "./resources/js/components/Content/Like.jsx");
+/* harmony import */ var _Content_UnLike__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Content/UnLike */ "./resources/js/components/Content/UnLike.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -6288,23 +6364,29 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function Show() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
     _useState2 = _slicedToArray(_useState, 2),
     data = _useState2[0],
     setData = _useState2[1];
-
-  // 購入済み情報取得
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
     _useState4 = _slicedToArray(_useState3, 2),
-    doneButton = _useState4[0],
-    setDoneButton = _useState4[1];
+    like = _useState4[0],
+    setLike = _useState4[1];
+
+  // 購入済み情報取得
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+    _useState6 = _slicedToArray(_useState5, 2),
+    doneButton = _useState6[0],
+    setDoneButton = _useState6[1];
 
   // 購入済みボタン判定
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
-    _useState6 = _slicedToArray(_useState5, 2),
-    buttonToggle = _useState6[0],
-    setButtonToggle = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState8 = _slicedToArray(_useState7, 2),
+    buttonToggle = _useState8[0],
+    setButtonToggle = _useState8[1];
 
   // 現在のURL取得
   var locationUrl = location.href;
@@ -6325,27 +6407,40 @@ function Show() {
     })["catch"](function (err) {
       console.log(err);
     });
+
+    // いいね情報取得
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://localhost:8000/api/like/".concat(productId, "/index")).then(function (res) {
+      setLike(res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: _public_css_show_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Show,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: _public_css_show_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].productImg,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
         src: "http://localhost:8000/".concat(data === null || data === void 0 ? void 0 : data.image_path),
         alt: ""
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: _public_css_show_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ProductIntroduce,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: _public_css_show_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Title,
         children: data === null || data === void 0 ? void 0 : data.name
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: _public_css_show_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].money,
         children: ["\uFFE5", data === null || data === void 0 ? void 0 : data.money]
-      }), buttonToggle == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Show_PurchaseTransactionButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        children: like == false ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Content_Like__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          productId: productId
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Content_UnLike__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          productId: productId
+        })
+      }), buttonToggle == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Show_PurchaseTransactionButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
         productId: productId,
         productUserId: data === null || data === void 0 ? void 0 : data.user_id
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         children: "\u5B8C\u58F2"
       })]
     })]
