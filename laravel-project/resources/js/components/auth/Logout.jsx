@@ -16,7 +16,7 @@ function Logout() {
 
     return (
         <div onClick={LogoutClick}>
-            Logout
+            ログアウト
         </div>
     )
 }

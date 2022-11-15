@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useLayoutEffect, useState } from 'react'
 import Logout from './auth/Logout'
 import NotUserPage from './NotUserPage'
+import styles from '../../../public/css/setting.module.scss'
+import AcountDestory from './auth/AcountDestory'
 
 function Setting() {
 
@@ -23,11 +25,18 @@ function Setting() {
             { loginUser == 1 ?
                 <NotUserPage />
                 :
-                <div>
-                    <div>
-                        Setting
+                <div className={styles.Setting}>
+                    <div className={styles.Title}>
+                        設定一覧
                     </div>
-                    <Logout />
+                    <div className={styles.Item}>
+                        <div className={styles.ItemDiv}>
+                            <Logout />
+                        </div>
+                        <div className={styles.ItemDiv}>
+                            <AcountDestory />
+                        </div>
+                    </div>
                 </div>
             }
         </div>

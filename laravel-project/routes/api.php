@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\UserDestoryController;
 use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginuserController;
@@ -45,6 +46,10 @@ Route::post('/logout/user/store',[LogoutController::class,'store']);
 
 // ログイン中のユーザ情報を取得
 Route::get('login/user',[LoginuserController::class,'index']);
+
+// アカウント削除
+Route::get('/user/destory',[UserDestoryController::class,'destory']);
+Route::post('/user/destory',[UserDestoryController::class,'destory']);
 
 // 商品一覧
 Route::get('/product',[ProductController::class,'index'])->name('product.index');
