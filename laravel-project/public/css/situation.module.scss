@@ -9,6 +9,22 @@
         margin: 40px auto 60px 25vw;
     }
 
+    .productTransaction{
+        width: fit-content;
+        display: flex;
+        margin: 40px auto 60px 25vw;
+
+        .TitleTransaction{
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            margin: 0 1px 0 0;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+
     .item{
         width: 750px;
         display: flex;

@@ -3,7 +3,9 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import styles from '../../../public/css/situation.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, Routes, Route } from 'react-router-dom'
+import SituationPurchase from './Situation/SituationPurchase'
+import SituationLink from './Situation/SituationLink'
 
 function Situation() {
 
@@ -26,9 +28,12 @@ function Situation() {
             <div className={styles.Title}>
                 取引商品リスト
             </div>
+            <SituationLink
+                productUserId={data?.user_id}
+            />
             { data?.map((item,index) =>
-                <Link to={`../product/${item.id}`} style={{color:"#000"}}>
-                    <div key={index} className={styles.item}>
+                <Link key={index} to={`../product/${item.id}`} style={{color:"#000"}}>
+                    <div className={styles.item}>
                         <div>
                             <img src={`http://localhost:8000/${item?.image_path}`} alt="" />
                         </div>
