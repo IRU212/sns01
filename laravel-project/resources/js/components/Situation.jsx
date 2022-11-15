@@ -27,17 +27,19 @@ function Situation() {
                 取引商品リスト
             </div>
             { data?.map((item,index) =>
-                <div key={index} className={styles.item}>
-                    <div>
-                        <img src={`http://localhost:8000/${item?.image_path}`} alt="" />
+                <Link to={`../product/${item.id}`} style={{color:"#000"}}>
+                    <div key={index} className={styles.item}>
+                        <div>
+                            <img src={`http://localhost:8000/${item?.image_path}`} alt="" />
+                        </div>
+                        <div className={styles.name}>
+                            { item.name }
+                        </div>
+                        <div className={styles.situation}>
+                            { item.situation.situation_name }
+                        </div>
                     </div>
-                    <div>
-                        { item.name }
-                    </div>
-                    <div>
-                        { item.situation.situation_name }
-                    </div>
-                </div>
+                </Link>
             ) }
         </div>
     )

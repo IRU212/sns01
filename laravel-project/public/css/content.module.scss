@@ -33,8 +33,9 @@ $header-height: 55px;
         border-right: 1px solid #000;
         background-color: #fff;
 
+        $link-size-margin: 10vh;
         .Link{
-            margin: 12vh 0px 12vh 75px;
+            margin: $link-size-margin 0px $link-size-margin 75px;
             font-size: 1.2rem;
         }
     }

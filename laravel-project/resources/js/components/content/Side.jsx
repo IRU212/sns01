@@ -60,6 +60,11 @@ function Side() {
                                 出品
                             </div>
                         </Link>
+                        <Link to="mypage" style={{textDecoration:"none",color:"#000"}}>
+                            <div className={styles.Link} onClick={displayToggleClick}>
+                                マイページ
+                            </div>
+                        </Link>
                         <Link to="situation" style={{textDecoration:"none",color:"#000"}}>
                             <div className={styles.Link} onClick={displayToggleClick}>
                                 取引状況

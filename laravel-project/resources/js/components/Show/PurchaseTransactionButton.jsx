@@ -38,7 +38,7 @@ function PurchaseTransactionButton(props) {
     return (
         <div onClick={PurchaseClick} className={styles.PurchaseButton}>
             <div>
-                購入手続き
+                購入
             </div>
         </div>
     )
