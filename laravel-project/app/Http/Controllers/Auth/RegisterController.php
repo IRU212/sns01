@@ -19,11 +19,19 @@ class RegisterController extends Controller
     {
         $user = new User();
 
+        // 保存するデータ
         $user->name = $request->name;
         $user->email = $request->email;
-
-        // パスワードをハッシュ化
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make($request->password); // パスワードをハッシュ化
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->first_name_kana = $request->first_name_kana;
+        $user->last_name_kana = $request->last_name_kana;
+        $user->icon_path = $request->icon_path;
+        $user->back_path = $request->back_path;
+        $user->birthday = $request->birthday;
+        $user->zip = $request->zip;
+        $user->address = $request->address;
 
         $user->save();
 

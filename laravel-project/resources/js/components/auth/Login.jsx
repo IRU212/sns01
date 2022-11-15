@@ -37,16 +37,21 @@ function Login() {
     }
 
     return (
-        <div>
-            <div>
-                <div>ユーザ名</div>
-                <div><input type="text" onChange={NameChange} /></div>
+        <div className={styles.Login}>
+            <div className={styles.Title}>
+                ログイン
             </div>
-            <div>
-                <div>パスワード</div>
-                <div><input type="text" onChange={PasswordChange} /></div>
+            <div className={styles.Form}>
+                <div  className={styles.InputDiv}>
+                    <div>ニックネーム</div>
+                    <div><input type="text" onChange={NameChange} /></div>
+                </div>
+                <div  className={styles.InputDiv}>
+                    <div>パスワード</div>
+                    <div><input type="text" onChange={PasswordChange} /></div>
+                </div>
+                <div onClick={LoginClick} className={styles.Button}>ログイン</div>
             </div>
-            <div onClick={LoginClick}>ログイン</div>
         </div>
     )
 }

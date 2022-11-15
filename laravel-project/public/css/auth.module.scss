@@ -1,3 +1,96 @@
 .Login{
-    border: 1px solid #000;
+    width: 100%;
+    text-align: center;
+
+    .Title{
+        margin: 70px auto;
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .Form{
+        width: fit-content;
+        display: inline-block;
+        text-align: left;
+        margin-right: 20px;
+
+        .InputDiv{
+            margin: 20px 0 20px 50px;
+
+            input{
+                margin-top: 5px;
+            }
+
+            .largeInput{
+                width: 400px;
+            }
+        }
+
+        .Name{
+            display: flex;
+        }
+
+        .NameKatakana{
+            display: flex;
+        }
+
+        .Button{
+            background-color: #000;
+            color: #fff;
+            width: fit-content;
+            padding: 9px 13px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin: 40px 0 50px 0;
+            position: relative;
+            left: 50px;
+        }
+    }
+}
+
+.Login{
+    width: 100%;
+    text-align: center;
+
+    .Title{
+        margin: 70px auto 50px auto;
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .Form{
+        width: fit-content;
+        display: inline-block;
+        text-align: left;
+        margin-right: 20px;
+
+        .InputDiv{
+            margin: 20px 0 20px 50px;
+
+            input{
+                margin-top: 5px;
+            }
+
+            .largeInput{
+                width: 400px;
+            }
+        }
+
+        .Button{
+            background-color: #000;
+            color: #fff;
+            width: fit-content;
+            padding: 9px 13px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin: 40px 0 50px 0;
+            position: relative;
+            left: 50px;
+        }
+    }
+
 }

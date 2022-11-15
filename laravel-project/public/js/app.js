@@ -6983,27 +6983,37 @@ function Login() {
     history.back();
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        children: "\u30E6\u30FC\u30B6\u540D"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-          type: "text",
-          onChange: NameChange
-        })
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        children: "\u30D1\u30B9\u30EF\u30FC\u30C9"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-          type: "text",
-          onChange: PasswordChange
-        })
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      onClick: LoginClick,
+    className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Login,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Title,
       children: "\u30ED\u30B0\u30A4\u30F3"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Form,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].InputDiv,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: "\u30CB\u30C3\u30AF\u30CD\u30FC\u30E0"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "text",
+            onChange: NameChange
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].InputDiv,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: "\u30D1\u30B9\u30EF\u30FC\u30C9"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "text",
+            onChange: PasswordChange
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        onClick: LoginClick,
+        className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Button,
+        children: "\u30ED\u30B0\u30A4\u30F3"
+      })]
     })]
   });
 }
@@ -7060,13 +7070,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../public/css/auth.module.scss */ "./public/css/auth.module.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -7084,6 +7096,42 @@ function Register() {
     _useState6 = _slicedToArray(_useState5, 2),
     password = _useState6[0],
     setPassword = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+    _useState8 = _slicedToArray(_useState7, 2),
+    firstName = _useState8[0],
+    setFirstName = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+    _useState10 = _slicedToArray(_useState9, 2),
+    lastName = _useState10[0],
+    setLastName = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+    _useState12 = _slicedToArray(_useState11, 2),
+    firstNameKana = _useState12[0],
+    setFirstNameKana = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+    _useState14 = _slicedToArray(_useState13, 2),
+    lastNameKana = _useState14[0],
+    setLastNameKana = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+    _useState16 = _slicedToArray(_useState15, 2),
+    iconPath = _useState16[0],
+    setIconPath = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+    _useState18 = _slicedToArray(_useState17, 2),
+    backPath = _useState18[0],
+    setBackPath = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+    _useState20 = _slicedToArray(_useState19, 2),
+    birthday = _useState20[0],
+    setBirthday = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+    _useState22 = _slicedToArray(_useState21, 2),
+    zip = _useState22[0],
+    setZip = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+    _useState24 = _slicedToArray(_useState23, 2),
+    address = _useState24[0],
+    setAddress = _useState24[1];
   var NameChange = function NameChange(e) {
     setName(e.target.value);
   };
@@ -7093,11 +7141,47 @@ function Register() {
   var PasswordChange = function PasswordChange(e) {
     setPassword(e.target.value);
   };
+  var FirstNameChange = function FirstNameChange(e) {
+    setFirstName(e.target.value);
+  };
+  var LastNameChange = function LastNameChange(e) {
+    setLastName(e.target.value);
+  };
+  var FirstNameKanaChange = function FirstNameKanaChange(e) {
+    setFirstNameKana(e.target.value);
+  };
+  var LastNameKanaChange = function LastNameKanaChange(e) {
+    setLastNameKana(e.target.value);
+  };
+  var IconChange = function IconChange(e) {
+    setIconPath(e.target.value);
+  };
+  var BackPathChange = function BackPathChange(e) {
+    setBackPath(e.target.value);
+  };
+  var BirthdayChange = function BirthdayChange(e) {
+    setBirthday(e.target.value);
+  };
+  var ZipChange = function ZipChange(e) {
+    setZip(e.target.value);
+  };
+  var AddressChange = function AddressChange(e) {
+    setAddress(e.target.value);
+  };
   var RegisterLogin = function RegisterLogin() {
     var data = new FormData();
     data.append("name", name);
     data.append("email", email);
     data.append("password", password);
+    data.append("first_name", firstName);
+    data.append("last_name", lastName);
+    data.append("first_name_kana", firstNameKana);
+    data.append("last_name_kana", lastNameKana);
+    data.append("icon_path", iconPath);
+    data.append("back_path", backPath);
+    data.append("birthday", birthday);
+    data.append("zip", zip);
+    data.append("address", address);
     axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/auth/register/store', data).then(function () {
       location.reload();
     })["catch"](function (err) {
@@ -7107,37 +7191,130 @@ function Register() {
     // ひとつ前のURLに遷移
     history.back();
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        children: "name"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-          type: "text",
-          onChange: NameChange
-        })
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Login,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Title,
+      children: "\u30A2\u30AB\u30A6\u30F3\u30C8\u767B\u9332"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Form,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].InputDiv,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: "\u30CB\u30C3\u30AF\u30CD\u30FC\u30E0"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "text",
+            className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].largeInput,
+            onChange: NameChange
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Name,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].InputDiv,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            children: "\u82D7\u5B57"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "text",
+              onChange: FirstNameChange
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].InputDiv,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            children: "\u540D\u524D"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "text",
+              onChange: LastNameChange
+            })
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].NameKatakana,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].InputDiv,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            children: "\u30DF\u30E7\u30A6\u30B8"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "text",
+              onChange: FirstNameKanaChange
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].InputDiv,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            children: "\u30CA\u30DE\u30A8"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "text",
+              onChange: LastNameKanaChange
+            })
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].InputDiv,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: "\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "text",
+            className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].largeInput,
+            onChange: EmailChange
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].InputDiv,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: "\u751F\u5E74\u6708\u65E5"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "text",
+            className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].largeInput,
+            onChange: BirthdayChange
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].InputDiv,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: "\u90F5\u4FBF\u756A\u53F7"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "text",
+            className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].largeInput,
+            onChange: ZipChange
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].InputDiv,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: "\u4F4F\u6240"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "text",
+            className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].largeInput,
+            onChange: AddressChange
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].InputDiv,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: "\u30D1\u30B9\u30EF\u30FC\u30C9"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "text",
+            className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].largeInput,
+            onChange: PasswordChange
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        onClick: RegisterLogin,
+        className: _public_css_auth_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Button,
+        children: "\u65B0\u898F\u767B\u9332"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        children: "email"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-          type: "text",
-          onChange: EmailChange
-        })
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        children: "password"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-          type: "text",
-          onChange: PasswordChange
-        })
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      onClick: RegisterLogin,
-      children: "\u65B0\u898F\u767B\u9332"
     })]
   });
 }
@@ -7460,10 +7637,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= {\n  border: 1px solid #000;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= {\n  width: 100%;\n  text-align: center;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= ._4TJQrZWePfeSJX5OTTmg3w\\=\\= {\n  margin: 70px auto;\n  font-size: 1.3rem;\n  font-weight: 600;\n  text-align: center;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= .fY7zJADgLdPJQjRpsftWCg\\=\\= {\n  width: -moz-fit-content;\n  width: fit-content;\n  display: inline-block;\n  text-align: left;\n  margin-right: 20px;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= .fY7zJADgLdPJQjRpsftWCg\\=\\= .gOOkumfDKFgMdE2A0-Bapw\\=\\= {\n  margin: 20px 0 20px 50px;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= .fY7zJADgLdPJQjRpsftWCg\\=\\= .gOOkumfDKFgMdE2A0-Bapw\\=\\= input {\n  margin-top: 5px;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= .fY7zJADgLdPJQjRpsftWCg\\=\\= .gOOkumfDKFgMdE2A0-Bapw\\=\\= .UFcyr2TuSxJmLhhzvOnkGg\\=\\= {\n  width: 400px;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= .fY7zJADgLdPJQjRpsftWCg\\=\\= .sIbDY-AKVLGlUfpdHwUlJA\\=\\= {\n  display: flex;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= .fY7zJADgLdPJQjRpsftWCg\\=\\= .iaXMaJ-SonZISBfMkUI3TQ\\=\\= {\n  display: flex;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= .fY7zJADgLdPJQjRpsftWCg\\=\\= ._1Em3Z-Z\\+wM6xjuNHjhnibg\\=\\= {\n  background-color: #000;\n  color: #fff;\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 9px 13px;\n  border-radius: 6px;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n  margin: 40px 0 50px 0;\n  position: relative;\n  left: 50px;\n}\n\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= {\n  width: 100%;\n  text-align: center;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= ._4TJQrZWePfeSJX5OTTmg3w\\=\\= {\n  margin: 70px auto 50px auto;\n  font-size: 1.3rem;\n  font-weight: 600;\n  text-align: center;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= .fY7zJADgLdPJQjRpsftWCg\\=\\= {\n  width: -moz-fit-content;\n  width: fit-content;\n  display: inline-block;\n  text-align: left;\n  margin-right: 20px;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= .fY7zJADgLdPJQjRpsftWCg\\=\\= .gOOkumfDKFgMdE2A0-Bapw\\=\\= {\n  margin: 20px 0 20px 50px;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= .fY7zJADgLdPJQjRpsftWCg\\=\\= .gOOkumfDKFgMdE2A0-Bapw\\=\\= input {\n  margin-top: 5px;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= .fY7zJADgLdPJQjRpsftWCg\\=\\= .gOOkumfDKFgMdE2A0-Bapw\\=\\= .UFcyr2TuSxJmLhhzvOnkGg\\=\\= {\n  width: 400px;\n}\n.Qw508z01M8uAKP\\+7q7v\\+BQ\\=\\= .fY7zJADgLdPJQjRpsftWCg\\=\\= ._1Em3Z-Z\\+wM6xjuNHjhnibg\\=\\= {\n  background-color: #000;\n  color: #fff;\n  width: -moz-fit-content;\n  width: fit-content;\n  padding: 9px 13px;\n  border-radius: 6px;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n  margin: 40px 0 50px 0;\n  position: relative;\n  left: 50px;\n}", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
-	"Login": "Qw508z01M8uAKP+7q7v+BQ=="
+	"Login": "Qw508z01M8uAKP+7q7v+BQ==",
+	"Title": "_4TJQrZWePfeSJX5OTTmg3w==",
+	"Form": "fY7zJADgLdPJQjRpsftWCg==",
+	"InputDiv": "gOOkumfDKFgMdE2A0-Bapw==",
+	"largeInput": "UFcyr2TuSxJmLhhzvOnkGg==",
+	"Name": "sIbDY-AKVLGlUfpdHwUlJA==",
+	"NameKatakana": "iaXMaJ-SonZISBfMkUI3TQ==",
+	"Button": "_1Em3Z-Z+wM6xjuNHjhnibg=="
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
