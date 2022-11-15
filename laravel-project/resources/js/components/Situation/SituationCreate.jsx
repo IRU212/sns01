@@ -60,7 +60,7 @@ function SituationCreate() {
                         :
                         <div>
                             { index == 0 &&
-                                <div>
+                                <div className={styles.NoProduct}>
                                     商品がありません
                                 </div>
                             }

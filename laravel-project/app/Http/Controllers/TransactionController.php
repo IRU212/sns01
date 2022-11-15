@@ -32,8 +32,10 @@ class TransactionController extends Controller
         }
 
         // 商品を取引中に変更
+        // 商品が出品中のみ変更
         $product = new Product();
         $product->where('id',$id)
+                ->where('situation_id',4)
                 ->update([
                     "situation_id" => 3
                 ]);

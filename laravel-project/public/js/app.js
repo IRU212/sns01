@@ -6577,6 +6577,7 @@ function SituationCreate() {
           })
         }, index) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           children: index == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: _public_css_situation_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].NoProduct,
             children: "\u5546\u54C1\u304C\u3042\u308A\u307E\u305B\u3093"
           })
         })
@@ -6615,18 +6616,21 @@ function SituationLink() {
       className: _public_css_situation_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].TitleTransaction,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
         to: "/situation",
+        className: _public_css_situation_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].Link,
         children: "\u4E00\u89A7\u5546\u54C1"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: _public_css_situation_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].TitleTransaction,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
         to: "/situation/create",
+        className: _public_css_situation_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].Link,
         children: "\u51FA\u54C1\u5546\u54C1"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: _public_css_situation_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].TitleTransaction,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
         to: "/situation/purchase",
+        className: _public_css_situation_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].Link,
         children: "\u8CFC\u5165\u5546\u54C1"
       })
     })]
@@ -6687,6 +6691,7 @@ function SituationPurchase() {
     });
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("http://localhost:8000/api/login/user").then(function (res) {
       setUserId(res.data.id);
+      console.log(res.data.id);
     })["catch"](function (err) {
       console.log(err);
     });
@@ -6700,7 +6705,12 @@ function SituationPurchase() {
       productUserId: data === null || data === void 0 ? void 0 : data.user_id
     }), data === null || data === void 0 ? void 0 : data.map(function (item, index) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        children: !item.user_id == userID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+        children: item.user_id == userID ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          children: index == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: _public_css_situation_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].NoProduct,
+            children: "\u5546\u54C1\u304C\u3042\u308A\u307E\u305B\u3093"
+          })
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
           to: "../product/".concat(item.id),
           style: {
             color: "#000"
@@ -6720,11 +6730,7 @@ function SituationPurchase() {
               children: item.situation.situation_name
             })]
           })
-        }, index) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          children: index == 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            children: "\u5546\u54C1\u304C\u3042\u308A\u307E\u305B\u3093"
-          })
-        })
+        }, index)
       });
     })]
   });
@@ -7622,16 +7628,19 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".eNV2ET\\+KEfkrIRffNxES2g\\=\\= {\n  width: auto;\n  padding: 30px 0 0 0;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= .rwrz-KeyoLZgyD2-d1JrSg\\=\\= {\n  width: -moz-fit-content;\n  width: fit-content;\n  font-size: 1.4rem;\n  text-align: center;\n  margin: 40px auto 60px 25vw;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= .qsQNi8HI4pi15AloOBp4\\+A\\=\\= {\n  width: -moz-fit-content;\n  width: fit-content;\n  display: flex;\n  margin: 40px auto 60px 25vw;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= .qsQNi8HI4pi15AloOBp4\\+A\\=\\= ._4\\+rl7us05j4IeInDv05iNg\\=\\= {\n  border: 1px solid #ccc;\n  padding: 8px 12px;\n  margin: 0 1px 0 0;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= .qsQNi8HI4pi15AloOBp4\\+A\\=\\= ._4\\+rl7us05j4IeInDv05iNg\\=\\=:hover {\n  cursor: pointer;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= ._9sN9uZ8htElt9aK4RwKZmA\\=\\= {\n  width: 750px;\n  display: flex;\n  margin: 50px 0 50px 25vw;\n  position: relative;\n  font-size: 1.1rem;\n  font-weight: 600;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= ._9sN9uZ8htElt9aK4RwKZmA\\=\\= img {\n  width: 200px;\n  height: 120px;\n  margin: 0 120px 0 0;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= ._9sN9uZ8htElt9aK4RwKZmA\\=\\= .gEj7CGJD6yzf0SS8bQIWrA\\=\\= {\n  position: absolute;\n  margin: 0 60px 0 0;\n  top: 50%;\n  transform: translateY(-50%);\n  left: 350px;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= ._9sN9uZ8htElt9aK4RwKZmA\\=\\= .nQcDUGMYUnLnhfze6l6-cw\\=\\= {\n  position: absolute;\n  right: 50px;\n  top: 50%;\n  transform: translateY(-50%);\n  background-color: #000;\n  color: #fff;\n  font-weight: normal;\n  padding: 6px 10px;\n  font-size: 0.9rem;\n  border-radius: 6px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".eNV2ET\\+KEfkrIRffNxES2g\\=\\= {\n  width: auto;\n  padding: 30px 0 0 0;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= .rwrz-KeyoLZgyD2-d1JrSg\\=\\= {\n  width: -moz-fit-content;\n  width: fit-content;\n  font-size: 1.4rem;\n  text-align: center;\n  margin: 40px auto 60px 25vw;\n  font-weight: 600;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= .qsQNi8HI4pi15AloOBp4\\+A\\=\\= {\n  width: -moz-fit-content;\n  width: fit-content;\n  display: flex;\n  margin: 40px auto 60px 25vw;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= .qsQNi8HI4pi15AloOBp4\\+A\\=\\= ._4\\+rl7us05j4IeInDv05iNg\\=\\= {\n  border: 1px solid #ccc;\n  padding: 8px 12px;\n  margin: 0 1px 0 0;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= .qsQNi8HI4pi15AloOBp4\\+A\\=\\= ._4\\+rl7us05j4IeInDv05iNg\\=\\=:hover {\n  cursor: pointer;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= .qsQNi8HI4pi15AloOBp4\\+A\\=\\= ._4\\+rl7us05j4IeInDv05iNg\\=\\= .rlH4I2eM2ZtoqlInM819fg\\=\\= {\n  color: #000;\n  text-decoration: none;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= .qsQNi8HI4pi15AloOBp4\\+A\\=\\= ._4\\+rl7us05j4IeInDv05iNg\\=\\= .-YhShwRwsgU9-x-\\+lYtyvQ\\=\\= {\n  display: none;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= ._9sN9uZ8htElt9aK4RwKZmA\\=\\= {\n  width: 750px;\n  display: flex;\n  margin: 50px 0 50px 25vw;\n  position: relative;\n  font-size: 1.1rem;\n  font-weight: 600;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= ._9sN9uZ8htElt9aK4RwKZmA\\=\\= img {\n  width: 200px;\n  height: 120px;\n  margin: 0 120px 0 0;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= ._9sN9uZ8htElt9aK4RwKZmA\\=\\= .gEj7CGJD6yzf0SS8bQIWrA\\=\\= {\n  position: absolute;\n  margin: 0 60px 0 0;\n  top: 50%;\n  transform: translateY(-50%);\n  left: 350px;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= ._9sN9uZ8htElt9aK4RwKZmA\\=\\= .nQcDUGMYUnLnhfze6l6-cw\\=\\= {\n  position: absolute;\n  right: 50px;\n  top: 50%;\n  transform: translateY(-50%);\n  background-color: #000;\n  color: #fff;\n  font-weight: normal;\n  padding: 6px 10px;\n  font-size: 0.9rem;\n  border-radius: 6px;\n}\n.eNV2ET\\+KEfkrIRffNxES2g\\=\\= .PpsJX8NC95qP9ldSHLftKQ\\=\\= {\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: 0 0 0 25vw;\n  font-weight: 500;\n}", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"Situation": "eNV2ET+KEfkrIRffNxES2g==",
 	"Title": "rwrz-KeyoLZgyD2-d1JrSg==",
 	"productTransaction": "qsQNi8HI4pi15AloOBp4+A==",
 	"TitleTransaction": "_4+rl7us05j4IeInDv05iNg==",
+	"Link": "rlH4I2eM2ZtoqlInM819fg==",
+	"sample": "-YhShwRwsgU9-x-+lYtyvQ==",
 	"item": "_9sN9uZ8htElt9aK4RwKZmA==",
 	"name": "gEj7CGJD6yzf0SS8bQIWrA==",
-	"situation": "nQcDUGMYUnLnhfze6l6-cw=="
+	"situation": "nQcDUGMYUnLnhfze6l6-cw==",
+	"NoProduct": "PpsJX8NC95qP9ldSHLftKQ=="
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -27,6 +27,7 @@ function SituationPurchase() {
             .get("http://localhost:8000/api/login/user")
             .then((res) => {
                 setUserId(res.data.id)
+                console.log(res.data.id)
             })
             .catch((err) => {
                 console.log(err)
@@ -43,7 +44,15 @@ function SituationPurchase() {
             />
             { data?.map((item,index) =>
                 <div>
-                    { !item.user_id == userID ?
+                    { item.user_id == userID ?
+                        <div>
+                            { index == 0 &&
+                                <div className={styles.NoProduct}>
+                                    商品がありません
+                                </div>
+                            }
+                        </div>
+                        :
                         <Link  key={index} to={`../product/${item.id}`} style={{color:"#000"}}>
                             <div className={styles.item}>
                                 <div>
@@ -57,14 +66,6 @@ function SituationPurchase() {
                                 </div>
                             </div>
                         </Link>
-                        :
-                        <div>
-                            { index == 0 &&
-                                <div>
-                                    商品がありません
-                                </div>
-                            }
-                        </div>
                     }
                 </div>
             ) }
