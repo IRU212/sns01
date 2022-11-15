@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
@@ -24,7 +24,7 @@ function Show() {
     // 商品idを取得
     const productId = locationUrl.split("/").slice(-1)[0]
 
-    useEffect(() => {
+    useLayoutEffect(() => {
 
         // 商品情報取得
         axios
@@ -88,8 +88,10 @@ function Show() {
                         productUserId={data?.user_id}
                     />
                     :
-                    <div>
-                        完売
+                    <div className={styles.PurchaseButton}>
+                        <div>
+                            完売
+                        </div>
                     </div>
                 }
             </div>

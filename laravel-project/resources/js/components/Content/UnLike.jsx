@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React from 'react'
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import styles from '../../../../public/css/show.module.scss'
 
 function UnLike(props) {
 
@@ -19,7 +21,9 @@ function UnLike(props) {
 
     return (
         <div onClick={UnLickClick}>
-            UnLike
+            <FavoriteIcon
+                className={styles.UnLike}
+            />
         </div>
     )
 }

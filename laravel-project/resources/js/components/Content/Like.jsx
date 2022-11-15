@@ -1,5 +1,8 @@
 import axios from 'axios'
 import React from 'react'
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import styles from '../../../../public/css/show.module.scss'
 
 function Like(props) {
 
@@ -19,7 +22,9 @@ function Like(props) {
 
     return (
         <div onClick={LikeClick}>
-            Like
+            <FavoriteBorderIcon
+                className={styles.Like}
+            />
         </div>
     )
 }

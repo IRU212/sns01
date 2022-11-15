@@ -56,3 +56,20 @@
         }
     }
 }
+
+.Like{
+    margin: 24px 0 0 0;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.UnLike{
+    margin: 24px 0 0 0;
+    color: rgb(206, 82, 109);
+
+    &:hover{
+        cursor: pointer;
+    }
+}
