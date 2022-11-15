@@ -6,6 +6,7 @@ import styles from '../../../public/css/show.module.scss'
 import PurchaseTransactionButton from './Show/PurchaseTransactionButton'
 import Like from './Content/Like'
 import UnLike from './Content/UnLike'
+import ShowProfile from './Show/ShowProfile'
 
 function Show() {
 
@@ -25,7 +26,6 @@ function Show() {
     const productId = locationUrl.split("/").slice(-1)[0]
 
     useLayoutEffect(() => {
-
         // 商品情報取得
         axios
             .get(`http://localhost:8000/api/product/${productId}`)
@@ -35,6 +35,9 @@ function Show() {
             .catch((err) => {
                 console.log(err)
             })
+    },[])
+
+    useLayoutEffect(() => {
 
         // 購入済み判定
         axios
@@ -82,6 +85,12 @@ function Show() {
                         />
                     }
                 </div>
+                <div className={styles.Seller}>
+                    出品者
+                </div>
+                <ShowProfile
+                    productInfo={data}
+                />
                 { buttonToggle == true ?
                     <PurchaseTransactionButton
                         productId={productId}

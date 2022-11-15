@@ -22,4 +22,9 @@ class Product extends Model
     {
         return $this->belongsTo(Situation::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

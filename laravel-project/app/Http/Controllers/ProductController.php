@@ -48,7 +48,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = new Product();
-        $data = $product->find($id);
+        $data = $product->with('user')->find($id);
 
         return response()->json($data);
     }
