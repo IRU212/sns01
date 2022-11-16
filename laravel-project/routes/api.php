@@ -109,6 +109,11 @@ Route::post('/follow/{id}/store',[FollowController::class,'store']);
 Route::get('/unfollow/{id}/store',[FollowController::class,'destroy']);
 Route::post('/unfollow/{id}/store',[FollowController::class,'destroy']);
 
+// 設定画面プロフィール設定
+Route::get('/setting/profile/index',[\App\Http\Controllers\Setting\ProfileController::class,'index']);
+Route::get('/setting/profile/store',[\App\Http\Controllers\Setting\ProfileController::class,'store']);
+Route::post('/setting/profile/store',[\App\Http\Controllers\Setting\ProfileController::class,'store']);
+
 // 未ログイン時にログインページ
 
 

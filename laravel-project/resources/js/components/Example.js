@@ -16,6 +16,7 @@ import Situation from './Situation';
 import Mypage from './Mypage';
 import SituationPurchase from './Situation/SituationPurchase';
 import SituationCreate from './Situation/SituationCreate';
+import SettingProfile from './Setting/SettingProfile';
 
 function Example() {
     return (
@@ -37,6 +38,7 @@ function Example() {
                             <Route path='/situation/purchase' element={<SituationPurchase />} />
                             <Route path='/mypage' element={<Mypage />} />
                             <Route path='/setting' element={<Setting />} />
+                            <Route path='/setting/profile' element={<SettingProfile />} />
                             <Route path='*' element={<NotFound404 />} />
                         </Routes>
                 </div>

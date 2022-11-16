@@ -19,8 +19,91 @@
 
             &:hover{
                 cursor: pointer;
+                background-color: rgb(246, 246, 246);
             }
 
         }
+    }
+}
+
+.SettingProfile{
+    width: 100%;
+    text-align: center;
+
+    .Title{
+        margin: 70px auto 50px auto;
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+
+    .editProfile{
+        margin: 0 auto;
+        border-top: 1px solid #ccc;
+        width: 700px;
+        text-align: left;
+        display: flex;
+        padding: 50px 0 0 0;
+
+        .Left{
+            width: 450px;
+            padding: 0 0 0 90px;
+
+            .InputDiv{
+                margin: 0 0 30px 0;
+            }
+
+            .Button{
+                background-color: #000;
+                width: fit-content;
+                color: #fff;
+                padding: 6px 18px;
+                border-radius: 10px;
+                font-size: 0.8;
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .Right{
+            width: auto;
+
+            label{
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+
+            .Icon{
+                background-color: #ccc;
+                width: 160px;
+                height: 160px;
+                border-radius: 50%;
+                overflow: hidden;
+
+                &:hover{
+                    cursor: pointer;
+                    opacity: 0.6;
+                }
+
+                img{
+                    width: 160px;
+                    height: 160px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+
+.Link{
+    color: #000;
+    text-decoration: none;
+
+    &:hover{
+        color: #000;
     }
 }

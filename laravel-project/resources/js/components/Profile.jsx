@@ -5,6 +5,7 @@ import styles from '../../../public/css/profile.module.scss'
 import NotUserPage from './NotUserPage'
 import Follow from './Profile/Follow'
 import Unfollow from './Profile/Unfollow'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function Profile() {
 
@@ -60,7 +61,11 @@ function Profile() {
                     </div>
                     <div className={styles.ProfileDiv}>
                         <div className={styles.Icon}>
-                            <img src="https://play-lh.googleusercontent.com/VkPPNilHH1IzQnBJB1SEwhzt2-tDTBqLihvbsFeITNqX8gMoaKxEkdfCWnlWwmKEFw=w240-h480-rw" alt="" />
+                            { data?.icon_path == null ?
+                                <AccountCircleIcon style={{fontSize:"83px"}} />
+                                :
+                                <img src={`http://localhost:8000/${data?.icon_path}`} alt="" />
+                            }
                         </div>
                         <div className={styles.ProfileText}>
                             <div className={styles.Name}>

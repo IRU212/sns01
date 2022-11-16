@@ -4,6 +4,7 @@ import Logout from './auth/Logout'
 import NotUserPage from './NotUserPage'
 import styles from '../../../public/css/setting.module.scss'
 import AcountDestory from './auth/AcountDestory'
+import { Link } from 'react-router-dom'
 
 function Setting() {
 
@@ -30,6 +31,11 @@ function Setting() {
                         設定一覧
                     </div>
                     <div className={styles.Item}>
+                        <div className={styles.ItemDiv}>
+                            <Link className={styles.Link} to="/setting/profile">
+                                プロフィール設定
+                            </Link>
+                        </div>
                         <div className={styles.ItemDiv}>
                             <Logout />
                         </div>

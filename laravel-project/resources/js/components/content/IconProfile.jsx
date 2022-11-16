@@ -53,7 +53,9 @@ function IconProfile() {
     function ProfileIcon(){
         return(
             <div className={styles.IconProfileImg}>
-                <img src="https://cdn.wikiwiki.jp/to/w/genshinwiki/%E5%88%BB%E6%99%B4/::ref/%E5%88%BB%E6%99%B4500.webp?rev=ce62d307e38f90493df3bfbc3988161c&t=20221018182841" alt="" />
+                <a href={`http://localhost:8000/profile/${data?.id}`}>
+                    <img src="https://cdn.wikiwiki.jp/to/w/genshinwiki/%E5%88%BB%E6%99%B4/::ref/%E5%88%BB%E6%99%B4500.webp?rev=ce62d307e38f90493df3bfbc3988161c&t=20221018182841" alt="" />
+                </a>
             </div>
         )
     }
