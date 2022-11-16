@@ -117,6 +117,7 @@ function Create() {
                             <div>
                                 <input type="file" id='uploadFile' accept="image/*" onChange={ImageChange} style={{display:"none"}} />
                             </div>
+                            <div className={styles.title}>商品画像</div>
                             <label htmlFor="uploadFile">
                                 {/* エラー防止読み込み用 */}
                                 <img ref={userImg} className={styles.PreviewImg} style={{display:"none"}} alt="" />

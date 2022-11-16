@@ -7,6 +7,7 @@ import Follow from './Profile/Follow'
 import Unfollow from './Profile/Unfollow'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ProfileProduct from './Profile/ProfileProduct'
+import { Link } from 'react-router-dom'
 
 function Profile() {
 
@@ -58,7 +59,11 @@ function Profile() {
                 :
                 <div className={styles.Profile}>
                     <div className={styles.BackImg}>
-                        <img src="https://kabekin.com/uploads/converted/15/03/12/2029910762-kabekin.net_1920x1080_-_2022-04-03T123516_.788_-BLBn-1920x1080-MM-100.jpg" alt="" />
+                        { data?.back_path == null ?
+                            <AccountCircleIcon style={{fontSize:"83px"}} />
+                            :
+                            <img src={`http://localhost:8000/${data?.back_path}`} alt="" />
+                        }
                     </div>
                     <div className={styles.ProfileDiv}>
                         <div className={styles.Icon}>
@@ -82,7 +87,11 @@ function Profile() {
                             </div>
                             <div className={styles.FollowPosition}>
                                 { loginUser?.id == data?.id ?
-                                    ""
+                                    <div className={styles.EditButton}>
+                                        <Link to="/setting/profile" className={styles.Link}>
+                                            プロフィール編集
+                                        </Link>
+                                    </div>
                                     :
                                     <div>
                                         { follow?.is_follow == true ?

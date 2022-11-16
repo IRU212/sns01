@@ -1,15 +1,16 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import styles from '../../../../public/css/content.module.scss'
 import Register from '../auth/Register'
 import styled from '../../../../public/css/auth.module.scss'
 import { Link } from 'react-router-dom'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function IconProfile() {
 
     const [data,setData] = useState()
 
-    useEffect(() =>{
+    useLayoutEffect(() =>{
         axios
             .get("http://localhost:8000/api/login/user")
             .then((res) => {
@@ -32,14 +33,14 @@ function IconProfile() {
         return(
             <div className={styles.NewRegister}>
                 <div onClick={NewRegisterClick}>
-                    <Link to="/register">
+                    <Link to="/register" className={styles.LinkLAuth}>
                         <div>
                             新規登録
                         </div>
                     </Link>
                 </div>
                 <div>
-                    <Link to="/login">
+                    <Link to="/login" className={styles.LinkLAuth}>
                         <div>
                             ログイン
                         </div>
@@ -53,9 +54,13 @@ function IconProfile() {
     function ProfileIcon(){
         return(
             <div className={styles.IconProfileImg}>
-                <a href={`http://localhost:8000/profile/${data?.id}`}>
-                    <img src="https://cdn.wikiwiki.jp/to/w/genshinwiki/%E5%88%BB%E6%99%B4/::ref/%E5%88%BB%E6%99%B4500.webp?rev=ce62d307e38f90493df3bfbc3988161c&t=20221018182841" alt="" />
-                </a>
+                { data?.icon_path == null ?
+                    <AccountCircleIcon style={{fontSize:"44px", color:"#888"}} />
+                    :
+                    <a href={`http://localhost:8000/profile/${data?.id}`}>
+                        <img src={`http://localhost:8000/${data?.icon_path}`} alt="" />
+                    </a>
+                }
             </div>
         )
     }

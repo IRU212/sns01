@@ -17,6 +17,9 @@ import Mypage from './Mypage';
 import SituationPurchase from './Situation/SituationPurchase';
 import SituationCreate from './Situation/SituationCreate';
 import SettingProfile from './Setting/SettingProfile';
+import MypageLike from './Mypage/MypageLike';
+import MypagePurchase from './Mypage/MypagePurchase';
+import MypageCreate from './Mypage/MypageCreate';
 
 function Example() {
     return (
@@ -37,6 +40,9 @@ function Example() {
                             <Route path='/situation/create' element={<SituationCreate />} />
                             <Route path='/situation/purchase' element={<SituationPurchase />} />
                             <Route path='/mypage' element={<Mypage />} />
+                            <Route path='/mypage/like' element={<MypageLike />} />
+                            <Route path='/mypage/purchase' element={<MypagePurchase />} />
+                            <Route path='/mypage/create' element={<MypageCreate />} />
                             <Route path='/setting' element={<Setting />} />
                             <Route path='/setting/profile' element={<SettingProfile />} />
                             <Route path='*' element={<NotFound404 />} />
