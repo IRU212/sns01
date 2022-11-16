@@ -29,48 +29,6 @@ function Item() {
                     </Link>
                 </div>
             ) }
-            { data?.map((item,index) =>
-                <div key={index} className={styles.List}>
-                    <div className={styles.ItemImg}>
-                        <img src={`http://localhost:8000/${item.image_path}`} alt="" />
-                    </div>
-                </div>
-            ) }
-            { data?.map((item,index) =>
-                <div key={index} className={styles.List}>
-                    <div className={styles.ItemImg}>
-                        <img src={`http://localhost:8000/${item.image_path}`} alt="" />
-                    </div>
-                </div>
-            ) }
-            { data?.map((item,index) =>
-                <div key={index} className={styles.List}>
-                    <div className={styles.ItemImg}>
-                        <img src={`http://localhost:8000/${item.image_path}`} alt="" />
-                    </div>
-                </div>
-            ) }
-                        { data?.map((item,index) =>
-                <div key={index} className={styles.List}>
-                    <div className={styles.ItemImg}>
-                        <img src={`http://localhost:8000/${item.image_path}`} alt="" />
-                    </div>
-                </div>
-            ) }
-            { data?.map((item,index) =>
-                <div key={index} className={styles.List}>
-                    <div className={styles.ItemImg}>
-                        <img src={`http://localhost:8000/${item.image_path}`} alt="" />
-                    </div>
-                </div>
-            ) }
-            { data?.map((item,index) =>
-                <div key={index} className={styles.List}>
-                    <div className={styles.ItemImg}>
-                        <img src={`http://localhost:8000/${item.image_path}`} alt="" />
-                    </div>
-                </div>
-            ) }
         </div>
     )
 }

@@ -13972,7 +13972,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function Item() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
     _useState2 = _slicedToArray(_useState, 2),
@@ -13985,9 +13984,9 @@ function Item() {
       console.log(err);
     });
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].HomeItem,
-    children: [data === null || data === void 0 ? void 0 : data.map(function (item, index) {
+    children: data === null || data === void 0 ? void 0 : data.map(function (item, index) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].List,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
@@ -14001,73 +14000,7 @@ function Item() {
           })
         })
       }, index);
-    }), data === null || data === void 0 ? void 0 : data.map(function (item, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].List,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ItemImg,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: "http://localhost:8000/".concat(item.image_path),
-            alt: ""
-          })
-        })
-      }, index);
-    }), data === null || data === void 0 ? void 0 : data.map(function (item, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].List,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ItemImg,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: "http://localhost:8000/".concat(item.image_path),
-            alt: ""
-          })
-        })
-      }, index);
-    }), data === null || data === void 0 ? void 0 : data.map(function (item, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].List,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ItemImg,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: "http://localhost:8000/".concat(item.image_path),
-            alt: ""
-          })
-        })
-      }, index);
-    }), data === null || data === void 0 ? void 0 : data.map(function (item, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].List,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ItemImg,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: "http://localhost:8000/".concat(item.image_path),
-            alt: ""
-          })
-        })
-      }, index);
-    }), data === null || data === void 0 ? void 0 : data.map(function (item, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].List,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ItemImg,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: "http://localhost:8000/".concat(item.image_path),
-            alt: ""
-          })
-        })
-      }, index);
-    }), data === null || data === void 0 ? void 0 : data.map(function (item, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].List,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: _public_css_home_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ItemImg,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: "http://localhost:8000/".concat(item.image_path),
-            alt: ""
-          })
-        })
-      }, index);
-    })]
+    })
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Item);

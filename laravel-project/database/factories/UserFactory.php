@@ -20,6 +20,13 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'first_name_kana' => $this->faker->firstKanaName(),
+            'last_name_kana' => $this->faker->lastKanaName(),
+            'birthday' => $this->faker->date('Y_m_d'),
+            'zip' => $this->faker->postcode(),
+            'address' => $this->faker->address()
         ];
     }
 

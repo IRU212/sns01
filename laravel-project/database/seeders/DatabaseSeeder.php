@@ -13,6 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(AdminuserSeeder::class);
+        // ログイン用データ
+        $this->call(UserSeeder::class);
+
+        // ユーザ仮データ
+        \App\Models\User::factory()->count(19)->create();
+
+        // 商品仮データ
+        $this->call(ProductSeeder::class);
     }
 }
