@@ -13,7 +13,7 @@ class LoginuserController extends Controller
         $login_id = session('login_id');
 
         if ($request->session()->has('login_id')) {
-            $data = User::find($login_id);
+            $data = User::with('follow')->find($login_id);
         } else {
             $data = 1;
         }

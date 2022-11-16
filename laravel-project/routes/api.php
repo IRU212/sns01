@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UserDestoryController;
 use App\Http\Controllers\ConfirmController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginuserController;
 use App\Http\Controllers\ProductController;
@@ -100,6 +101,12 @@ Route::get('/like/{id}/store',[LikeController::class,'store']);
 Route::post('/like/{id}/store',[LikeController::class,'store']);
 Route::get('/unlike/{id}/store',[LikeController::class,'destroy']);
 Route::post('/unlike/{id}/store',[LikeController::class,'destroy']);
+
+// フォロー機能
+Route::get('/follow/{id}/store',[FollowController::class,'store']);
+Route::post('/follow/{id}/store',[FollowController::class,'store']);
+Route::get('/unfollow/{id}/store',[FollowController::class,'destroy']);
+Route::post('/unfollow/{id}/store',[FollowController::class,'destroy']);
 
 // 未ログイン時にログインページ
 

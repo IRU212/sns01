@@ -10,8 +10,8 @@ class ProfileController extends Controller
     public function index($id)
     {
         $user = new User();
-        $data = $user->find($id);
-        
+        $data = $user->with('follow')->find($id);
+
         return response()->json($data);
     }
 }

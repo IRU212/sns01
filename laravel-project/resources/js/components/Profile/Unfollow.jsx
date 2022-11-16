@@ -1,9 +1,25 @@
+import axios from 'axios'
 import React from 'react'
 
-function Unfollow() {
+function Unfollow(props) {
+
+    // ユーザID
+    const userId = props.userId
+
+    const UnFollowClick = () => {
+        axios
+            .post(`http://localhost:8000/api/unfollow/${userId}/store`)
+            .then(() => {
+                location.reload()
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
     return (
-        <div>
-            Unfollow
+        <div onClick={UnFollowClick}>
+            フォロー解除
         </div>
     )
 }

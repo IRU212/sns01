@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useLayoutEffect } from 'react'
 import styles from '../../../public/css/profile.module.scss'
 import NotUserPage from './NotUserPage'
+import Follow from './Profile/Follow'
+import Unfollow from './Profile/Unfollow'
 
 function Profile() {
 
@@ -12,12 +14,12 @@ function Profile() {
     // 現在のURL取得
     const locationUrl = location.href
 
-    // 商品idを取得
-    const productId = locationUrl.split("/").slice(-1)[0]
+    // ユーザidを取得
+    const profileId = locationUrl.split("/").slice(-1)[0]
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8000/api/profile/${productId}`)
+            .get(`http://localhost:8000/api/profile/${profileId}`)
             .then((res) => {
                 setData(res.data)
             })
@@ -37,6 +39,7 @@ function Profile() {
             })
     },[])
 
+
     return (
         <div style={{width: "100%"}}>
             { loginUser == 1 ?
@@ -54,9 +57,21 @@ function Profile() {
                             <div className={styles.Name}>
                                 { data?.name }
                             </div>
-                            <div>
-                                いろいろ
-                            </div>
+                            { loginUser?.id == data?.id ?
+                                ""
+                                :
+                                <div>
+                                    { loginUser?.follow.followig == profileId ?
+                                        <Unfollow
+                                            userId={profileId}
+                                        />
+                                        :
+                                        <Follow
+                                            userId={profileId}
+                                        />
+                                    }
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
