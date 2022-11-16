@@ -117,6 +117,10 @@ Route::get('/setting/profile/index',[\App\Http\Controllers\Setting\ProfileContro
 Route::get('/setting/profile/store',[\App\Http\Controllers\Setting\ProfileController::class,'store']);
 Route::post('/setting/profile/store',[\App\Http\Controllers\Setting\ProfileController::class,'store']);
 
+// マイページ
+// いいねした商品一覧
+Route::get('/mypage/like/index',[\App\Http\Controllers\Mypage\LikeController::class,'index']);
+
 // 未ログイン時にログインページ
 
 

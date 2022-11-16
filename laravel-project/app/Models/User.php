@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Follow::class,'user_id')->withDefault();
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class,'like_user','user_id','product_id');
+    }
 }
