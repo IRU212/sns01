@@ -103,6 +103,7 @@ Route::get('/unlike/{id}/store',[LikeController::class,'destroy']);
 Route::post('/unlike/{id}/store',[LikeController::class,'destroy']);
 
 // フォロー機能
+Route::get('/follow/{id}/index',[FollowController::class,'index']);
 Route::get('/follow/{id}/store',[FollowController::class,'store']);
 Route::post('/follow/{id}/store',[FollowController::class,'store']);
 Route::get('/unfollow/{id}/store',[FollowController::class,'destroy']);

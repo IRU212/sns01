@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React from 'react'
+import styles from '../../../../public/css/profile.module.scss'
 
 function Follow(props) {
 
@@ -18,8 +19,8 @@ function Follow(props) {
     }
 
     return (
-        <div onClick={FollowClick}>
-            フォロー
+        <div onClick={FollowClick} className={styles.FollowButton}>
+            フォローする
         </div>
     )
 }

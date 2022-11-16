@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React from 'react'
+import styles from '../../../../public/css/profile.module.scss'
 
 function Unfollow(props) {
 
@@ -18,8 +19,8 @@ function Unfollow(props) {
     }
 
     return (
-        <div onClick={UnFollowClick}>
-            フォロー解除
+        <div onClick={UnFollowClick} className={styles.UnFollowButton} >
+            フォロー中
         </div>
     )
 }

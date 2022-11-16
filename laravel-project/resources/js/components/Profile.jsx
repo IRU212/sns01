@@ -10,6 +10,7 @@ function Profile() {
 
     const [data,setData] = useState()
     const [loginUser,setLoginUser] = useState(1)
+    const [follow,setFollow] = useState()
 
     // 現在のURL取得
     const locationUrl = location.href
@@ -37,6 +38,14 @@ function Profile() {
             .catch((err) => {
                 console.log(err)
             })
+        axios
+            .get(`http://localhost:8000/api/follow/${profileId}/index`)
+            .then((res) => {
+                setFollow(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     },[])
 
 
@@ -57,21 +66,31 @@ function Profile() {
                             <div className={styles.Name}>
                                 { data?.name }
                             </div>
-                            { loginUser?.id == data?.id ?
-                                ""
-                                :
+                            <div className={styles.FollowCountPosition}>
                                 <div>
-                                    { loginUser?.follow.followig == profileId ?
-                                        <Unfollow
-                                            userId={profileId}
-                                        />
-                                        :
-                                        <Follow
-                                            userId={profileId}
-                                        />
-                                    }
+                                    { follow?.following_count }フォロー
                                 </div>
-                            }
+                                <div>
+                                    { follow?.follower_count }フォローワー
+                                </div>
+                            </div>
+                            <div className={styles.FollowPosition}>
+                                { loginUser?.id == data?.id ?
+                                    ""
+                                    :
+                                    <div>
+                                        { follow?.is_follow == true ?
+                                            <Unfollow
+                                                userId={profileId}
+                                            />
+                                            :
+                                            <Follow
+                                                userId={profileId}
+                                            />
+                                        }
+                                    </div>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

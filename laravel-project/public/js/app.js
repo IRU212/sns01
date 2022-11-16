@@ -14169,6 +14169,10 @@ function Profile() {
     _useState4 = _slicedToArray(_useState3, 2),
     loginUser = _useState4[0],
     setLoginUser = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+    _useState6 = _slicedToArray(_useState5, 2),
+    follow = _useState6[0],
+    setFollow = _useState6[1];
 
   // 現在のURL取得
   var locationUrl = location.href;
@@ -14185,6 +14189,11 @@ function Profile() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useLayoutEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/login/user").then(function (res) {
       setLoginUser(res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/follow/".concat(profileId, "/index")).then(function (res) {
+      setFollow(res.data);
     })["catch"](function (err) {
       console.log(err);
     });
@@ -14214,11 +14223,21 @@ function Profile() {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
             className: _public_css_profile_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Name,
             children: data === null || data === void 0 ? void 0 : data.name
-          }), (loginUser === null || loginUser === void 0 ? void 0 : loginUser.id) == (data === null || data === void 0 ? void 0 : data.id) ? "" : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-            children: (loginUser === null || loginUser === void 0 ? void 0 : loginUser.follow.followig) == profileId ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Profile_Unfollow__WEBPACK_IMPORTED_MODULE_5__["default"], {
-              userId: profileId
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Profile_Follow__WEBPACK_IMPORTED_MODULE_4__["default"], {
-              userId: profileId
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: _public_css_profile_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].FollowCountPosition,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              children: [follow === null || follow === void 0 ? void 0 : follow.following_count, "\u30D5\u30A9\u30ED\u30FC"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              children: [follow === null || follow === void 0 ? void 0 : follow.follower_count, "\u30D5\u30A9\u30ED\u30FC\u30EF\u30FC"]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            className: _public_css_profile_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].FollowPosition,
+            children: (loginUser === null || loginUser === void 0 ? void 0 : loginUser.id) == (data === null || data === void 0 ? void 0 : data.id) ? "" : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              children: (follow === null || follow === void 0 ? void 0 : follow.is_follow) == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Profile_Unfollow__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                userId: profileId
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Profile_Follow__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                userId: profileId
+              })
             })
           })]
         })]
@@ -14244,7 +14263,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _public_css_profile_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../public/css/profile.module.scss */ "./public/css/profile.module.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -14258,9 +14279,10 @@ function Follow(props) {
       console.log(err);
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     onClick: FollowClick,
-    children: "\u30D5\u30A9\u30ED\u30FC"
+    className: _public_css_profile_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].FollowButton,
+    children: "\u30D5\u30A9\u30ED\u30FC\u3059\u308B"
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Follow);
@@ -14281,7 +14303,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _public_css_profile_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../public/css/profile.module.scss */ "./public/css/profile.module.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -14295,9 +14319,10 @@ function Unfollow(props) {
       console.log(err);
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     onClick: UnFollowClick,
-    children: "\u30D5\u30A9\u30ED\u30FC\u89E3\u9664"
+    className: _public_css_profile_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].UnFollowButton,
+    children: "\u30D5\u30A9\u30ED\u30FC\u4E2D"
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Unfollow);
@@ -15996,7 +16021,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".cmIlmODJA0ePJGlcJc2RUw\\=\\= {\n  width: 100%;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .fKhgjv2UH5qz3obY0DlP2A\\=\\= {\n  width: 100%;\n  height: 80vh;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .fKhgjv2UH5qz3obY0DlP2A\\=\\= img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= {\n  width: 100%;\n  position: relative;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .dFD3ujG9lZeGQ\\+NaCNlTRg\\=\\= {\n  width: 84px;\n  height: 84px;\n  background-color: #fff;\n  border-radius: 50%;\n  position: absolute;\n  top: -40px;\n  left: 10vw;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .dFD3ujG9lZeGQ\\+NaCNlTRg\\=\\= img {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .WlA3rtP7xs4gogRMBBb8JQ\\=\\= {\n  width: 100%;\n  padding: 35px 0 0 24vw;\n  display: flex;\n  font-weight: 600;\n  position: relative;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .WlA3rtP7xs4gogRMBBb8JQ\\=\\= .sPSU3UjEjAnHa-3QBexfFA\\=\\= {\n  margin: 0 4vw 0 0;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".cmIlmODJA0ePJGlcJc2RUw\\=\\= {\n  width: 100%;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .fKhgjv2UH5qz3obY0DlP2A\\=\\= {\n  width: 100%;\n  height: 80vh;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .fKhgjv2UH5qz3obY0DlP2A\\=\\= img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= {\n  width: 100%;\n  position: relative;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .dFD3ujG9lZeGQ\\+NaCNlTRg\\=\\= {\n  width: 84px;\n  height: 84px;\n  background-color: #fff;\n  border-radius: 50%;\n  position: absolute;\n  top: -40px;\n  left: 10vw;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .dFD3ujG9lZeGQ\\+NaCNlTRg\\=\\= img {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .WlA3rtP7xs4gogRMBBb8JQ\\=\\= {\n  width: 100%;\n  padding: 35px 0 0 24vw;\n  display: flex;\n  font-weight: 600;\n  position: relative;\n  height: 100px;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .WlA3rtP7xs4gogRMBBb8JQ\\=\\= .sPSU3UjEjAnHa-3QBexfFA\\=\\= {\n  margin: 0 4vw 0 0;\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%);\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .WlA3rtP7xs4gogRMBBb8JQ\\=\\= .-ouV7HuFaWC52wDkczB7Pg\\=\\= {\n  display: flex;\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%);\n  left: 32vw;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .WlA3rtP7xs4gogRMBBb8JQ\\=\\= .-ouV7HuFaWC52wDkczB7Pg\\=\\= div {\n  margin: 0 20px 0 0;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .WlA3rtP7xs4gogRMBBb8JQ\\=\\= .GQgxkaP37-1apxnzZMCeRA\\=\\= {\n  position: absolute;\n  right: 24vw;\n  top: 50%;\n  transform: translateY(-50%);\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .WlA3rtP7xs4gogRMBBb8JQ\\=\\= .GQgxkaP37-1apxnzZMCeRA\\=\\= .\\+xXdEZxSKtkLzU\\+owAz39A\\=\\= {\n  border: 1px solid #000;\n  padding: 9px 15px;\n  font-size: 0.7rem;\n  border-radius: 20px;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .WlA3rtP7xs4gogRMBBb8JQ\\=\\= .GQgxkaP37-1apxnzZMCeRA\\=\\= .\\+xXdEZxSKtkLzU\\+owAz39A\\=\\=:hover {\n  cursor: pointer;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .WlA3rtP7xs4gogRMBBb8JQ\\=\\= .GQgxkaP37-1apxnzZMCeRA\\=\\= .jTJEFfIP2hZUDtILK1Uy1g\\=\\= {\n  background-color: #000;\n  color: #fff;\n  padding: 9px 15px;\n  font-size: 0.7rem;\n  border-radius: 20px;\n}\n.cmIlmODJA0ePJGlcJc2RUw\\=\\= .QoIC-e9duZNe7djnv08mWw\\=\\= .WlA3rtP7xs4gogRMBBb8JQ\\=\\= .GQgxkaP37-1apxnzZMCeRA\\=\\= .jTJEFfIP2hZUDtILK1Uy1g\\=\\=:hover {\n  cursor: pointer;\n}", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"Profile": "cmIlmODJA0ePJGlcJc2RUw==",
@@ -16004,7 +16029,11 @@ ___CSS_LOADER_EXPORT___.locals = {
 	"ProfileDiv": "QoIC-e9duZNe7djnv08mWw==",
 	"Icon": "dFD3ujG9lZeGQ+NaCNlTRg==",
 	"ProfileText": "WlA3rtP7xs4gogRMBBb8JQ==",
-	"Name": "sPSU3UjEjAnHa-3QBexfFA=="
+	"Name": "sPSU3UjEjAnHa-3QBexfFA==",
+	"FollowCountPosition": "-ouV7HuFaWC52wDkczB7Pg==",
+	"FollowPosition": "GQgxkaP37-1apxnzZMCeRA==",
+	"FollowButton": "+xXdEZxSKtkLzU+owAz39A==",
+	"UnFollowButton": "jTJEFfIP2hZUDtILK1Uy1g=="
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
