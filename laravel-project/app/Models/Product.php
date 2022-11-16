@@ -20,7 +20,7 @@ class Product extends Model
 
     public function situation()
     {
-        return $this->belongsTo(Situation::class);
+        return $this->belongsTo(Situation::class)->withDefault();
     }
 
     public function user()

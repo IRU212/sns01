@@ -68,6 +68,9 @@ Route::get('/product/transaction/{id}',[TransactionJudjemntController::class,'in
 // ユーザプロフィール
 Route::get('/profile/{id}',[ProfileController::class,'index'])->name('profile.index');
 
+// プロフィール出品商品
+Route::get('profile/product/{id}/index',[\App\Http\Controllers\Profile\ProductController::class,'index']);
+
 // 購入手続き部屋作成
 Route::get('/transaction_room/{id}/store',[TransactionController::class,'room_store']);
 Route::post('/transaction_room/{id}/store',[TransactionController::class,'room_store']);

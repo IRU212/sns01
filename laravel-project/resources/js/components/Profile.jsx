@@ -6,6 +6,7 @@ import NotUserPage from './NotUserPage'
 import Follow from './Profile/Follow'
 import Unfollow from './Profile/Unfollow'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ProfileProduct from './Profile/ProfileProduct'
 
 function Profile() {
 
@@ -98,6 +99,9 @@ function Profile() {
                             </div>
                         </div>
                     </div>
+                    <ProfileProduct
+                        profileId={profileId}
+                    />
                 </div>
             }
         </div>

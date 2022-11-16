@@ -10,6 +10,6 @@ class Situation extends Model
     protected $table = "situation";
 
     protected $fillable = [
-        "name"
+        "situation_name"
     ];
 }

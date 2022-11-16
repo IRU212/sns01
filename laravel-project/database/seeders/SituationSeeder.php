@@ -16,23 +16,23 @@ class SituationSeeder extends Seeder
     public function run()
     {
         Situation::create([
-            "name" => "購入済み"
+            "situation_name" => "商品到着済み"
         ]);
 
         Situation::create([
-            "name" => "発送中"
+            "situation_name" => "発送中"
         ]);
 
         Situation::create([
-            "name" => "取引中"
+            "situation_name" => "取引中"
         ]);
 
         Situation::create([
-            "name" => "出品中"
+            "situation_name" => "出品中"
         ]);
 
         Situation::create([
-            "name" => "発送済み"
+            "situation_name" => "発送済み"
         ]);
     }
 }

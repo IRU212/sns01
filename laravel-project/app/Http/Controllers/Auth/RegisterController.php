@@ -27,8 +27,8 @@ class RegisterController extends Controller
         $user->last_name = $request->last_name;
         $user->first_name_kana = $request->first_name_kana;
         $user->last_name_kana = $request->last_name_kana;
-        $user->icon_path = $request->icon_path;
-        $user->back_path = $request->back_path;
+        // $user->icon_path = $request->icon_path;
+        // $user->back_path = $request->back_path;
         $user->birthday = $request->birthday;
         $user->zip = $request->zip;
         $user->address = $request->address;
