@@ -28,6 +28,19 @@ class ProfileController extends Controller
             $icon_path = User::where('id',$user_id)->pluck('icon_path')->first();
         }
 
+        if (!$request->back_image == '') {
+            $back_image = $request->back_image;
+            // ファイル名を取得
+            $back_name = $back_image->getClientOriginalName();
+
+            $back_image->storeAs('public/' . $dir , $back_name);
+
+            // db保存path
+            $back_path = "/storage/image/" . $back_name;
+        } else {
+            $back_path = User::where('id',$user_id)->pluck('back_path')->first();
+        }
+
         User::where('id',$user_id)->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -36,7 +49,7 @@ class ProfileController extends Controller
             // 'first_name_kana' => $request->first_name_kana,
             // 'last_name_kana' => $request->last_name_kana,
             'icon_path' => $icon_path,
-            // 'back_path' => $request->back_path,
+            'back_path' => $back_path,
             // 'birthday' => $request->birthday,
             // 'zip' => $request->zip,
             // 'address' => $request->address

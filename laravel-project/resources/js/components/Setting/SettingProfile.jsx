@@ -13,6 +13,7 @@ function SettingProfile() {
     const [name,setName] = useState()
     const [email,setEmail] = useState()
     const [iconImage,setIconImage] = useState('')
+    const [backImage,setBackImage] = useState('')
 
     useLayoutEffect(() => {
         axios
@@ -29,6 +30,7 @@ function SettingProfile() {
 
     // 画像プレビュー
     const iconPreviewImg = useRef()
+    const backPreviewImg = useRef()
 
     const NameChange = (e) => {
         setName(e.target.value)
@@ -52,7 +54,19 @@ function SettingProfile() {
         reader.readAsDataURL(imageTarget)
     }
 
-    console.log(iconPreviewImg)
+    const BackImageChange = (e) => {
+        const imageTarget = e.target.files[0]
+
+        setBackImage(imageTarget)
+
+        // プレビュー機能
+        backPreviewImg.current.title = imageTarget.name
+        const reader = new FileReader()
+        reader.onload = (e) => {
+            backPreviewImg.current.setAttribute('src',e.target.result)
+        }
+        reader.readAsDataURL(imageTarget)
+    }
 
     const EditClick = () => {
 
@@ -60,6 +74,7 @@ function SettingProfile() {
         data.append('name',name)
         data.append('email',email)
         data.append('icon_image',iconImage)
+        data.append('back_image',backImage)
 
         axios
             .post('http://localhost:8000/api/setting/profile/store',data,{
@@ -79,6 +94,16 @@ function SettingProfile() {
         <div className={styles.SettingProfile}>
             <div className={styles.Title}>
                 プロフィール設定
+            </div>
+            <div className={styles.BackImg}>
+                <label htmlFor="backImage" className={styles.BackImgDiv}>
+                    { backImage == '' ?
+                        <img src={`http://localhost:8000/${data?.back_path}`} alt="" />
+                        :
+                        <img ref={backPreviewImg} alt="" />
+                    }
+                </label>
+                <input type="file" id='backImage' accept='image/*' style={{display:"none"}} onChange={BackImageChange} />
             </div>
             <div className={styles.editProfile}>
                 <div className={styles.Left}>
