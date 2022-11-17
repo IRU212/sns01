@@ -65,8 +65,8 @@ class TransactionController extends Controller
             } else {
                 DB::table('transaction_user')
                 ->insert([
-                    ["user_id" => session('login_id'),"transaction_room_id" => $transaction_room_id],
-                    ["user_id" => $request->user_id,"transaction_room_id" => $transaction_room_id]
+                    ["user_id" => session('login_id'),"transaction_room_id" => $transaction_room_id + 1],
+                    ["user_id" => $request->user_id,"transaction_room_id" => $transaction_room_id + 1]
                 ]);
             }
         }
