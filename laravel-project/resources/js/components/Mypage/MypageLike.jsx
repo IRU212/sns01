@@ -21,7 +21,7 @@ function MypageLike() {
     },[])
 
     return (
-        <div className={styles.MypageLike}>
+        <div className={styles.MypageList}>
             <div className={styles.Title}>
                 いいねした商品一覧
             </div>

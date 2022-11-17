@@ -124,6 +124,9 @@ Route::get('/mypage/like/index',[\App\Http\Controllers\Mypage\LikeController::cl
 // 購入した商品一覧
 Route::get('/mypage/purchase/index',[\App\Http\Controllers\Mypage\PurchaseController::class,'index']);
 
+// 出品した商品一覧
+Route::get('/mypage/create/index',[\App\Http\Controllers\Mypage\CreateController::class,'index']);
+
 // 未ログイン時にログインページ
 
 

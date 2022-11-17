@@ -21,7 +21,7 @@ function MypagePurchase() {
     },[])
 
     return (
-        <div className={styles.MypageLike}>
+        <div className={styles.MypageList}>
             <div className={styles.Title}>
                 購入した商品一覧
             </div>
