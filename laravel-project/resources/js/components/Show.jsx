@@ -38,6 +38,7 @@ function Show() {
             .get(`http://localhost:8000/api/product/${productId}`)
             .then((res) => {
                 setData(res.data)
+                console.log(res.data)
             })
             .catch((err) => {
                 console.log(err)
@@ -119,10 +120,22 @@ function Show() {
                                 </div>
                             </Link>
                             :
-                            <PurchaseTransactionButton
-                                productId={productId}
-                                productUserId={data?.user_id}
-                            />
+                            <div>
+                                { data?.situation_id == 3 ?
+                                    <Link to={`/product/room/${productId}`}>
+                                        <div className={styles.PurchaseButton}>
+                                            <div>
+                                                取引画面
+                                            </div>
+                                        </div>
+                                    </Link>
+                                    :
+                                    <PurchaseTransactionButton
+                                        productId={productId}
+                                        productUserId={data?.user_id}
+                                    />
+                                }
+                            </div>
                         }
                     </div>
                     :
