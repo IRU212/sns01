@@ -1,14 +1,17 @@
 version: 2.1
 jobs:
-  build:
+  job:
     docker:
-      - image: circleci/php:7.4-node-browsers
+      - image: circleci/php:8.0-node-browsers
+        auth:
+          username: iru2121
+          password: ryuuya2121b
     steps:
       - checkout
-      - run: sudo composer self-update --1
-      - run: composer install -n --prefer-dist
-      - run: npm ci
-      - run: npm run dev
+      - run: sudo composer self-update 
+      - run: composer install -n --prefer-dist --working-dir=./laravel-project
+      # - run: npm ci --working-dir=./laravel-project
+      # - run: npm run dev --working-dir=./laravel-project
       - run:
-          name: php test
-          command: vendor/bin/phpunit
+          command: php ./laravel-project/vendor/bin/phpunit --configuration=./laravel-project/phpunit.xml
+      # - run: ls
