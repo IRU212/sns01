@@ -16,11 +16,12 @@
 
 version: 2.1
 jobs:
-  docker:
-    - image: circleci/php:8.0-node-browsers
-      auth:
-        username: iru2121
-        password: ryuuya2121b
+  build:
+    docker:
+      - image: circleci/php:8.0-node-browsers
+    auth:
+      username: iru2121
+      password: ryuuya2121b
   steps:
     - checkout # check out the code in the project directory
     - run: echo "hello world" # run the `echo` command
