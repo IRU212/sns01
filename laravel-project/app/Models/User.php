@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Product::class,'like_user','user_id','product_id');
     }
+
+    public function transaction_rooms()
+    {
+        return $this->belongsToMany(Transactionroom::class,'transaction_user','user_id','transaction_room_id');
+    }
 }

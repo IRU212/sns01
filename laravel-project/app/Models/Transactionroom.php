@@ -12,4 +12,5 @@ class Transactionroom extends Model
     protected $fillable = [
         "product_id"
     ];
+
 }

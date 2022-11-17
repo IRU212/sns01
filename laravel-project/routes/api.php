@@ -121,6 +121,9 @@ Route::post('/setting/profile/store',[\App\Http\Controllers\Setting\ProfileContr
 // いいねした商品一覧
 Route::get('/mypage/like/index',[\App\Http\Controllers\Mypage\LikeController::class,'index']);
 
+// 購入した商品一覧
+Route::get('/mypage/purchase/index',[\App\Http\Controllers\Mypage\PurchaseController::class,'index']);
+
 // 未ログイン時にログインページ
 
 
