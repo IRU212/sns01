@@ -11,5 +11,5 @@ jobs:
       # - run: npm ci --working-dir=./laravel-project
       # - run: npm run dev --working-dir=./laravel-project
       - run:
-          command: vendor/bin/phpunit
+          command: php ./laravel-project/vendor/bin/phpunit --configuration=./laravel-project/phpunit.xml
       # - run: ls
