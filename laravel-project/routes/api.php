@@ -62,6 +62,10 @@ Route::post('/product/store',[ProductController::class,'store'])->name('product.
 // 商品詳細
 Route::get('/product/{id}',[ProductController::class,'show'])->name('product.show');
 
+// 商品編集
+Route::get('/product/{id}/edit',[ProductController::class,'edit'])->name('product.edit');
+Route::post('/product/{id}/edit',[ProductController::class,'edit'])->name('product.edit');
+
 // 商品取引中判定
 Route::get('/product/transaction/{id}',[TransactionJudjemntController::class,'index'])->name('product.transaction.index');
 

@@ -7,11 +7,18 @@ import PurchaseTransactionButton from './Show/PurchaseTransactionButton'
 import Like from './Content/Like'
 import UnLike from './Content/UnLike'
 import ShowProfile from './Show/ShowProfile'
+import { Link } from 'react-router-dom'
 
 function Show() {
 
+    // 商品情報
     const [data,setData] = useState()
+
+    // いいね情報
     const [like,setLike] = useState()
+
+    // ログイン情報
+    const [loginUser,setLoginUser] = useState()
 
     // 購入済み情報取得
     const [doneButton,setDoneButton] = useState()
@@ -31,6 +38,16 @@ function Show() {
             .get(`http://localhost:8000/api/product/${productId}`)
             .then((res) => {
                 setData(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+        // ログイン情報
+        axios
+            .get("http://localhost:8000/api/login/user")
+            .then((res) => {
+                setLoginUser(res.data)
             })
             .catch((err) => {
                 console.log(err)
@@ -92,10 +109,22 @@ function Show() {
                     productInfo={data}
                 />
                 { buttonToggle == true ?
-                    <PurchaseTransactionButton
-                        productId={productId}
-                        productUserId={data?.user_id}
-                    />
+                    <div>
+                        { loginUser?.id == data?.user_id ?
+                            <Link to={`/product/edit/${productId}`}>
+                                <div className={styles.PurchaseButton}>
+                                    <div>
+                                        商品を編集
+                                    </div>
+                                </div>
+                            </Link>
+                            :
+                            <PurchaseTransactionButton
+                                productId={productId}
+                                productUserId={data?.user_id}
+                            />
+                        }
+                    </div>
                     :
                     <div className={styles.PurchaseButton}>
                         <div>

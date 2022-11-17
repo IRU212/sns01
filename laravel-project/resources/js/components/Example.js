@@ -20,6 +20,7 @@ import SettingProfile from './Setting/SettingProfile';
 import MypageLike from './Mypage/MypageLike';
 import MypagePurchase from './Mypage/MypagePurchase';
 import MypageCreate from './Mypage/MypageCreate';
+import ProductEdit from './Product/ProductEdit';
 
 function Example() {
     return (
@@ -33,6 +34,7 @@ function Example() {
                             <Route path='/product/:productId' element={<Show />} />
                             <Route path='/product/room/:productId' element={<Transaction />} />
                             <Route path="/create" element={<Create />} />
+                            <Route path="/product/edit/:productId" element={<ProductEdit />} />
                             <Route path='/profile/:profileId' element={<Profile />} />
                             <Route path='/register' element={<Register />} />
                             <Route path='/login' element={<Login />} />
