@@ -1,27 +1,15 @@
-# version: 2.1
-# jobs:
-#   working_directory: ~/01/laravel-project
-#   build:
-#     docker:
-#       - image: circleci/php:8.0-node-browsers
-#     steps:
-#       - checkout
-#       - run: sudo composer self-update 
-#       - run: composer install -n --prefer-dist
-#       - run: npm ci
-#       - run: npm run dev
-#       - run:
-#           name: php test
-#           command: vendor/bin/phpunit
-
 version: 2.1
 jobs:
+  working_directory: ~/01/laravel-project
   build:
     docker:
       - image: circleci/php:8.0-node-browsers
-    auth:
-      username: iru2121
-      password: ryuuya2121b
-  steps:
-    - checkout # check out the code in the project directory
-    - run: echo "hello world" # run the `echo` command
+    # steps:
+    #   - checkout
+    #   - run: sudo composer self-update 
+    #   - run: composer install -n --prefer-dist
+    #   - run: npm ci
+    #   - run: npm run dev
+    #   - run:
+    #       name: php test
+    #       command: vendor/bin/phpunit
