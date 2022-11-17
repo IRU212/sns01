@@ -8,9 +8,9 @@ jobs:
       - checkout
       - run: sudo composer self-update 
       - run: composer install -n --prefer-dist --working-dir=./laravel-project
-      - run: npm ci
-      - run: npm run dev
+      # - run: npm ci --working-dir=./laravel-project
+      # - run: npm run dev --working-dir=./laravel-project
       - run:
           name: php test
-          command: vendor/bin/phpunit
+          command: vendor/bin/phpunit --working-dir=./laravel-project
       # - run: ls
