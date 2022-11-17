@@ -15,19 +15,12 @@
 #           command: vendor/bin/phpunit
 
 version: 2.1
-
 jobs:
-  job:
-    docker:
-      - image: circleci/php:8.0-node-browsers
-        auth:
-          username: iru2121
-          password: ryuuya2121b
-    steps:
-      - checkout # check out the code in the project directory
-      - run: echo "hello world" # run the `echo` command
-
-workflows:
-  my-workflow:
-    jobs:
-      - hello-job
+  docker:
+    - image: circleci/php:8.0-node-browsers
+      auth:
+        username: iru2121
+        password: ryuuya2121b
+  steps:
+    - checkout # check out the code in the project directory
+    - run: echo "hello world" # run the `echo` command
