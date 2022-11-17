@@ -6,11 +6,11 @@ jobs:
       - image: circleci/php:8.0-node-browsers
     steps:
       - checkout
-      # - run: sudo composer self-update 
-      # - run: composer install -n --prefer-dist
-      # - run: npm ci
-      # - run: npm run dev
-      # - run:
-      #     name: php test
-      #     command: vendor/bin/phpunit
-      - run: ls
+      - run: sudo composer self-update 
+      - run: composer install -n --prefer-dist --working-dir=./laravel-project
+      - run: npm ci
+      - run: npm run dev
+      - run:
+          name: php test
+          command: vendor/bin/phpunit
+      # - run: ls
