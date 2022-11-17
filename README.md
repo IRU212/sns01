@@ -1,3 +1,23 @@
+#### フリマサイト
+
+##### 利用言語
+
+###### PHP(Laravel)
+###### JavaScript(React)
+
+##### 使用技術
+
+###### git
+###### circleCi
+
+##### テスト用ログインユーザアカウント
+
+###### ニックネーム aaa
+###### パスワード aaa
+
+##### ER図
+###### https://dbdiagram.io/d/636b0157c9abfc6111713927
+
 ###### docker-compose up -d
 ###### docker-compose exec app bash
 ###### php artisan key:generate

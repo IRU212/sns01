@@ -1,4 +1,4 @@
-$header-height: 55px;
+$header-height: 65px;
 
 .LinkLAuth{
     text-decoration: none;
@@ -16,6 +16,28 @@ $header-height: 55px;
     height: $header-height;
     padding: 0 0 0 120px;
     position: relative;
+
+    .HeaderSearch{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+        $input-width: 33vw;
+
+        input{
+            width: $input-width;
+            padding: 5px 0px;
+            outline: none;
+        }
+
+        .SearchResult{
+            width: $input-width;
+            position: absolute;
+            top: 40px;
+            background-color: #ccc;
+        }
+    }
 
     .HeaderIcon{
         position: absolute;

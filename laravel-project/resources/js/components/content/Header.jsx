@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from '../../../../public/css/content.module.scss'
 import axios from 'axios'
 import IconProfile from './IconProfile'
+import HeaderSearch from './HeaderSearch'
 
 function Header() {
 
@@ -20,6 +21,9 @@ function Header() {
 
     return (
         <div className={styles.Header}>
+            <div className={styles.HeaderSearch}>
+                <HeaderSearch />
+            </div>
             <div className={styles.HeaderIcon}>
                 <IconProfile />
             </div>
