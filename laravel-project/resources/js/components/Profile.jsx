@@ -60,7 +60,9 @@ function Profile() {
                 <div className={styles.Profile}>
                     <div className={styles.BackImg}>
                         { data?.back_path == null ?
-                            <AccountCircleIcon style={{fontSize:"83px"}} />
+                            <div className={styles.NoneBackImg}>
+
+                            </div>
                             :
                             <img src={`http://localhost:8000/${data?.back_path}`} alt="" />
                         }
