@@ -11,6 +11,7 @@ use App\Http\Controllers\LoginuserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\Search\ResultController;
 use App\Http\Controllers\SituationCOntroller;
 use App\Http\Controllers\TransactionchatController;
 use App\Http\Controllers\TransactionController;
@@ -130,6 +131,10 @@ Route::get('/mypage/purchase/index',[\App\Http\Controllers\Mypage\PurchaseContro
 
 // 出品した商品一覧
 Route::get('/mypage/create/index',[\App\Http\Controllers\Mypage\CreateController::class,'index']);
+
+// 検索履歴保存
+Route::get('/search/store',[ResultController::class,'store']);
+Route::post('/search/store',[ResultController::class,'store']);
 
 // 未ログイン時にログインページ
 

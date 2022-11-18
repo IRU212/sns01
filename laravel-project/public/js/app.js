@@ -2481,6 +2481,34 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ "./node_modules/@mui/icons-material/Search.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@mui/icons-material/Search.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@mui/icons-material/utils/createSvgIcon.js"));
+
+var _jsxRuntime = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+  d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+}), 'Search');
+
+exports["default"] = _default;
+
+/***/ }),
+
 /***/ "./node_modules/@mui/icons-material/utils/createSvgIcon.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/@mui/icons-material/utils/createSvgIcon.js ***!
@@ -16588,6 +16616,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../public/css/content.module.scss */ "./public/css/content.module.scss");
+/* harmony import */ var _mui_icons_material_Search__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/icons-material/Search */ "./node_modules/@mui/icons-material/Search.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -16601,19 +16630,30 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function HeaderSearch() {
+  // 商品情報
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
     _useState2 = _slicedToArray(_useState, 2),
     dataList = _useState2[0],
     setDataList = _useState2[1];
+
+  // 検索候補
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
     _useState4 = _slicedToArray(_useState3, 2),
     searchResult = _useState4[0],
     setSearchResult = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+
+  // 検索候補表示判定
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState6 = _slicedToArray(_useState5, 2),
-    name = _useState6[0],
-    setName = _useState6[1];
+    searchDisplay = _useState6[0],
+    setSearchDisplay = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+    _useState8 = _slicedToArray(_useState7, 2),
+    name = _useState8[0],
+    setName = _useState8[1];
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:8000/api/product').then(function (res) {
       setDataList(res.data);
@@ -16629,33 +16669,92 @@ function HeaderSearch() {
     });
     setSearchResult(result);
   };
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+    _useState10 = _slicedToArray(_useState9, 2),
+    searchInputNumber = _useState10[0],
+    setSearchInputNumber = _useState10[1];
+  var searchDisplayClick = function searchDisplayClick() {
+    setSearchInputNumber(1);
+    setSearchDisplay(!searchDisplay);
+  };
+  var displayClick = function displayClick(e) {
+    if (e.target == e.currentTarget) {
+      setSearchInputNumber(0);
+      setSearchDisplay(!searchDisplay);
+    }
+  };
+  var ResultPostClick = function ResultPostClick(e) {
+    var searchData = new FormData();
+    searchData.append("name", e);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/search/store', searchData).then(function () {})["catch"](function (err) {
+      console.log(err);
+    });
+  };
+
+  // ページ遷移時に実行
+  window.onbeforeunload = function WindowBefore() {
+    var searchData = new FormData();
+    searchData.append("name", name);
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/search/store', searchData).then(function () {})["catch"](function (err) {
+      console.log(err);
+    });
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-      type: "text",
-      onChange: NameChange
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+      action: "/result/".concat(name),
+      children: [searchInputNumber == 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+        type: "text",
+        onChange: NameChange,
+        onClick: searchDisplayClick
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+        type: "text",
+        onChange: NameChange
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_icons_material_Search__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].SearchIcon
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].SearchResult,
-      children: name == '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        children: dataList === null || dataList === void 0 ? void 0 : dataList.map(function (item, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      children: searchDisplay == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].SearchResult,
+        onClick: function onClick(e) {
+          displayClick(e);
+        },
+        children: name == '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].SearchDiv,
+          children: dataList === null || dataList === void 0 ? void 0 : dataList.map(function (item, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              onClick: function onClick() {
+                return ResultPostClick(item.name);
+              },
               children: index < 6 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                children: item.name
+                className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ItemDiv,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+                  href: "/product/".concat(item.id),
+                  className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Link,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                    children: item.name
+                  })
+                }, index)
               })
-            })
-          }, index);
-        })
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        children: searchResult === null || searchResult === void 0 ? void 0 : searchResult.map(function (item, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            });
+          })
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].SearchDiv,
+          children: searchResult === null || searchResult === void 0 ? void 0 : searchResult.map(function (item, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
               children: index < 6 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                children: item.name
+                className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ItemDiv,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+                  href: "/product/".concat(item.id),
+                  className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Link,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                    children: item.name
+                  })
+                }, index)
               })
-            })
-          }, index);
+            });
+          })
         })
-      })
+      }) : ""
     })]
   });
 }
@@ -16988,17 +17087,20 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".lzLv6WsENYG968YWCkcWPg\\=\\= {\n  text-decoration: none;\n  color: #fff;\n}\n.lzLv6WsENYG968YWCkcWPg\\=\\=:hover {\n  color: #ccc;\n}\n\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= {\n  background-color: #000;\n  color: #fff;\n  width: 100%;\n  height: 65px;\n  padding: 0 0 0 120px;\n  position: relative;\n}\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= .YK4BWA8sLuhkLLLcxhR0eQ\\=\\= {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= .YK4BWA8sLuhkLLLcxhR0eQ\\=\\= input {\n  width: 33vw;\n  padding: 5px 0px;\n  outline: none;\n}\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= .YK4BWA8sLuhkLLLcxhR0eQ\\=\\= .C\\+WZeO2BVqsZ-cbZDtpMQg\\=\\= {\n  width: 33vw;\n  position: absolute;\n  top: 40px;\n  background-color: #ccc;\n}\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= .Za1mkcrC9VcJaKGRakl\\+EA\\=\\= {\n  position: absolute;\n  right: 8vw;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.Rx1Z8SKqCvaKQgvvTJhPRw\\=\\= {\n  width: 100vw;\n  height: calc(100vh - 65px);\n  background-color: rgba(0, 0, 0, 0.6);\n  position: fixed;\n  top: 65px;\n  left: 0;\n  z-index: 999;\n}\n.Rx1Z8SKqCvaKQgvvTJhPRw\\=\\= ._5z6uKEb1PSP5REqnzB78Qw\\=\\= {\n  width: 260px;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  border-right: 1px solid #000;\n  background-color: #fff;\n}\n.Rx1Z8SKqCvaKQgvvTJhPRw\\=\\= ._5z6uKEb1PSP5REqnzB78Qw\\=\\= .q\\+VVFnqyrA7kcvTIgMX6-g\\=\\= {\n  margin: 10vh 0px 10vh 75px;\n  font-size: 1.2rem;\n}\n\n._3y85EVa60TUVgSB9ddjweg\\=\\= {\n  position: absolute;\n  line-height: 65px;\n  top: 0;\n  left: 65px;\n  color: #fff;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\=:hover {\n  cursor: pointer;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= {\n  position: relative;\n  height: 20px;\n  width: 28px;\n  display: inline-block;\n  box-sizing: border-box;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div {\n  position: absolute;\n  left: 0;\n  height: 2px;\n  width: 28px;\n  background-color: #fff;\n  border-radius: 2px;\n  display: inline-block;\n  box-sizing: border-box;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div:nth-of-type(1) {\n  bottom: 13px;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div:nth-of-type(2) {\n  bottom: 3px;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div:nth-of-type(3) {\n  bottom: -6px;\n}\n\n.CaKvSj17n7MItFaHXh0e4g\\=\\= {\n  display: flex;\n}\n.CaKvSj17n7MItFaHXh0e4g\\=\\= div {\n  margin-left: 1.3vw;\n}\n.CaKvSj17n7MItFaHXh0e4g\\=\\= div .wF-QbjYybw-2BD5Kc5t8sA\\=\\= {\n  position: absolute;\n  top: 65px;\n  right: 10vw;\n}\n\n._3e7ti-tpKKPe78DohvO-Yw\\=\\= {\n  width: 44px;\n  height: 44px;\n  background-color: #fff;\n  border-radius: 50%;\n}\n._3e7ti-tpKKPe78DohvO-Yw\\=\\= img {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n._3e7ti-tpKKPe78DohvO-Yw\\=\\= img:hover {\n  cursor: pointer;\n}\n\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= {\n  width: 100vw;\n  text-align: center;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= {\n  width: 400px;\n  position: relative;\n  margin: 80px auto 0 auto;\n  padding: 0 0 0 0;\n  text-align: left;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= {\n  width: 100%;\n  margin: 0px 0 30px 0;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .Rj9cmPgY\\+N1lkeXrmj\\+k-w\\=\\= {\n  font-size: 0.8rem;\n  color: rgb(62, 62, 62);\n  margin: 0 0 10px 0;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .cFImURAa7wEIGOU1dL9Iwg\\=\\= {\n  width: 400px;\n  height: 2.4rem;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .vPefyPWZt7rfwep9msiWLg\\=\\= {\n  width: 400px;\n  height: 300px;\n  -o-object-fit: scale-down;\n     object-fit: scale-down;\n  background-color: rgb(242, 238, 238);\n  border: none;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .vPefyPWZt7rfwep9msiWLg\\=\\=:hover {\n  cursor: pointer;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .QmM4s4X2G7h-KLQE2E-xgA\\=\\= {\n  background-color: #000;\n  color: #fff;\n  padding: 8px 20px;\n  border-radius: 10px;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: 0 0 80px 0;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .QmM4s4X2G7h-KLQE2E-xgA\\=\\=:hover {\n  cursor: pointer;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .cDi6eM8lv68GyvFnKrDTyg\\=\\= {\n  background-color: #000;\n  color: #fff;\n  padding: 8px 20px;\n  border-radius: 10px;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: 0 0 80px 0;\n  opacity: 0.7;\n}\n\n.EnjYje4ASp5p8gSDpg6HAA\\=\\= {\n  width: 100vw;\n  height: calc(100vh - 65px);\n  position: relative;\n}\n.EnjYje4ASp5p8gSDpg6HAA\\=\\= div {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-size: 1.6rem;\n  color: rgb(66, 66, 66);\n}\n\n._3OpEWjTQvRIXoQVmLfbrLQ\\=\\= {\n  width: 100%;\n  text-align: center;\n}\n._3OpEWjTQvRIXoQVmLfbrLQ\\=\\= .n8wDd42bL04dE-7d6a7oWQ\\=\\= {\n  font-size: 1.6rem;\n  margin: 60px 0 0 0;\n}\n._3OpEWjTQvRIXoQVmLfbrLQ\\=\\= .QmM4s4X2G7h-KLQE2E-xgA\\=\\= {\n  width: 63%;\n  background-color: #000;\n  color: #fff;\n  padding: 15px 0;\n  margin: 50px auto;\n  border-radius: 10px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".q\\+VVFnqyrA7kcvTIgMX6-g\\=\\= {\n  text-decoration: none;\n  color: #000;\n}\n.q\\+VVFnqyrA7kcvTIgMX6-g\\=\\=:hover {\n  color: #000;\n}\n\n.lzLv6WsENYG968YWCkcWPg\\=\\= {\n  text-decoration: none;\n  color: #fff;\n}\n.lzLv6WsENYG968YWCkcWPg\\=\\=:hover {\n  color: #ccc;\n}\n\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= {\n  background-color: #000;\n  color: #fff;\n  width: 100%;\n  height: 65px;\n  padding: 0 0 0 120px;\n  position: relative;\n}\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= .YK4BWA8sLuhkLLLcxhR0eQ\\=\\= input {\n  width: 33vw;\n  padding: 5px 0px 5px 34px;\n  outline: none;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= .YK4BWA8sLuhkLLLcxhR0eQ\\=\\= .l0Bnui3WONBeXBwUNpFTiQ\\=\\= {\n  position: absolute;\n  top: 50%;\n  left: 33.5vw;\n  transform: translateY(-50%);\n  display: none;\n  color: #000;\n}\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= .YK4BWA8sLuhkLLLcxhR0eQ\\=\\= .C\\+WZeO2BVqsZ-cbZDtpMQg\\=\\= {\n  background-color: rgba(0, 0, 0, 0.4);\n  width: 100vw;\n  height: calc(100vh - 65px);\n  position: fixed;\n  top: 65px;\n  left: 0vw;\n}\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= .YK4BWA8sLuhkLLLcxhR0eQ\\=\\= .C\\+WZeO2BVqsZ-cbZDtpMQg\\=\\= .CSrsKagfXuUoXRFPawHVTQ\\=\\= {\n  background-color: #fff;\n  width: 33vw;\n  height: auto;\n  position: absolute;\n  left: 49.6%;\n  transform: translateX(-50%);\n}\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= .YK4BWA8sLuhkLLLcxhR0eQ\\=\\= .C\\+WZeO2BVqsZ-cbZDtpMQg\\=\\= .CSrsKagfXuUoXRFPawHVTQ\\=\\= .brGZMOn8lH73X8GlmokOAg\\=\\= {\n  padding: 10px 18px;\n  border-bottom: 1px solid #ccc;\n}\n._8EwW-JSgiMH8uawjVf7JRQ\\=\\= .Za1mkcrC9VcJaKGRakl\\+EA\\=\\= {\n  position: absolute;\n  right: 8vw;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.Rx1Z8SKqCvaKQgvvTJhPRw\\=\\= {\n  width: 100vw;\n  height: calc(100vh - 65px);\n  background-color: rgba(0, 0, 0, 0.6);\n  position: fixed;\n  top: 65px;\n  left: 0;\n  z-index: 999;\n}\n.Rx1Z8SKqCvaKQgvvTJhPRw\\=\\= ._5z6uKEb1PSP5REqnzB78Qw\\=\\= {\n  width: 260px;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  border-right: 1px solid #000;\n  background-color: #fff;\n}\n.Rx1Z8SKqCvaKQgvvTJhPRw\\=\\= ._5z6uKEb1PSP5REqnzB78Qw\\=\\= .q\\+VVFnqyrA7kcvTIgMX6-g\\=\\= {\n  margin: 10vh 0px 10vh 75px;\n  font-size: 1.2rem;\n}\n\n._3y85EVa60TUVgSB9ddjweg\\=\\= {\n  position: absolute;\n  line-height: 65px;\n  top: 0;\n  left: 65px;\n  color: #fff;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\=:hover {\n  cursor: pointer;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= {\n  position: relative;\n  height: 20px;\n  width: 28px;\n  display: inline-block;\n  box-sizing: border-box;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div {\n  position: absolute;\n  left: 0;\n  height: 2px;\n  width: 28px;\n  background-color: #fff;\n  border-radius: 2px;\n  display: inline-block;\n  box-sizing: border-box;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div:nth-of-type(1) {\n  bottom: 13px;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div:nth-of-type(2) {\n  bottom: 3px;\n}\n._3y85EVa60TUVgSB9ddjweg\\=\\= .uVBXNIoBysJiztXW5TWg6g\\=\\= div:nth-of-type(3) {\n  bottom: -6px;\n}\n\n.CaKvSj17n7MItFaHXh0e4g\\=\\= {\n  display: flex;\n}\n.CaKvSj17n7MItFaHXh0e4g\\=\\= div {\n  margin-left: 1.3vw;\n}\n.CaKvSj17n7MItFaHXh0e4g\\=\\= div .wF-QbjYybw-2BD5Kc5t8sA\\=\\= {\n  position: absolute;\n  top: 65px;\n  right: 10vw;\n}\n\n._3e7ti-tpKKPe78DohvO-Yw\\=\\= {\n  width: 44px;\n  height: 44px;\n  background-color: #fff;\n  border-radius: 50%;\n}\n._3e7ti-tpKKPe78DohvO-Yw\\=\\= img {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n._3e7ti-tpKKPe78DohvO-Yw\\=\\= img:hover {\n  cursor: pointer;\n}\n\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= {\n  width: 100vw;\n  text-align: center;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= {\n  width: 400px;\n  position: relative;\n  margin: 80px auto 0 auto;\n  padding: 0 0 0 0;\n  text-align: left;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= {\n  width: 100%;\n  margin: 0px 0 30px 0;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .Rj9cmPgY\\+N1lkeXrmj\\+k-w\\=\\= {\n  font-size: 0.8rem;\n  color: rgb(62, 62, 62);\n  margin: 0 0 10px 0;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .cFImURAa7wEIGOU1dL9Iwg\\=\\= {\n  width: 400px;\n  height: 2.4rem;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .vPefyPWZt7rfwep9msiWLg\\=\\= {\n  width: 400px;\n  height: 300px;\n  -o-object-fit: scale-down;\n     object-fit: scale-down;\n  background-color: rgb(242, 238, 238);\n  border: none;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .qB2HoKV-Do7-qENZ2MV2Lw\\=\\= .vPefyPWZt7rfwep9msiWLg\\=\\=:hover {\n  cursor: pointer;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .QmM4s4X2G7h-KLQE2E-xgA\\=\\= {\n  background-color: #000;\n  color: #fff;\n  padding: 8px 20px;\n  border-radius: 10px;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: 0 0 80px 0;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .QmM4s4X2G7h-KLQE2E-xgA\\=\\=:hover {\n  cursor: pointer;\n}\n.xJovrNkqfO4Y7Dvf5CmTNw\\=\\= .RYhefUI1fsKde4YVD3FsdQ\\=\\= .cDi6eM8lv68GyvFnKrDTyg\\=\\= {\n  background-color: #000;\n  color: #fff;\n  padding: 8px 20px;\n  border-radius: 10px;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: 0 0 80px 0;\n  opacity: 0.7;\n}\n\n.EnjYje4ASp5p8gSDpg6HAA\\=\\= {\n  width: 100vw;\n  height: calc(100vh - 65px);\n  position: relative;\n}\n.EnjYje4ASp5p8gSDpg6HAA\\=\\= div {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  font-size: 1.6rem;\n  color: rgb(66, 66, 66);\n}\n\n._3OpEWjTQvRIXoQVmLfbrLQ\\=\\= {\n  width: 100%;\n  text-align: center;\n}\n._3OpEWjTQvRIXoQVmLfbrLQ\\=\\= .n8wDd42bL04dE-7d6a7oWQ\\=\\= {\n  font-size: 1.6rem;\n  margin: 60px 0 0 0;\n}\n._3OpEWjTQvRIXoQVmLfbrLQ\\=\\= .QmM4s4X2G7h-KLQE2E-xgA\\=\\= {\n  width: 63%;\n  background-color: #000;\n  color: #fff;\n  padding: 15px 0;\n  margin: 50px auto;\n  border-radius: 10px;\n}", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
+	"Link": "q+VVFnqyrA7kcvTIgMX6-g==",
 	"LinkLAuth": "lzLv6WsENYG968YWCkcWPg==",
 	"Header": "_8EwW-JSgiMH8uawjVf7JRQ==",
 	"HeaderSearch": "YK4BWA8sLuhkLLLcxhR0eQ==",
+	"SearchIcon": "l0Bnui3WONBeXBwUNpFTiQ==",
 	"SearchResult": "C+WZeO2BVqsZ-cbZDtpMQg==",
+	"SearchDiv": "CSrsKagfXuUoXRFPawHVTQ==",
+	"ItemDiv": "brGZMOn8lH73X8GlmokOAg==",
 	"HeaderIcon": "Za1mkcrC9VcJaKGRakl+EA==",
 	"Side": "Rx1Z8SKqCvaKQgvvTJhPRw==",
 	"SideCover": "_5z6uKEb1PSP5REqnzB78Qw==",
-	"Link": "q+VVFnqyrA7kcvTIgMX6-g==",
 	"SideButton": "_3y85EVa60TUVgSB9ddjweg==",
 	"humberger": "uVBXNIoBysJiztXW5TWg6g==",
 	"NewRegister": "CaKvSj17n7MItFaHXh0e4g==",
