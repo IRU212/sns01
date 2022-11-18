@@ -137,7 +137,7 @@ Route::get('/mypage/create/index',[\App\Http\Controllers\Mypage\CreateController
 Route::get('/candidate/{keyword}/index',[CandidateController::class,'index']);
 
 // 検索履歴保存
-Route::get('/search/{keyword}/index',[ResultController::class,'index']);
+Route::get('/search/index',[ResultController::class,'index']);
 Route::get('/search/store',[ResultController::class,'store']);
 Route::post('/search/store',[ResultController::class,'store']);
 

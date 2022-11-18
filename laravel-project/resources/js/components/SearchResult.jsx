@@ -10,7 +10,7 @@ function SearchResult() {
     const locationUrl = location.href
 
     // 検索文字を取得
-    const searchText = locationUrl.split("/").slice(-1)[0].slice(0,-1)
+    const searchText = locationUrl.split("/").slice(-1)[0].replace("?", "")
 
     useEffect(() => {
         axios

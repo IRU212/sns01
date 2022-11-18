@@ -13,6 +13,9 @@ function HeaderSearch() {
     // 検索候補
     const [searchResult,setSearchResult] = useState()
 
+    // 検索履歴表示
+    const [historySearch,setHistorySearch] = useState()
+
     // 検索候補表示判定
     const [searchDisplay,setSearchDisplay] = useState(false)
 
@@ -29,6 +32,17 @@ function HeaderSearch() {
             .catch((err) => {
                 console.log(err)
             })
+
+        // 検索履歴表示
+        axios
+            .get('http://localhost:8000/api/search/index')
+            .then((res) => {
+                setHistorySearch(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
     },[])
 
     const NameChange = (e) => {
@@ -108,11 +122,11 @@ function HeaderSearch() {
                     }}>
                         { name == '' ?
                             <div className={styles.SearchDiv}>
-                                { dataList?.map((item,index) =>
+                                { historySearch?.map((item,index) =>
                                     <div onClick={() => ResultPostClick(item.name)}>
                                         { index < 6 &&
                                             <div className={styles.ItemDiv}>
-                                                <a href={`/product/${item.id}`} key={index} className={styles.Link}>
+                                                <a href={`/result/${item.name}`} key={index} className={styles.Link}>
                                                     <div>
                                                         { item.name }
                                                     </div>
@@ -128,7 +142,7 @@ function HeaderSearch() {
                                     <div>
                                         { index < 6 &&
                                             <div className={styles.ItemDiv} onClick={() => ResultPostClick(item.name)}>
-                                                <a href={`/product/${item.id}`} key={index} className={styles.Link}>
+                                                <a href={`/result/${item.name}`} key={index} className={styles.Link}>
                                                     <div>
                                                         { item.name }
                                                     </div>

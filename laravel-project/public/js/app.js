@@ -15078,7 +15078,7 @@ function SearchResult() {
   var locationUrl = location.href;
 
   // 検索文字を取得
-  var searchText = locationUrl.split("/").slice(-1)[0].slice(0, -1);
+  var searchText = locationUrl.split("/").slice(-1)[0].replace("?", "");
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/candidate/".concat(searchText, "/index")).then(function (res) {
       setData(res.data);
@@ -16719,22 +16719,35 @@ function HeaderSearch() {
     searchResult = _useState4[0],
     setSearchResult = _useState4[1];
 
-  // 検索候補表示判定
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  // 検索履歴表示
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
     _useState6 = _slicedToArray(_useState5, 2),
-    searchDisplay = _useState6[0],
-    setSearchDisplay = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+    historySearch = _useState6[0],
+    setHistorySearch = _useState6[1];
+
+  // 検索候補表示判定
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
-    resultSave = _useState8[0],
-    setResultSave = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+    searchDisplay = _useState8[0],
+    setSearchDisplay = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
     _useState10 = _slicedToArray(_useState9, 2),
-    name = _useState10[0],
-    setName = _useState10[1];
+    resultSave = _useState10[0],
+    setResultSave = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+    _useState12 = _slicedToArray(_useState11, 2),
+    name = _useState12[0],
+    setName = _useState12[1];
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:8000/api/product').then(function (res) {
       setDataList(res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+
+    // 検索履歴表示
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:8000/api/search/index').then(function (res) {
+      setHistorySearch(res.data);
     })["catch"](function (err) {
       console.log(err);
     });
@@ -16747,10 +16760,10 @@ function HeaderSearch() {
     });
     setSearchResult(result);
   };
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
-    _useState12 = _slicedToArray(_useState11, 2),
-    searchInputNumber = _useState12[0],
-    setSearchInputNumber = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+    _useState14 = _slicedToArray(_useState13, 2),
+    searchInputNumber = _useState14[0],
+    setSearchInputNumber = _useState14[1];
   var searchDisplayClick = function searchDisplayClick() {
     setSearchInputNumber(1);
     setSearchDisplay(!searchDisplay);
@@ -16801,7 +16814,7 @@ function HeaderSearch() {
         },
         children: name == '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].SearchDiv,
-          children: dataList === null || dataList === void 0 ? void 0 : dataList.map(function (item, index) {
+          children: historySearch === null || historySearch === void 0 ? void 0 : historySearch.map(function (item, index) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
               onClick: function onClick() {
                 return ResultPostClick(item.name);
@@ -16809,7 +16822,7 @@ function HeaderSearch() {
               children: index < 6 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                 className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ItemDiv,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-                  href: "/product/".concat(item.id),
+                  href: "/result/".concat(item.name),
                   className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Link,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                     children: item.name
@@ -16828,7 +16841,7 @@ function HeaderSearch() {
                   return ResultPostClick(item.name);
                 },
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-                  href: "/product/".concat(item.id),
+                  href: "/result/".concat(item.name),
                   className: _public_css_content_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].Link,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                     children: item.name

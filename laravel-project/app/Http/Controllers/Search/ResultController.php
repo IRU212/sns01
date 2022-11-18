@@ -9,15 +9,11 @@ use Illuminate\Http\Request;
 
 class ResultController extends Controller
 {
-    public function index($keyword)
+    public function index()
     {
-        $product = new Product();
+        $search_result = new Result();
 
-        $query = $product->query();
-
-        if (!empty($keyword)) {
-            $data = $query->where('name','LIKE',"%{$keyword}%");
-        }
+        $data = $search_result::where('user_id',session('login_id'))->limit(5)->get();
 
         return response()->json($data);
     }
@@ -27,6 +23,7 @@ class ResultController extends Controller
         $search_result = new Result();
 
         $search_result->name = $request->name;
+        $search_result->user_id = session('login_id');
 
         $search_result->save();
     }
