@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UserDestoryController;
+use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ConfirmController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LikeController;
@@ -132,7 +133,11 @@ Route::get('/mypage/purchase/index',[\App\Http\Controllers\Mypage\PurchaseContro
 // 出品した商品一覧
 Route::get('/mypage/create/index',[\App\Http\Controllers\Mypage\CreateController::class,'index']);
 
+// 検索候補表示
+Route::get('/candidate/{keyword}/index',[CandidateController::class,'index']);
+
 // 検索履歴保存
+Route::get('/search/{keyword}/index',[ResultController::class,'index']);
 Route::get('/search/store',[ResultController::class,'store']);
 Route::post('/search/store',[ResultController::class,'store']);
 
