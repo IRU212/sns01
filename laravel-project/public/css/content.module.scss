@@ -60,6 +60,7 @@ $header-height: 65px;
                 position: fixed;
                 top: $header-height;
                 left: -0vw;
+                z-index: 999;
 
             .SearchDiv{
                 background-color: #fff;

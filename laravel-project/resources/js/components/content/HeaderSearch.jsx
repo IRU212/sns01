@@ -16,6 +16,8 @@ function HeaderSearch() {
     // 検索候補表示判定
     const [searchDisplay,setSearchDisplay] = useState(false)
 
+    const [resultSave,setResultSave] = useState(0)
+
     const [name,setName] = useState('')
 
     useEffect(() => {
@@ -66,21 +68,27 @@ function HeaderSearch() {
             .catch((err) => {
                 console.log(err)
             })
+
+        setResultSave(1)
     }
 
     // ページ遷移時に実行
     window.onbeforeunload = function WindowBefore() {
 
-        const searchData = new FormData()
-        searchData.append("name",name)
+        if (resultSave == 0) {
 
-        axios
-            .post('http://localhost:8000/api/search/store',searchData)
-            .then(() => {})
-            .catch((err) => {
-                console.log(err)
-            })
-    }
+            const searchData = new FormData()
+            searchData.append("name",name)
+
+            axios
+                .post('http://localhost:8000/api/search/store',searchData)
+                .then(() => {})
+                .catch((err) => {
+                    console.log(err)
+                })
+            }
+
+        }
 
     return (
         <div>
@@ -119,7 +127,7 @@ function HeaderSearch() {
                                 { searchResult?.map((item,index) =>
                                     <div>
                                         { index < 6 &&
-                                            <div className={styles.ItemDiv}>
+                                            <div className={styles.ItemDiv} onClick={() => ResultPostClick(item.name)}>
                                                 <a href={`/product/${item.id}`} key={index} className={styles.Link}>
                                                     <div>
                                                         { item.name }
