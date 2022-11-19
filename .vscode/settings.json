@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/4f060a72-c4ef-4773-9bf1-4e208abeb815/AppServices/subscriptions/4f060a72-c4ef-4773-9bf1-4e208abeb815/resourceGroups/aliRG/providers/Microsoft.Web/sites/laravel-web-app-azure",
+    "appService.deploySubpath": "laravel-project"
+}
