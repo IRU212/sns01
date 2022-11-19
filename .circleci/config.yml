@@ -1,24 +1,17 @@
 version: 2.1
+
 jobs:
-<<<<<<< HEAD
-  working_directory: ~/01/laravel-project
-  build:
-    docker:
-      - image: circleci/php:8.0-node-browsers
-=======
   job:
     docker:
       - image: circleci/php:8.0-node-browsers
         auth:
           username: iru2121
           password: ryuuya2121b
->>>>>>> 9e08150... auth設定
     steps:
-      - checkout
-      - run: sudo composer self-update 
-      - run: composer install -n --prefer-dist --working-dir=./laravel-project
-      # - run: npm ci --working-dir=./laravel-project
-      # - run: npm run dev --working-dir=./laravel-project
-      - run:
-          command: php ./laravel-project/vendor/bin/phpunit --configuration=./laravel-project/phpunit.xml
-      # - run: ls
+      - checkout # check out the code in the project directory
+      - run: echo "hello world" # run the `echo` command
+
+workflows:
+  my-workflow:
+    jobs:
+      - hello-job
