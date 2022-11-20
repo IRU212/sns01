@@ -22,11 +22,8 @@
 
 # nginx configuration
 
-location / {
-  if (!-e $request_filename){
-    rewrite ^(.*)$ /%1 redirect;
-  }
-  if (!-e $request_filename){
-    rewrite ^(.*)$ /index.php break;
-  }
-}
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_URI} ^(.*)
+    RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
+</IfModule>
